@@ -1,0 +1,33 @@
+[book]
+title = "VERA: Verified Evidence & Reasoning Architecture"
+authors = ["VERA Project"]
+language = "en"
+src = "src"
+description = "A framework for structured verification, traceable reasoning, and epistemic sovereignty."
+
+[build]
+build-dir = "docs"
+create-missing = false
+
+[output.html]
+default-theme = "ayu"
+preferred-dark-theme = "ayu"
+git-repository-url = "https://github.com/danielflugger/VERA"
+edit-url-template = "https://github.com/danielflugger/VERA/edit/main/{path}"
+no-section-label = false
+additional-css = []
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3

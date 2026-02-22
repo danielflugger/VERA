@@ -1,0 +1,484 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tooling &amp; Integration - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/implementation/tooling.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="tooling--integration"><a class="header" href="#tooling--integration">Tooling &amp; Integration</a></h1>
+<p>VERA does not require specialized software. It requires that whatever tools you use can satisfy a small set of structural requirements derived from the framework’s sovereignty principles. This chapter describes those requirements, maps them to common tool categories, and gives concrete guidance for building a VERA workspace in the tools most practitioners already use.</p>
+<hr>
+<h2 id="what-vera-requires-of-tools"><a class="header" href="#what-vera-requires-of-tools">What VERA Requires of Tools</a></h2>
+<p>Before evaluating any specific tool, establish the requirements. These are derived directly from the <a href="../foundations/sovereignty-principles.html">Sovereignty Principles</a> and the practical needs of the Verification Protocol.</p>
+<h3 id="non-negotiable-requirements-all-maturity-levels"><a class="header" href="#non-negotiable-requirements-all-maturity-levels">Non-Negotiable Requirements (All Maturity Levels)</a></h3>
+<p><strong>R1 — Writeable and searchable.</strong> You must be able to create structured documents, add fields, and search across your claim records. A tool that only allows reading or that provides no search is inadequate.</p>
+<p><strong>R2 — Exportable.</strong> You must be able to export all your claim records, evidence documentation, and verification records in a non-proprietary format (plain text, Markdown, CSV, or similar). If you cannot export your data, you do not own it. This requirement flows directly from S1 (Data Sovereignty).</p>
+<p><strong>R3 — Linkable.</strong> Claims reference evidence items, evidence items reference sources, verification records reference claims. Your tooling must support this linking — at minimum by allowing you to include a reference ID or URL in a field.</p>
+<p><strong>R4 — Durable.</strong> Your claim records must persist. A tool that deletes data after inactivity, that regularly loses history, or whose longevity is uncertain is not appropriate for VERA’s registry function.</p>
+<p><strong>R5 — Accessible to stakeholders.</strong> Claim records and verification records must be accessible to the people affected by the claims they document. A tool that only the claimant can access violates S2 (Reasoning Sovereignty).</p>
+<h3 id="requirements-at-level-3-and-above"><a class="header" href="#requirements-at-level-3-and-above">Requirements at Level 3 and Above</a></h3>
+<p><strong>R6 — Registry capable.</strong> At Level 3, the claim registry must support: filtering by verification state, sorting by date, searching by claim content, and indicating ownership and review dates. A flat file cannot do this; a structured table or database can.</p>
+<p><strong>R7 — Dependency trackable.</strong> At Level 3, upstream claim dependencies must be registered at claim creation. Your tooling must be able to represent a “this claim uses Claim X as evidence” relationship.</p>
+<p><strong>R8 — Auditable history.</strong> At Level 4 and above, verification records and claim state changes must have an auditable history — who changed what, when. Version history in a wiki or document system meets this requirement.</p>
+<h3 id="what-to-avoid"><a class="header" href="#what-to-avoid">What to Avoid</a></h3>
+<p><strong>Proprietary-only formats.</strong> If your claim records can only be read in one vendor’s application, you have a Data Sovereignty problem. Accept proprietary tooling only when export to a non-proprietary format is available and tested.</p>
+<p><strong>Single-point-of-failure storage.</strong> Claims stored only in a local application on one device, or only in an account with no recovery path, are at risk. Mirror important claims in at least two locations.</p>
+<p><strong>Reasoning-opaque tools.</strong> Tools that produce conclusions — summaries, recommendations, classifications — without exposing the reasoning that produced them violate R3 (Reasoning Sovereignty) when that reasoning is incorporated into VERA claims without documentation. This includes AI tools used in a black-box mode.</p>
+<hr>
+<h2 id="the-minimum-viable-toolkit"><a class="header" href="#the-minimum-viable-toolkit">The Minimum Viable Toolkit</a></h2>
+<p>You need exactly three capabilities to begin VERA practice:</p>
+<ol>
+<li><strong>A writing environment</strong> where you can create and edit structured documents</li>
+<li><strong>A claim registry</strong> where you can list all documented claims with their key fields</li>
+<li><strong>A file or folder system</strong> where you can store evidence item references and verification records</li>
+</ol>
+<p>These three capabilities can be satisfied by a single folder of plain text files, a spreadsheet, or any modern note-taking application. The choice of tool is less important than the discipline of using it consistently.</p>
+<p>The minimum viable toolkit for a solo practitioner:</p>
+<ul>
+<li><strong>Writing:</strong> Any text editor or word processor (including Markdown editors, Google Docs, Microsoft Word)</li>
+<li><strong>Registry:</strong> A single table with columns: Claim ID, Statement, Verification State, Confidence, Owner, Review Date</li>
+<li><strong>Evidence storage:</strong> A folder (local or cloud) named by claim ID, containing evidence documents and the verification record</li>
+</ul>
+<p>This toolkit meets R1 through R5. It does not fully meet R6 through R8, which is appropriate — those requirements are for Level 3 and above.</p>
+<hr>
+<h2 id="the-claim-registry-in-depth"><a class="header" href="#the-claim-registry-in-depth">The Claim Registry in Depth</a></h2>
+<p>The claim registry is the most important piece of VERA infrastructure. Get it right early; it is difficult to restructure a large registry later.</p>
+<h3 id="registry-fields"><a class="header" href="#registry-fields">Registry Fields</a></h3>
+<p>The minimum fields for a functional registry:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Format</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Claim ID</td><td><code>VERA-C-[YYYY]-[NNNN]</code> or org format</td><td>Permanent; never changes</td></tr>
+<tr><td>Statement</td><td>One precise declarative sentence</td><td>The claim itself, not a title</td></tr>
+<tr><td>Domain / Topic</td><td>Free text or controlled vocabulary</td><td>For filtering</td></tr>
+<tr><td>Verification State</td><td>○ ◐ ◑ ● ◈ ✗</td><td>Current state</td></tr>
+<tr><td>Confidence</td><td>0.0–1.0</td><td>Current rating</td></tr>
+<tr><td>Owner</td><td>Name or role</td><td>Who maintains this claim</td></tr>
+<tr><td>Created</td><td>Date</td><td>Phase 1 initiation date</td></tr>
+<tr><td>Verified</td><td>Date</td><td>When verification completed</td></tr>
+<tr><td>Review Due</td><td>Date</td><td>From Phase 5 cadence setting</td></tr>
+<tr><td>Verification Record</td><td>ID or link</td><td><code>VERA-V-[NNNN]</code> or URL</td></tr>
+<tr><td>Notes</td><td>Free text</td><td>Stale flags, contestation notes, etc.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Optional fields for Level 3+ registries:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td>Upstream Dependencies</td><td>Comma-separated Claim IDs this claim uses as evidence</td></tr>
+<tr><td>Downstream Dependents</td><td>Claim IDs that use this claim as evidence (auto-populated if tooling supports)</td></tr>
+<tr><td>Evidence Set Link</td><td>URL or folder path</td></tr>
+<tr><td>Protocol Version</td><td>The Verification Protocol version used</td></tr>
+<tr><td>Tags</td><td>For filtering by topic, domain, project</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="registry-implementation-options"><a class="header" href="#registry-implementation-options">Registry Implementation Options</a></h3>
+<p><strong>Spreadsheet (Google Sheets, Excel, LibreOffice Calc)</strong></p>
+<p>Suitable for: Individual practitioners and small teams at Levels 1–3.</p>
+<p>Setup: One sheet per registry. Columns as above. Use data validation for Verification State column (restrict to the six valid states). Freeze the header row. Add conditional formatting to highlight Stale claims (Review Due date passed).</p>
+<p>Limitations: No dependency graph, no version history at the cell level (Google Sheets has basic version history), no relational links. Adequate to Level 3; starts showing constraints at Level 4.</p>
+<p><strong>Notion</strong></p>
+<p>Suitable for: Individual practitioners and teams at Levels 2–4.</p>
+<p>Setup: Create a database for claims with properties corresponding to registry fields. Use Select property for Verification State. Use Relation property for Upstream Dependencies (relates to the same database). Use Date property for Review Due with reminders. Create views: one for All Claims, one filtered to In Progress (state = Pending or Partial), one sorted by Review Due date (Stale claims first).</p>
+<p>Evidence sets: Create a second database for Evidence Items, related to Claims.</p>
+<p>Strengths: Relation property natively supports dependency tracking (R7). Filtering and sorting meet R6. Export to Markdown or CSV meets R2.</p>
+<p>Limitations: Notion stores data on Notion’s infrastructure; verify export works regularly (R2 test). The vendor dependency is a monitored Data Sovereignty risk.</p>
+<p><strong>Obsidian</strong></p>
+<p>Suitable for: Individual practitioners and small teams at Levels 1–4, especially those who prefer local-first, Markdown-native tools.</p>
+<p>Setup: Create a Vault with a <code>claims/</code> folder. Each claim is a Markdown file named by Claim ID. Use YAML frontmatter for structured fields:</p>
+<pre><code class="language-yaml">---
+claim_id: VERA-C-2026-0001
+statement: "Production defect rate was 35% lower in the six-month post-adoption period than in the equivalent pre-adoption period."
+state: verified
+confidence: 0.79
+owner: DJF
+created: 2026-02-21
+verified: 2026-03-01
+review_due: 2027-03-01
+verification_record: VERA-V-0001
+upstream_deps: []
+---
+</code></pre>
+<p>Use the Dataview plugin to generate registry views from frontmatter. Example Dataview query:</p>
+<pre><code>```dataview
+TABLE statement, state, confidence, review_due
+FROM "claims"
+WHERE state != "refuted"
+SORT review_due ASC
+```
+</code></pre>
+<p>Strengths: All data is local plain text files — maximum Data Sovereignty. No vendor dependency. Export is trivially a file copy. Markdown links support R3.</p>
+<p>Limitations: No built-in access control for stakeholder sharing (R5 requires a separate sharing solution). Team use requires a shared sync solution (Git, Syncthing, or a cloud folder).</p>
+<p><strong>Confluence (Atlassian)</strong></p>
+<p>Suitable for: Teams and organizations at Levels 3–5.</p>
+<p>Setup: Create a VERA space. Use a Confluence database (or a structured page template with properties) for the claim registry. Use page templates for claim records and verification records.</p>
+<p>Strengths: Native to organizational knowledge management infrastructure; stakeholder access (R5) is managed through existing Confluence permissions. Audit history (R8) is built in.</p>
+<p>Limitations: Export (R2) requires deliberate configuration; verify that page exports include structured data in a portable format, not just HTML. Confluence licensing costs may be a governance consideration.</p>
+<p><strong>Plain Markdown Files with Git</strong></p>
+<p>Suitable for: Technical teams at Levels 2–5 who are comfortable with version control.</p>
+<p>Setup: A Git repository with a <code>/claims/</code> directory. Each claim is a Markdown file with YAML frontmatter (same structure as Obsidian above). Verification records live in <code>/verification-records/</code>. Evidence sets referenced by folder path or URL.</p>
+<p>Strengths: Version history at the line level (R8) via Git log. Export is a clone. Stakeholder access via repository permissions. Dependency tracking via frontmatter fields. The entire VERA knowledge base can be reviewed, diffed, and audited using standard Git tooling.</p>
+<p>Limitations: Requires Git literacy. No GUI registry view without additional tooling (a static site generator like mdBook can build a browsable version from the Markdown — suitable for teams already using mdBook for other documentation).</p>
+<hr>
+<h2 id="evidence-management"><a class="header" href="#evidence-management">Evidence Management</a></h2>
+<p>Evidence items need to be stored, organized, and retrievable. The core requirement is chain-of-custody: for each evidence item, you need to be able to locate the original source, trace the path from source to your documentation, and confirm that the item was what you say it was when you accessed it.</p>
+<h3 id="evidence-folder-structure"><a class="header" href="#evidence-folder-structure">Evidence Folder Structure</a></h3>
+<p>Organize evidence by claim, not by topic. Each claim has its own evidence folder:</p>
+<pre><code>evidence/
+  VERA-C-2026-0001/
+    E1-defect-data-pre-adoption.csv
+    E2-defect-data-post-adoption.csv
+    E3-deployment-log.pdf
+    E4-methodology-doc.md
+    evidence-set.md          ← Evidence item records with ratings and chain of custody
+</code></pre>
+<p>The <code>evidence-set.md</code> file is the master document for that claim’s evidence, containing one Evidence Item Record per item.</p>
+<h3 id="evidence-item-record-format"><a class="header" href="#evidence-item-record-format">Evidence Item Record Format</a></h3>
+<pre><code class="language-markdown">## E1: Pre-Adoption Defect Data
+
+- **Source:** Internal incident tracking system (Jira)
+- **Type:** Export
+- **Quality Tier:** Primary
+- **Access Date:** 2026-02-21
+- **Accessed By:** DJF
+- **Chain of Custody:** Exported directly from Jira filter "project = PROD AND type = Bug AND created &gt;= 2025-05-01 AND created &lt;= 2025-10-31" on 2026-02-21. File saved to /evidence/VERA-C-2026-0001/E1-defect-data-pre-adoption.csv.
+- **Relevance:** Provides pre-adoption production defect count for Step 1 of reasoning chain.
+- **Independence Classification:** Correlated with E2 (same system, different period)
+- **Decay Class:** Drifting (12-month expiry: 2027-02-21)
+- **Conflict:** None
+</code></pre>
+<h3 id="handling-non-retrievable-sources"><a class="header" href="#handling-non-retrievable-sources">Handling Non-Retrievable Sources</a></h3>
+<p>Some evidence sources cannot be stored as local files: paywalled academic papers, licensed datasets, confidential internal documents, proprietary systems. For these, the chain-of-custody record replaces the stored file:</p>
+<ul>
+<li>Document how access was obtained (subscription, license, internal access rights)</li>
+<li>Describe the access method in enough detail that the same access could be repeated</li>
+<li>Note any risk to future access (subscription renewal, license expiration, internal system changes)</li>
+</ul>
+<p>If the source is a website that may change or disappear, capture a dated archive (WebCite, archive.org, or a local PDF of the page). This is especially important for Volatile evidence items.</p>
+<hr>
+<h2 id="ai-tool-integration"><a class="header" href="#ai-tool-integration">AI Tool Integration</a></h2>
+<p>AI tools create specific tooling requirements beyond the general VERA requirements. These are derived from VERA-P-0003 (AI-Generated Evidence Documentation) and the Sovereignty Principles.</p>
+<h3 id="prompt-logging"><a class="header" href="#prompt-logging">Prompt Logging</a></h3>
+<p>Any AI interaction that produces evidence used in a VERA claim requires:</p>
+<ul>
+<li>The name and version of the AI model used</li>
+<li>The exact prompt (or a reconstruction-sufficient summary)</li>
+<li>The complete verbatim output used as evidence</li>
+<li>The date and time of the interaction</li>
+</ul>
+<p>Most AI tools do not provide automatic logging that meets these requirements. Solutions:</p>
+<p><strong>Manual logging:</strong> Copy prompts and outputs into your evidence item records immediately after each AI session. This is the minimum viable approach.</p>
+<p><strong>Session export:</strong> Some AI platforms (including Claude’s web interface) provide conversation export. Export conversations immediately after any session that produced evidence; include the export in the evidence folder.</p>
+<p><strong>Prompt management tools:</strong> Tools like Promptbase, PromptLayer, or custom prompt registries can log prompts and responses automatically for API-based AI use. If your AI use is API-based, prompt logging infrastructure is strongly recommended.</p>
+<h3 id="ai-sovereignty-assessment"><a class="header" href="#ai-sovereignty-assessment">AI Sovereignty Assessment</a></h3>
+<p>For each AI tool used in VERA work, assess:</p>
+<ol>
+<li>
+<p><strong>Reasoning transparency:</strong> When the AI produces reasoning (not just retrieval), can you capture that reasoning in full? If the tool only shows conclusions, it is not suitable for VERA reasoning chain contribution without the Tier C (AI synthesis) handling from VERA-P-0003.</p>
+</li>
+<li>
+<p><strong>Data sovereignty:</strong> Do your prompts and the AI’s responses leave your control? If they are stored on the AI provider’s servers, that is a data sovereignty consideration. Evaluate whether the data contains confidential claim content that should not leave organizational control.</p>
+</li>
+<li>
+<p><strong>Model identity:</strong> Can you identify the specific model version used? Confidence in an AI’s output is tied to knowing what model produced it. Tools that use unversioned or frequently updated models without notification create chain-of-custody problems.</p>
+</li>
+<li>
+<p><strong>Exit path:</strong> If you stop using the tool, can you retrieve all prompts and outputs? Test this before the tool becomes a significant part of your evidence workflow.</p>
+</li>
+</ol>
+<h3 id="ai-tools-in-the-vera-workflow"><a class="header" href="#ai-tools-in-the-vera-workflow">AI Tools in the VERA Workflow</a></h3>
+<p>AI tools are most valuable — and most compatible with VERA sovereignty requirements — in these specific roles:</p>
+<p><strong>Evidence discovery (Tier A work):</strong> AI can identify sources, suggest search terms, and surface relevant literature. VERA-P-0003 Tier A applies: AI identifies; you retrieve and verify the original source.</p>
+<p><strong>Claim formulation assistance:</strong> AI can help identify compound claim structures, suggest precision improvements to claim statements, and flag potentially hidden assumptions. These outputs are practitioner inputs, not evidence — they improve Phase 1 quality without creating evidence chain-of-custody issues.</p>
+<p><strong>Reasoning chain review:</strong> AI can serve as a preliminary adversarial reviewer — attempting to identify gaps and weaknesses in a reasoning chain before formal verification. This is not VERA verification; it is a preparation tool. The practitioner evaluates the AI’s critique independently.</p>
+<p><strong>Registry queries:</strong> AI with access to structured claim registry data can help practitioners find related claims, identify upstream dependencies, and surface review-due items.</p>
+<p>AI tools are least appropriate — and require the most careful sovereignty management — when:</p>
+<ul>
+<li>They are generating conclusions that are incorporated into reasoning chains without capturing their reasoning</li>
+<li>They are summarizing evidence without traceability to the underlying sources</li>
+<li>Their outputs are cited as Secondary evidence without verification of the underlying sources</li>
+</ul>
+<hr>
+<h2 id="integrating-vera-with-existing-workflows"><a class="header" href="#integrating-vera-with-existing-workflows">Integrating VERA with Existing Workflows</a></h2>
+<h3 id="decision-documents"><a class="header" href="#decision-documents">Decision Documents</a></h3>
+<p>The highest-value VERA integration for most organizations is making VERA verification status visible in decision documents. A decision document that supports each key factual assertion with a VERA Claim ID — rather than a verbal summary — allows decision reviewers to assess the epistemic basis of the decision without requiring them to be present for all the upstream research.</p>
+<p>Implementation: Add a “Evidence and Verification” section to decision document templates. For each significant factual assertion in the document, include the Claim ID and current verification state. Decision reviewers who want to examine the reasoning can retrieve the full claim record from the registry.</p>
+<h3 id="meeting-notes-and-action-items"><a class="header" href="#meeting-notes-and-action-items">Meeting Notes and Action Items</a></h3>
+<p>Decisions made in meetings often rest on claims asserted verbally — the most epistemically fragile form of claim. The VERA integration that addresses this is simple: when a significant claim is asserted verbally in a meeting and accepted as a basis for a decision or action, someone records it as a VERA claim stub (Claim ID, statement, context) as part of the meeting notes. The stub moves into the Verification Protocol pipeline, and the action or decision is not finalized until the claim reaches at least Partial verification.</p>
+<p>This integration is high-friction and requires team discipline. It is appropriate for high-stakes decisions; it would be disproportionate for every meeting. Define the threshold (what types of meeting decisions warrant this treatment) explicitly.</p>
+<h3 id="research-and-analysis-outputs"><a class="header" href="#research-and-analysis-outputs">Research and Analysis Outputs</a></h3>
+<p>Reports, analyses, and research documents typically contain multiple significant claims in their conclusions and recommendations sections. The VERA integration here: claim records for all significant claims in a report are produced before the report is finalized. The report document links to Claim IDs. Readers who want to evaluate the claims can access the full records; readers who trust the verification can proceed on the basis of the verification state and confidence rating.</p>
+<p>For organizations at Level 4, this integration is standard. For organizations at Level 2, a simplified version is sufficient: list the most important three to five claims from a report in a registry entry, even if full verification records are not yet complete.</p>
+<h3 id="onboarding-and-training"><a class="header" href="#onboarding-and-training">Onboarding and Training</a></h3>
+<p>VERA is most effectively integrated into onboarding not as a standalone training module but as the framework through which new practitioners learn to work with claims in their specific domain. When a new practitioner joins a Level 3 organization, their first substantive work should involve completing a VERA claim (with mentoring) in their actual work area, using the organization’s calibration examples and patterns library. This is more effective than completing a practice claim and then separately learning how the organization’s actual work is structured.</p>
+<hr>
+<h2 id="tooling-at-each-maturity-level"><a class="header" href="#tooling-at-each-maturity-level">Tooling at Each Maturity Level</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Maturity Level</th><th>Claim Registry</th><th>Evidence Storage</th><th>Verification Records</th><th>Integration Points</th></tr>
+</thead>
+<tbody>
+<tr><td>L1: Aware</td><td>None required</td><td>None required</td><td>None required</td><td>None</td></tr>
+<tr><td>L2: Exploring</td><td>Spreadsheet or flat file table</td><td>Named folder per claim</td><td>Document per record, stored with claim</td><td>None required</td></tr>
+<tr><td>L3: Practicing</td><td>Searchable database (Notion, Confluence, Obsidian + Dataview, or equivalent)</td><td>Structured evidence folders with Evidence Item Records</td><td>Complete records with per-criterion findings; linked to claim registry</td><td>Decision documents link to Claim IDs</td></tr>
+<tr><td>L4: Governing</td><td>Registry with dependency tracking, state history, and review cadence alerts</td><td>Evidence items linked to reference management system; chain-of-custody auditable</td><td>Versioned records; verifier identity tracked</td><td>Decision gates, project management, governance reporting</td></tr>
+<tr><td>L5: Sovereign</td><td>Registry is fully exported and sovereign; no undocumented vendor dependencies</td><td>All evidence accessible and exportable independently of vendor tools</td><td>Records are externally auditable; criteria publicly documented</td><td>All significant knowledge work is VERA-native</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="testing-your-tooling-for-sovereignty"><a class="header" href="#testing-your-tooling-for-sovereignty">Testing Your Tooling for Sovereignty</a></h2>
+<p>Before committing to a tool stack, run this five-minute export test:</p>
+<ol>
+<li>Create a complete claim record in your chosen tool, including evidence item records and a verification record.</li>
+<li>Export everything to plain text or CSV.</li>
+<li>Delete the application or log out.</li>
+<li>Verify that you can reconstruct the complete claim record from the exported data alone — without the application.</li>
+<li>Verify that someone else could read and understand the exported data without any context from the application.</li>
+</ol>
+<p>If you cannot complete steps 4 and 5, you have a Data Sovereignty gap. Either fix the export process or choose a different tool before you accumulate a registry that depends on it.</p>
+<p>Run this test annually as part of the sovereignty assessment required by S1 (Data Sovereignty). Tools change. Exports that worked last year may not work this year.</p>
+<hr>
+<p><em>The Implementation section is complete. Return to the <a href="../patterns/catalog.html">Pattern Catalog</a> if you encounter recurring challenges that patterns might address, or proceed to the <a href="../reference/glossary.html">Reference section</a> for the glossary, standards alignment, and changelog.</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../implementation/adoption-roadmap.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../reference/glossary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../implementation/adoption-roadmap.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../reference/glossary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

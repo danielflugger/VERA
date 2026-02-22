@@ -1,0 +1,418 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Sovereignty Principles - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/foundations/sovereignty-principles.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="sovereignty-principles"><a class="header" href="#sovereignty-principles">Sovereignty Principles</a></h1>
+<blockquote>
+<p><em>“To reason well is not enough. You must reason in a way you can own — where the evidence is yours to inspect, the logic is yours to challenge, and the conclusion is yours to reach.”</em></p>
+</blockquote>
+<hr>
+<h2 id="what-sovereignty-means-in-vera"><a class="header" href="#what-sovereignty-means-in-vera">What Sovereignty Means in VERA</a></h2>
+<p>Sovereignty, as used in VERA, is not a political concept. It is an epistemic one.</p>
+<p><strong>Epistemic sovereignty</strong> is the condition of having genuine authority over the knowledge you act on. It requires four capacities:</p>
+<ol>
+<li>The ability to <strong>access</strong> the evidence underlying a claim</li>
+<li>The ability to <strong>inspect</strong> the reasoning chain connecting evidence to conclusion</li>
+<li>The ability to <strong>challenge</strong> both evidence and reasoning through a defined process</li>
+<li>The ability to <strong>reach</strong> your own conclusion rather than being required to accept one</li>
+</ol>
+<p>These four capacities can be eroded in ways that are subtle and often invisible. An organization that delegates fact-finding to a consultant, accepts AI-generated reasoning without review, or builds critical decisions on evidence it cannot locate or audit has ceded epistemic sovereignty — even if all four capacities are nominally intact.</p>
+<p>VERA’s Sovereignty Principles are a set of binding design constraints that prevent sovereignty erosion in VERA-compliant implementations. They are not recommendations. Any VERA implementation that violates them is not VERA-compliant, regardless of how faithfully it follows the rest of the framework.</p>
+<hr>
+<h2 id="the-five-sovereignty-principles"><a class="header" href="#the-five-sovereignty-principles">The Five Sovereignty Principles</a></h2>
+<h3 id="principle-s1-data-sovereignty"><a class="header" href="#principle-s1-data-sovereignty">Principle S1: Data Sovereignty</a></h3>
+<p><em>You retain ultimate ownership and access rights to every evidence item on which your claims depend.</em></p>
+<p>Evidence that you cannot access, cannot export, and cannot independently verify is not evidence you own — it is evidence you borrow from whoever controls it. Borrowed evidence is legitimate; undisclosed borrowed evidence is a sovereignty violation.</p>
+<p><strong>What this requires:</strong></p>
+<ul>
+<li>
+<p><strong>Access</strong>: For every evidence item in a claim’s evidence set, the claimant must be able to locate and access the original source. A citation to a paywalled study, a proprietary dataset, or a deleted document must be accompanied by documentation of how access was obtained and what access limitations exist.</p>
+</li>
+<li>
+<p><strong>Export</strong>: Evidence stored in a VERA tooling system must be exportable in a standard format. Vendor lock-in that prevents evidence migration violates this principle. If the tool that holds your evidence stops working, your evidence must remain accessible.</p>
+</li>
+<li>
+<p><strong>Audit trail</strong>: The chain of custody for each evidence item — who accessed it, when, what transformation (if any) was applied — must be documented and retained alongside the evidence itself.</p>
+</li>
+</ul>
+<p><strong>What this does not require:</strong></p>
+<p>Data Sovereignty does not require that evidence be stored locally or that all evidence be primary-tier. Using cloud-hosted evidence repositories, licensed databases, or third-party evidence services is consistent with S1, provided the access, export, and audit requirements are met.</p>
+<p><strong>Common violations:</strong></p>
+<ul>
+<li>Citing AI-generated evidence summaries without retaining the underlying sources</li>
+<li>Building claims on evidence stored in a system where organizational access depends on a vendor contract that could lapse</li>
+<li>Accepting “the AI found evidence” as a substitute for documented, accessible evidence items</li>
+</ul>
+<hr>
+<h3 id="principle-s2-reasoning-sovereignty"><a class="header" href="#principle-s2-reasoning-sovereignty">Principle S2: Reasoning Sovereignty</a></h3>
+<p><em>You retain the ability to inspect, trace, and challenge every step in any reasoning chain that informs your decisions.</em></p>
+<p>Reasoning you cannot see is reasoning you cannot own. When a reasoning chain — whether produced by a person, a team, or an AI system — is not exposed to the person whose decision it informs, that person is making a decision based on conclusions they have been handed rather than conclusions they have reached.</p>
+<p><strong>What this requires:</strong></p>
+<ul>
+<li>
+<p><strong>Transparency</strong>: Reasoning chains must be written out in full (per the Verification Protocol, Phase 3). Summary reasoning — “after analysis, we concluded…” — is not a reasoning chain.</p>
+</li>
+<li>
+<p><strong>Traceability</strong>: Every step in a reasoning chain must cite its premises, and every premise must trace to either a documented evidence item or a prior verified step. An orphaned premise — one that appears without sourcing — violates S2.</p>
+</li>
+<li>
+<p><strong>Challengeability</strong>: A defined process must exist for any stakeholder affected by a claim to formally challenge its reasoning. The challenge process must be capable of producing a change in outcome — a process that acknowledges challenges without capability to affect the claim is theater, not sovereignty.</p>
+</li>
+</ul>
+<p><strong>AI reasoning and S2:</strong></p>
+<p>AI systems that produce reasoning — including large language models generating explanations, analytical systems producing recommendations, or decision-support tools producing conclusions — must expose that reasoning in a form that meets VERA’s traceability requirements. “The model produced this conclusion” is not a reasoning chain. The model’s stated reasoning must be captured, documented, and subjected to the same verification criteria as human-produced reasoning.</p>
+<p>This does not mean AI reasoning must be trusted. It means it must be visible.</p>
+<p><strong>Common violations:</strong></p>
+<ul>
+<li>Presenting AI-generated conclusions without the AI’s stated reasoning</li>
+<li>Using “black box” model outputs as premises in reasoning chains without documentation of what the model was asked and what it produced</li>
+<li>Organizational processes that require accepting expert conclusions without access to expert reasoning</li>
+</ul>
+<hr>
+<h3 id="principle-s3-conclusion-sovereignty"><a class="header" href="#principle-s3-conclusion-sovereignty">Principle S3: Conclusion Sovereignty</a></h3>
+<p><em>The person or organization whose decisions are affected by a claim retains the right to reach their own conclusion, including a conclusion that differs from the verified claim.</em></p>
+<p>Verification does not obligate acceptance. A claim may be fully Verified under VERA’s protocol and still be reasonably rejected by a stakeholder who has access to information, context, or values that affect how the claim should be weighted in a specific decision.</p>
+<p><strong>What this requires:</strong></p>
+<ul>
+<li>
+<p><strong>Non-coercion</strong>: VERA verification is advisory, not prescriptive. A governance framework that requires acceptance of any verified claim as a condition of participation violates S3.</p>
+</li>
+<li>
+<p><strong>Documented disagreement</strong>: When a stakeholder rejects a verified claim, they should document their reasoning. This documentation protects both the stakeholder (by making their position traceable) and the claim (by creating a record of challenges that may prompt re-verification).</p>
+</li>
+<li>
+<p><strong>No penalty for challenge</strong>: The VERA process must be designed so that challenging a claim — formally and through the defined process — does not carry institutional penalties. If challenging claims is professionally risky, claims will not be challenged even when they should be.</p>
+</li>
+</ul>
+<p><strong>The limits of Conclusion Sovereignty:</strong></p>
+<p>S3 does not mean that verified claims are irrelevant. In contexts with explicit governance structures — organizational policy, regulatory compliance, scientific publication — verified VERA claims carry weight that undocumented disagreement does not automatically override. What S3 prohibits is the <em>structural impossibility</em> of disagreement, not the <em>consequence</em> of minority positions in legitimate governance processes.</p>
+<hr>
+<h3 id="principle-s4-process-sovereignty"><a class="header" href="#principle-s4-process-sovereignty">Principle S4: Process Sovereignty</a></h3>
+<p><em>The verification process that validates your claims must be auditable and must be capable of failing.</em></p>
+<p>A verification process you cannot audit is one you cannot trust. A verification process that never fails is one that is not actually verifying.</p>
+<p><strong>What this requires:</strong></p>
+<ul>
+<li>
+<p><strong>Auditability</strong>: The criteria, procedure, and record of every verification event must be accessible to the claimant, to affected stakeholders, and (in organizational contexts) to the governance function. Verification records are not confidential.</p>
+</li>
+<li>
+<p><strong>Falsifiability</strong>: Verification criteria must be stated in terms that allow claims to fail. Criteria that are designed to be satisfied by any well-formatted claim — regardless of the actual quality of evidence and reasoning — are not VERA-compliant criteria.</p>
+</li>
+<li>
+<p><strong>Independence from the verified</strong>: Verification processes controlled exclusively by the people who want the claim verified are not independent. S4 requires that at minimum, the verification criteria be set independently of the claimant, even if resource constraints limit full verifier independence.</p>
+</li>
+<li>
+<p><strong>Accountability for verifiers</strong>: Verifiers who consistently approve weak claims, or who have consistent conflicts of interest, must be identifiable through the verification record and subject to review. Anonymous verification is not consistent with S4 in high-stakes contexts.</p>
+</li>
+</ul>
+<p><strong>Common violations:</strong></p>
+<ul>
+<li>Verification processes that score all submitted claims as Verified unless they have obvious errors</li>
+<li>Verification criteria that are not published before claim submission (criteria set after reviewing the claim are not independent)</li>
+<li>Organizational cultures in which “failed verification” is treated as a procedural failure rather than the expected outcome of rigorous review</li>
+</ul>
+<hr>
+<h3 id="principle-s5-temporal-sovereignty"><a class="header" href="#principle-s5-temporal-sovereignty">Principle S5: Temporal Sovereignty</a></h3>
+<p><em>You retain authority over when claims are verified, when they are reviewed, and when they are retired — without pressure to accelerate or delay these processes for non-epistemic reasons.</em></p>
+<p>Epistemic quality is degraded by non-epistemic time pressure. A claim verified in an hour because a decision must be made today may be formally compliant while being practically inadequate. A claim left unreviewed for years because its review would be inconvenient is a different kind of failure. Both represent sovereignty violations: in the first case, decision pressure substitutes for epistemic rigor; in the second, institutional inertia prevents appropriate updating.</p>
+<p><strong>What this requires:</strong></p>
+<ul>
+<li>
+<p><strong>Documented urgency</strong>: When Urgent Verification (see Verification Protocol) is invoked, the urgency must be documented and the resulting partial verification must be labeled transparently. Urgency is a legitimate reason to adjust process; it is not a legitimate reason to misrepresent a partial review as a full one.</p>
+</li>
+<li>
+<p><strong>Review cadence</strong>: Claims must have documented review schedules (Verification Protocol Phase 5, Step 5.4), and the review must occur regardless of whether re-review would be convenient. A claim that was inconveniently reviewed before a product launch, policy renewal, or contract negotiation cannot be exempted from its review schedule on that basis.</p>
+</li>
+<li>
+<p><strong>Retirement rights</strong>: The claimant or the governance function may retire a claim — marking it as no longer in active use — without that retirement constituting a concession that the claim was wrong. Claims are retired because they are superseded, out of scope, or no longer referenced. Retirement is distinct from Refutation.</p>
+</li>
+<li>
+<p><strong>No false urgency</strong>: Declaring urgency to bypass verification rigor, or delaying review to protect a convenient claim, are governance violations. Both must be auditable through the review record.</p>
+</li>
+</ul>
+<hr>
+<h2 id="sovereignty-in-practice"><a class="header" href="#sovereignty-in-practice">Sovereignty in Practice</a></h2>
+<p>The five principles interact. A common real-world pattern is <strong>sovereignty degradation cascade</strong>: an organization loses Data Sovereignty (S1) because its evidence is locked in a proprietary system; this undermines Reasoning Sovereignty (S2) because reasoning chains cannot be traced to accessible evidence; which erodes Conclusion Sovereignty (S3) because stakeholders have no meaningful basis for challenge; which eventually compromises Process Sovereignty (S4) because the governance process has nothing auditable to work with.</p>
+<p>Restoring sovereignty often requires working backwards: starting with Data Sovereignty — ensuring evidence is accessible — before attempting to improve reasoning transparency.</p>
+<h3 id="sovereignty-vs-convenience"><a class="header" href="#sovereignty-vs-convenience">Sovereignty Vs. Convenience</a></h3>
+<p>Sovereignty is inconvenient. It requires documentation that takes time, transparency that creates vulnerability, and processes that can be challenged. Organizations that are serious about VERA must accept this cost as a deliberate choice.</p>
+<p>The alternative is epistemic convenience: fast, smooth reasoning that feels authoritative and is difficult to audit. Epistemic convenience compounds. Each shortcut erodes the infrastructure needed to catch the next error. VERA’s sovereignty principles are designed to prevent that compounding.</p>
+<h3 id="sovereignty-and-ai"><a class="header" href="#sovereignty-and-ai">Sovereignty and AI</a></h3>
+<p>AI systems are the most significant current threat to epistemic sovereignty — not because they are malicious, but because they are designed for friction reduction. They produce conclusions without exposed reasoning. They summarize evidence without preserving sources. They provide answers without documenting the question-formulation process. They make reasoning fast and opaque simultaneously.</p>
+<p>VERA’s sovereignty principles require that every place AI touches the evidence-reasoning-verification pipeline, the AI’s contribution be made visible, traceable, and challengeable. This is not anti-AI. AI tools that are designed for VERA compliance can dramatically accelerate evidence assembly, reasoning chain construction, and pattern matching — while preserving the sovereignty that makes those outputs trustworthy.</p>
+<p>The design principle for AI in a VERA context is: <em>AI does the work; humans own the record.</em></p>
+<h3 id="organizational-vs-individual-sovereignty"><a class="header" href="#organizational-vs-individual-sovereignty">Organizational vs. Individual Sovereignty</a></h3>
+<p>VERA applies at both individual and organizational levels, and the sovereignty principles operate at both:</p>
+<p><strong>Individual sovereignty</strong>: An individual practitioner applies VERA to their own reasoning. Their sovereignty over claims they make and evidence they hold is personal. They are accountable to themselves (and, in professional contexts, to the standards of their practice).</p>
+<p><strong>Organizational sovereignty</strong>: An organization applies VERA to its institutional reasoning — policies, decisions, communications, research. Organizational sovereignty means the organization (not any particular vendor, consultant, or AI provider) retains the epistemic capacities described in the five principles. Individual members of the organization may delegate evidence access or reasoning support to external parties; the organization itself may not cede the sovereignty capacities.</p>
+<hr>
+<h2 id="sovereignty-assessment"><a class="header" href="#sovereignty-assessment">Sovereignty Assessment</a></h2>
+<p>The following questions are used to assess the degree of sovereignty in a VERA implementation. Each “No” answer identifies a specific sovereignty gap.</p>
+<p><strong>Data Sovereignty (S1):</strong></p>
+<ul>
+<li>Can we access the original source of every evidence item in our active claims?</li>
+<li>Can we export all evidence from the systems that store it?</li>
+<li>Do we have a documented chain of custody for each evidence item?</li>
+</ul>
+<p><strong>Reasoning Sovereignty (S2):</strong></p>
+<ul>
+<li>Are reasoning chains documented in full, step by step, for all significant claims?</li>
+<li>Can any stakeholder who is affected by a claim trace its reasoning chain to its evidence items?</li>
+<li>Is there a defined process for challenging reasoning, and is it capable of producing changed outcomes?</li>
+</ul>
+<p><strong>Conclusion Sovereignty (S3):</strong></p>
+<ul>
+<li>Is it possible for someone to formally disagree with a verified claim without facing institutional penalties?</li>
+<li>Are documented disagreements retained in the claim record?</li>
+</ul>
+<p><strong>Process Sovereignty (S4):</strong></p>
+<ul>
+<li>Are verification criteria published before claims are submitted for verification?</li>
+<li>Are verification records accessible to claimants and affected stakeholders?</li>
+<li>Can we identify which verifiers approved which claims, and audit their independence?</li>
+</ul>
+<p><strong>Temporal Sovereignty (S5):</strong></p>
+<ul>
+<li>Are review cadences documented for all active claims?</li>
+<li>Are claims reviewed on schedule, regardless of institutional convenience?</li>
+<li>Is urgency-based verification labeled as such and followed up?</li>
+</ul>
+<p>An implementation that answers “Yes” to all of these questions has achieved operational sovereignty. The Maturity Model’s Sovereignty domain measures progress toward this state across five maturity levels.</p>
+<hr>
+<p><em>This concludes the Foundations section. Proceed to the <a href="../maturity-model/overview.html">Maturity Model Overview</a> to understand how VERA capability is assessed and developed across organizations.</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../foundations/pattern-template.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../maturity-model/overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../foundations/pattern-template.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../maturity-model/overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

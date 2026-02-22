@@ -1,0 +1,817 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Reasoning Patterns - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/patterns/reasoning.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="reasoning-patterns"><a class="header" href="#reasoning-patterns">Reasoning Patterns</a></h1>
+<p>Reasoning Patterns address recurring challenges in constructing and evaluating the logical connection between evidence and conclusions. They cover claim decomposition, assumption identification, contrary evidence handling, and the documentation of analogical arguments — the most common places where reasoning chains break down in practice.</p>
+<p>All patterns follow the canonical <a href="../foundations/pattern-template.html">Pattern Template</a>. Inference types (deductive, inductive, abductive, analogical), reasoning chain structure, and quality dimensions are defined in the <a href="../foundations/lexicon.html">Lexicon</a>.</p>
+<hr>
+<p><a id="vera-p-0006"></a></p>
+<h2 id="vera-p-0006--compound-claim-decomposition"><a class="header" href="#vera-p-0006--compound-claim-decomposition">VERA-P-0006 — Compound Claim Decomposition</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0006</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Reasoning</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Moderate</td></tr>
+<tr><td>Maturity Level</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="context"><a class="header" href="#context">Context</a></h3>
+<p>Virtually every significant assertion made in organizational contexts is a compound claim: it asserts multiple things simultaneously, often with different levels of evidential support for each component. “Our AI system is accurate, efficient, and ready for production deployment” is not one claim — it is at least three. “This market strategy will capture significant share in the next two years” asserts both the strategic mechanism and the time horizon, which may have very different evidence bases.</p>
+<p>Verification Protocol Phase 1, Step 1.2 requires decomposing compound claims before proceeding. This pattern specifies <em>how</em> to decompose effectively, addressing the most common failure mode: under-decomposition, where practitioners split the most obvious compound but stop before reaching independently verifiable atomic claims.</p>
+<hr>
+<h3 id="problem"><a class="header" href="#problem">Problem</a></h3>
+<p>Practitioners under-decompose for two reasons. First, it is not obvious where decomposition is complete — there is no clear signal that an atomic claim has been reached. Second, the work of tracking multiple sub-claims and their dependencies is more complex than tracking one compound, so there is incentive to stop decomposing before the components are truly independent.</p>
+<p>The consequence of under-decomposition is that claims are verified as units when their components have very different evidential strength. A compound claim with one well-supported and one poorly-supported component receives an averaged verification judgment that obscures the weak component.</p>
+<hr>
+<h3 id="forces"><a class="header" href="#forces">Forces</a></h3>
+<ul>
+<li>Over-decomposition produces too many micro-claims with complex dependency trees that are harder to navigate than the original compound.</li>
+<li>Under-decomposition hides differential evidential support across components.</li>
+<li>Some claims genuinely cannot be decomposed without losing their meaning (the conjunction is the claim).</li>
+<li>Sub-claim dependencies must be tracked and managed; if Sub-claim B is true only if Sub-claim A is true, this dependency must be explicit.</li>
+<li>The decomposition must be complete before evidence assembly begins; decomposing after evidence is gathered risks reverse-engineering the decomposition to fit the evidence found.</li>
+</ul>
+<hr>
+<h3 id="solution"><a class="header" href="#solution">Solution</a></h3>
+<p>Apply three tests to each claim component during decomposition. A component passes all three tests only when it has reached an appropriate level of atomicity.</p>
+<p><strong>Test 1 — Independence Test:</strong> Can this component be true while the other components are false? If yes, it is independent enough to stand as a separate claim. If no, the components are logically entangled and must be treated as a conjunction claim.</p>
+<p><strong>Test 2 — Evidence Test:</strong> Can you identify a distinct type of evidence that would specifically address this component — evidence that would not be relevant to the other components? If yes, the component has a distinct evidential basis and should be separated. If no, the components share an evidential basis and may appropriately remain together.</p>
+<p><strong>Test 3 — Verification Test:</strong> If this component were false, would the parent claim’s overall verification state change? If yes, it is significant enough to track separately. If no, it may be a subordinate qualification rather than a component.</p>
+<p>Apply these three tests iteratively. After each round of decomposition, apply the tests again to each new component. Stop when all components pass all three tests or when further decomposition would produce components too small to be meaningful.</p>
+<hr>
+<h3 id="implementation"><a class="header" href="#implementation">Implementation</a></h3>
+<ol>
+<li>
+<p><strong>State the compound claim precisely.</strong> Write out the full assertion. Underline every conjunction (and, but, while, as well as), every implicit comparison, and every embedded causal or temporal claim.</p>
+</li>
+<li>
+<p><strong>Draft candidate components.</strong> Separate the underlined elements into candidate atomic claims. Write each as a complete declarative sentence.</p>
+</li>
+<li>
+<p><strong>Apply the three tests to each candidate.</strong> For each candidate component, work through the Independence, Evidence, and Verification tests. Document the result of each test.</p>
+</li>
+<li>
+<p><strong>Separate independent components.</strong> Components that pass all three tests become distinct VERA claims, each receiving its own Claim ID and proceeding through the Protocol independently.</p>
+</li>
+<li>
+<p><strong>Handle entangled components.</strong> Components that fail the Independence Test (cannot be true independently) should be analyzed: Is the entanglement conceptual (the claim is genuinely conjunctive) or definitional (one term is being used to mean both)? Conceptually conjunctive claims are kept together with a note. Definitional entanglements require rephrasing.</p>
+</li>
+<li>
+<p><strong>Map sub-claim dependencies.</strong> Where Sub-claim B is true only if Sub-claim A is true, document this dependency explicitly. The verification of B depends on A being Verified; if A is Contested or Refuted, B must be re-evaluated.</p>
+</li>
+<li>
+<p><strong>Reconstruct the parent claim.</strong> Document how the atomic sub-claims combine to produce the original compound assertion. This reconstruction step is verified at Phase 4 to ensure no meaning was lost or added during decomposition.</p>
+</li>
+</ol>
+<hr>
+<h3 id="evidence-requirements"><a class="header" href="#evidence-requirements">Evidence Requirements</a></h3>
+<ul>
+<li>The original compound assertion documented verbatim</li>
+<li>Test results for each candidate component</li>
+<li>Dependency map showing which sub-claims are prerequisites for others</li>
+<li>Reconstruction record showing how sub-claims combine to the parent</li>
+</ul>
+<hr>
+<h3 id="verification-criteria"><a class="header" href="#verification-criteria">Verification Criteria</a></h3>
+<ul>
+<li>Every sub-claim passes all three tests at its current level of decomposition</li>
+<li>Sub-claim dependencies are documented and are consistent with the logical structure of the parent claim</li>
+<li>The reconstruction is complete: all elements of the original assertion are accounted for in the sub-claims</li>
+<li>No sub-claim asserts more than the evidence for it specifically supports</li>
+</ul>
+<hr>
+<h3 id="consequences"><a class="header" href="#consequences">Consequences</a></h3>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Differential evidential strength across claim components is made visible rather than averaged.</li>
+<li>Weak components are identified and can be researched independently or acknowledged as limitations.</li>
+<li>Sub-claim reuse becomes possible: a well-supported atomic claim can serve as evidence in multiple parent claims.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>Decomposition adds Phase 1 work before evidence assembly begins.</li>
+<li>Dependency tracking adds complexity to the claim registry, especially for multi-level decompositions.</li>
+<li>Sub-claims with low evidential support may, when isolated, cause practitioners to abandon claims that would have survived as compounds — which is not always the wrong outcome, but can feel like a loss.</li>
+</ul>
+<hr>
+<h3 id="known-uses"><a class="header" href="#known-uses">Known Uses</a></h3>
+<ul>
+<li><strong>Strategy team, global technology company (2024):</strong> Applied to a strategic recommendation that asserted three distinct market conditions plus a causal mechanism. Decomposition into five sub-claims revealed that one (the causal mechanism) had no supporting evidence and was an assumption. The assumption was documented, and the parent claim was revised to acknowledge it explicitly.</li>
+<li><strong>Research analyst, public policy institute (2025):</strong> Applied during systematic review of a government program; identified that the program’s “success” claim contained four components with different evidence bases, two of which were not supported by available evidence. The decomposed version was more useful for policy recommendations than the aggregate claim.</li>
+</ul>
+<hr>
+<h3 id="related-patterns"><a class="header" href="#related-patterns">Related Patterns</a></h3>
+<ul>
+<li><a href="./reasoning.html#vera-p-0007">VERA-P-0007</a> — Hidden Assumption Excavation: Apply after decomposition; each sub-claim has its own assumption set that must be excavated.</li>
+<li><a href="./verification.html#vera-p-0012">VERA-P-0012</a> — Cascading Claim Update: When sub-claims are treated as upstream evidence for a parent claim, sub-claim state changes trigger the cascading update protocol.</li>
+</ul>
+<hr>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0006</td></tr>
+<tr><td>Confidence</td><td>0.87</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><a id="vera-p-0007"></a></p>
+<h2 id="vera-p-0007--hidden-assumption-excavation"><a class="header" href="#vera-p-0007--hidden-assumption-excavation">VERA-P-0007 — Hidden Assumption Excavation</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0007</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Reasoning</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Moderate</td></tr>
+<tr><td>Maturity Level</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="context-1"><a class="header" href="#context-1">Context</a></h3>
+<p>All reasoning chains contain assumptions — premises taken as true without direct evidence. The Verification Protocol (Phase 3, Step 3.4) requires practitioners to identify and document assumptions. The practical problem is that the most consequential assumptions are typically the ones the practitioner doesn’t notice they’re making, because they feel like facts rather than choices.</p>
+<p>The assumptions that destroy reasoning chains under scrutiny are rarely the ones the author flagged. They are the ones that felt so obviously true — so much like background reality rather than premise — that they were never examined.</p>
+<hr>
+<h3 id="problem-1"><a class="header" href="#problem-1">Problem</a></h3>
+<p>Asking “what am I assuming?” is insufficient for identifying hidden assumptions. The question is self-defeating: if you knew what you were assuming, it wouldn’t be hidden. Practitioners who apply Step 3.4 conscientiously document the assumptions they are <em>aware</em> of. The remaining hidden assumptions still determine whether the reasoning chain holds.</p>
+<p>This is not a problem of dishonesty or carelessness. It is a structural problem in human reasoning: things that feel like facts are processed differently from things that feel like premises. The solution requires a systematic interrogation method that bypasses this processing difference.</p>
+<hr>
+<h3 id="forces-1"><a class="header" href="#forces-1">Forces</a></h3>
+<ul>
+<li>You cannot directly inspect your own invisible assumptions; indirect interrogation methods are required.</li>
+<li>Some assumptions are so widely shared in a context that documenting them adds noise without epistemic value.</li>
+<li>Other assumptions are technically visible (practitioners know them) but not documented because they are taken as given.</li>
+<li>Contested assumptions — premises that are genuinely disputed in the relevant community — are the highest-priority category; they must be documented and their contestedness acknowledged.</li>
+<li>The same reasoning chain applied in a different context may have entirely different assumption sets; context-sensitivity is a critical dimension.</li>
+</ul>
+<hr>
+<h3 id="solution-1"><a class="header" href="#solution-1">Solution</a></h3>
+<p>Apply a <strong>three-question interrogation</strong> to every step in the reasoning chain. The three questions are designed to approach the same space of hidden assumptions from different angles, increasing the probability of surfacing any given assumption.</p>
+<p><strong>Question 1: Necessary Conditions</strong>
+<em>“What would need to be true for this conclusion to follow from these premises?”</em></p>
+<p>List everything that must hold — beyond what is stated in the premises — for the inference to be valid. This surfaces assumptions about continuity (“what was true yesterday is true today”), scope (“the pattern observed in this sample holds for the whole population”), mechanism (“A causes B through mechanism M”), and completeness (“the factors listed here are the relevant ones”).</p>
+<p><strong>Question 2: Variance</strong>
+<em>“What am I treating as fixed that could vary?”</em></p>
+<p>Identify every quantity, relationship, or category in the reasoning step that you are treating as constant. Consider: What if it varied? Would the conclusion change? If yes, the constancy is an assumption that must be documented. This question surfaces assumptions about measurement invariance, definitional stability, contextual consistency, and the absence of moderating variables.</p>
+<p><strong>Question 3: Values and Framing</strong>
+<em>“Where is this reasoning sensitive to value choices or framing decisions?”</em></p>
+<p>Identify where the reasoning chain encodes choices that are presented as factual but are actually normative or framing-dependent: the choice of comparison baseline, the definition of “significant” or “successful,” the selection of which effects to count and which to ignore. This question surfaces normative assumptions that are particularly likely to be contested by people who share the evidence but not the values.</p>
+<hr>
+<h3 id="implementation-1"><a class="header" href="#implementation-1">Implementation</a></h3>
+<ol>
+<li>
+<p><strong>Write out the reasoning chain in full</strong> before beginning excavation. The interrogation cannot be applied to a chain that doesn’t yet exist. Complete Phase 3, Step 3.3 first.</p>
+</li>
+<li>
+<p><strong>Apply Question 1 to each step.</strong> For each step in the chain, ask: What would need to be true, beyond the stated premises, for this conclusion to follow? List every condition. Write them as declarative statements.</p>
+</li>
+<li>
+<p><strong>Apply Question 2 to each step.</strong> For each step, identify every variable that is treated as fixed. Consider: time, location, population, definition, measurement methodology, causal pathway. List all.</p>
+</li>
+<li>
+<p><strong>Apply Question 3 to each step.</strong> Identify any normative or framing-sensitive elements. List them explicitly.</p>
+</li>
+<li>
+<p><strong>Classify each identified assumption.</strong> For each item surfaced:</p>
+<ul>
+<li><strong>Background assumption</strong>: Widely shared, stable, low contestedness — document briefly.</li>
+<li><strong>Domain assumption</strong>: Specific to the domain, likely shared by domain experts — document with reference to authority.</li>
+<li><strong>Contested assumption</strong>: Genuinely disputed in the relevant community — document prominently, note the dispute, assess whether the claim should be scoped to conditions under which the assumption holds.</li>
+<li><strong>Novel assumption</strong>: Not standard in the domain, introduced by the claimant — document thoroughly, treat as requiring evidence or explicit justification.</li>
+</ul>
+</li>
+<li>
+<p><strong>Add assumptions to the reasoning chain.</strong> All Domain, Contested, and Novel assumptions are added as documented elements of the reasoning chain — either as explicit premises in the step where they operate, or as a separate “Assumptions” section linked to the relevant steps.</p>
+</li>
+<li>
+<p><strong>Reassess claim scope.</strong> If any Contested assumptions are load-bearing (the conclusion fails if the assumption fails), consider scoping the claim to the conditions under which the assumption holds, rather than presenting the claim as unconditionally true.</p>
+</li>
+</ol>
+<hr>
+<h3 id="evidence-requirements-1"><a class="header" href="#evidence-requirements-1">Evidence Requirements</a></h3>
+<ul>
+<li>The complete reasoning chain before excavation begins</li>
+<li>The list of items surfaced by each of the three questions, for each step</li>
+<li>The classification of each surfaced item</li>
+<li>For Contested and Novel assumptions: documentation of the dispute or novelty</li>
+</ul>
+<hr>
+<h3 id="verification-criteria-1"><a class="header" href="#verification-criteria-1">Verification Criteria</a></h3>
+<ul>
+<li>All three questions have been applied to all steps in the reasoning chain</li>
+<li>Every Contested and Novel assumption is documented prominently in the claim record</li>
+<li>The confidence rating reflects any Contested assumptions that are load-bearing</li>
+<li>The claim’s scope statement accounts for conditions under which load-bearing Contested assumptions fail</li>
+</ul>
+<hr>
+<h3 id="consequences-1"><a class="header" href="#consequences-1">Consequences</a></h3>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Surfaces the most dangerous class of reasoning errors: invisible premises.</li>
+<li>Forces explicit engagement with contestedness, preventing the claim from being presented as more settled than it is.</li>
+<li>The documented assumption set becomes a valuable resource for downstream users who may be in contexts where the assumptions don’t hold.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>The three-question interrogation takes time and requires sustained adversarial focus.</li>
+<li>Extensive assumption documentation can make reasoning chains appear more uncertain than practitioners are comfortable with.</li>
+<li>Distinguishing background from contested assumptions requires domain knowledge; practitioners without deep domain expertise may mis-classify.</li>
+</ul>
+<hr>
+<h3 id="known-uses-1"><a class="header" href="#known-uses-1">Known Uses</a></h3>
+<ul>
+<li><strong>Product team, enterprise software firm (2024):</strong> Applied during a business case review; Question 2 (Variance) surfaced an assumption that customer acquisition cost would remain constant as the sales team scaled — an assumption that was false and that invalidated the unit economics claim. The business case was revised before board presentation.</li>
+<li><strong>Academic researcher, political science (2025):</strong> Applied to a comparative politics claim using analogical inference; Question 3 (Values and Framing) revealed that the comparison baseline was implicitly encoding a normative preference that was contested in the literature. The framing assumption was disclosed and the paper’s scope was narrowed accordingly.</li>
+</ul>
+<hr>
+<h3 id="related-patterns-1"><a class="header" href="#related-patterns-1">Related Patterns</a></h3>
+<ul>
+<li><a href="./reasoning.html#vera-p-0006">VERA-P-0006</a> — Compound Claim Decomposition: Apply P-0006 before P-0007; each sub-claim has its own assumption set.</li>
+<li><a href="./reasoning.html#vera-p-0009">VERA-P-0009</a> — Analogical Reasoning Validation: Analogical reasoning is particularly prone to hidden similarity assumptions; apply both patterns when inference type is analogical.</li>
+</ul>
+<hr>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0007</td></tr>
+<tr><td>Confidence</td><td>0.85</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><a id="vera-p-0008"></a></p>
+<h2 id="vera-p-0008--contrary-evidence-integration"><a class="header" href="#vera-p-0008--contrary-evidence-integration">VERA-P-0008 — Contrary Evidence Integration</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0008</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Reasoning</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Moderate</td></tr>
+<tr><td>Maturity Level</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="context-2"><a class="header" href="#context-2">Context</a></h3>
+<p>Evidence assembly following a proper prospective search plan (Verification Protocol Phase 2) will routinely produce evidence items that complicate or contradict the claim. This is not a failure of the research process — it is the expected outcome of honest evidence gathering. The question is what to do with contrary evidence once found.</p>
+<p>Verification Protocol Phase 3, Step 3.5 specifies four valid responses to contrary evidence: <strong>outweigh</strong> (supporting evidence is stronger), <strong>distinguish</strong> (contrary evidence applies to a different scope), <strong>qualify</strong> (revise the claim to acknowledge the contradiction), or <strong>concede</strong> (the contrary evidence is decisive). But it does not provide a framework for determining which response is appropriate. Left without guidance, practitioners default to “outweigh” — a choice that frequently rationalizes rather than responds to contrary evidence.</p>
+<hr>
+<h3 id="problem-2"><a class="header" href="#problem-2">Problem</a></h3>
+<p>The four responses (outweigh, distinguish, qualify, concede) are not interchangeable. Each is appropriate in specific conditions, and applying the wrong one produces either an overconfident claim (outweigh when distinguish or qualify is correct) or an artificially weakened claim (qualify or concede when the contrary evidence is genuinely less weighty). The current Protocol provides vocabulary but not decision criteria.</p>
+<hr>
+<h3 id="forces-2"><a class="header" href="#forces-2">Forces</a></h3>
+<ul>
+<li>“Outweigh” is easy to assert and hard to disprove; it is structurally available as a rationalization for any contrary evidence.</li>
+<li>“Distinguish” can be used to scope-away relevant contrary evidence by drawing a distinction that does not reflect the claim’s actual applicability.</li>
+<li>“Qualify” reduces the claim’s practical utility; practitioners may resist it even when it is the epistemically correct response.</li>
+<li>“Concede” is professionally uncomfortable; there is institutional pressure against abandoning claims that have been asserted.</li>
+<li>The quality and independence of contrary evidence must be assessed using the same standards as supporting evidence.</li>
+</ul>
+<hr>
+<h3 id="solution-2"><a class="header" href="#solution-2">Solution</a></h3>
+<p>Before selecting a response, evaluate the contrary evidence on three dimensions using the same criteria applied to supporting evidence. The evaluation produces a <strong>contrary evidence profile</strong> that determines which responses are available.</p>
+<p><strong>Dimension 1: Quality Tier</strong>
+Rate the contrary evidence using the standard four-tier scale. Higher-tier contrary evidence requires a stronger response.</p>
+<p><strong>Dimension 2: Relevance Scope</strong>
+Assess whether the contrary evidence applies to exactly the same claim scope as the assertion, or to a related but distinct scope. Document the scope match precisely.</p>
+<ul>
+<li><strong>Full overlap</strong>: Contrary evidence directly addresses the claim as stated.</li>
+<li><strong>Partial overlap</strong>: Contrary evidence addresses a subset or superset of the claim’s scope.</li>
+<li><strong>Adjacent</strong>: Contrary evidence addresses a closely related claim, but not this one.</li>
+</ul>
+<p><strong>Dimension 3: Independence</strong>
+Assess whether the contrary evidence is independent of the supporting evidence — does it derive from a different primary source? Apply the same source tree analysis as VERA-P-0004.</p>
+<p><strong>Response Selection Matrix:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Quality</th><th>Scope</th><th>Independence</th><th>Available responses</th></tr>
+</thead>
+<tbody>
+<tr><td>Primary/Secondary</td><td>Full overlap</td><td>Independent</td><td>Qualify or Concede only</td></tr>
+<tr><td>Primary/Secondary</td><td>Partial overlap</td><td>Independent</td><td>Distinguish (if honest), Qualify</td></tr>
+<tr><td>Primary/Secondary</td><td>Full overlap</td><td>Dependent</td><td>Outweigh possible, with documented argument</td></tr>
+<tr><td>Tertiary/Testimonial</td><td>Full overlap</td><td>Independent</td><td>Outweigh possible, Qualify preferred</td></tr>
+<tr><td>Tertiary/Testimonial</td><td>Any</td><td>Dependent</td><td>Outweigh with argument</td></tr>
+<tr><td>Any</td><td>Adjacent</td><td>Any</td><td>Distinguish (document the distinction precisely)</td></tr>
+</tbody>
+</table>
+</div>
+<p>Note: “Outweigh possible” means the response is available but must be argued — the reasoning chain must explain specifically why the supporting evidence outweighs the contrary, not merely assert that it does.</p>
+<hr>
+<h3 id="implementation-2"><a class="header" href="#implementation-2">Implementation</a></h3>
+<ol>
+<li>
+<p><strong>Compile contrary evidence items.</strong> From the Phase 2 evidence set, identify all items marked as complicating or contradicting the claim.</p>
+</li>
+<li>
+<p><strong>Evaluate each item on three dimensions.</strong> For each contrary item: assign quality tier, assess scope overlap, assess independence from supporting evidence.</p>
+</li>
+<li>
+<p><strong>Apply the response matrix.</strong> Identify which responses are available for each item. If no response other than Qualify or Concede is available, proceed directly to Step 6.</p>
+</li>
+<li>
+<p><strong>For Outweigh responses: build the argument.</strong> Write the explicit comparison: why does the supporting evidence (identified by item) outweigh the contrary evidence (identified by item)? The argument must reference quality tier, scope, and independence — not just assert that the balance favors the claim.</p>
+</li>
+<li>
+<p><strong>For Distinguish responses: state the distinction precisely.</strong> Write the exact boundary between what the contrary evidence addresses and what the claim asserts. The distinction must be genuine: it cannot be drawn post hoc purely to exclude the contrary evidence.</p>
+</li>
+<li>
+<p><strong>For Qualify responses: revise the claim.</strong> Return to Phase 1 and revise the claim statement to incorporate the qualification. The qualification must be substantive — not a hedge that preserves the original meaning while appearing to respond to the contrary evidence.</p>
+</li>
+<li>
+<p><strong>For Concede responses: document the concession.</strong> Record that the contrary evidence was decisive for the claim as stated. The claim may be revised to a narrower version that the evidence does support, or retired.</p>
+</li>
+<li>
+<p><strong>Document all responses in the reasoning chain.</strong> Each contrary evidence item and its response must appear as a step in the reasoning chain. Contrary evidence addressed only in footnotes or appendices is not transparent reasoning — it is disclosure theater.</p>
+</li>
+</ol>
+<hr>
+<h3 id="evidence-requirements-2"><a class="header" href="#evidence-requirements-2">Evidence Requirements</a></h3>
+<ul>
+<li>Quality tier assessment for each contrary evidence item</li>
+<li>Scope overlap assessment with documentation of the boundary</li>
+<li>Independence assessment (source tree) for each contrary evidence item</li>
+<li>For Outweigh: the explicit comparative argument</li>
+<li>For Distinguish: the precisely stated scope distinction</li>
+</ul>
+<hr>
+<h3 id="verification-criteria-2"><a class="header" href="#verification-criteria-2">Verification Criteria</a></h3>
+<ul>
+<li>Every contrary evidence item identified in Phase 2 appears in the reasoning chain with a documented response</li>
+<li>For Outweigh responses: the argument references quality tier, scope, and independence; it does not merely assert the balance favors the claim</li>
+<li>For Distinguish responses: the stated distinction is verifiable and not drawn solely to exclude the contrary evidence</li>
+<li>Qualify and Concede responses result in documented claim revisions</li>
+<li>The confidence rating reflects the weight and quality of contrary evidence that was addressed by Outweigh or Distinguish responses (not assumed to be neutralized by the response)</li>
+</ul>
+<hr>
+<h3 id="consequences-2"><a class="header" href="#consequences-2">Consequences</a></h3>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Prevents “outweigh” from functioning as a rationalization by requiring it to be argued.</li>
+<li>Makes the actual treatment of contrary evidence visible and auditable.</li>
+<li>Forces genuine engagement with evidence that contradicts the claim rather than gestural acknowledgment.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>The three-dimension evaluation adds analysis work for each contrary evidence item.</li>
+<li>The response matrix constrains available responses in ways that may feel limiting when the practitioner has strong conviction in the claim.</li>
+<li>Qualify and Concede responses require revising work already done, which creates resistance.</li>
+</ul>
+<hr>
+<h3 id="known-uses-2"><a class="header" href="#known-uses-2">Known Uses</a></h3>
+<ul>
+<li><strong>Legal research team, corporate law firm (2025):</strong> Applied during preparation of a legal memorandum with conflicting precedents; the response matrix revealed that two “distinguishable” cases were in fact full-overlap contrary evidence, requiring a Qualify response that changed the memorandum’s conclusion.</li>
+<li><strong>Environmental assessment team, infrastructure firm (2024):</strong> Applied to an environmental impact claim; identified that the strongest contrary evidence (a Primary-tier independent study) required a Concede response on one of three claim components, leading to a scope revision that survived regulatory scrutiny where the original would not have.</li>
+</ul>
+<hr>
+<h3 id="related-patterns-2"><a class="header" href="#related-patterns-2">Related Patterns</a></h3>
+<ul>
+<li><a href="./evidence.html#vera-p-0001">VERA-P-0001</a> — Absence-of-Evidence Assessment: When no contrary evidence is found despite an anticipated type, use P-0001 to assess the materiality of its absence.</li>
+<li><a href="./evidence.html#vera-p-0002">VERA-P-0002</a> — Conflicted Source Disclosure: When contrary evidence comes from a conflicted source, the conflict affects the quality-tier assessment but does not eliminate the contrary evidence.</li>
+</ul>
+<hr>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0008</td></tr>
+<tr><td>Confidence</td><td>0.83</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><a id="vera-p-0009"></a></p>
+<h2 id="vera-p-0009--analogical-reasoning-validation"><a class="header" href="#vera-p-0009--analogical-reasoning-validation">VERA-P-0009 — Analogical Reasoning Validation</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0009</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Reasoning</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Complex</td></tr>
+<tr><td>Maturity Level</td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="context-3"><a class="header" href="#context-3">Context</a></h3>
+<p>Analogical reasoning — “this case is like that other case; what was true there is likely true here” — is ubiquitous in organizational and policy decision-making. Case studies, precedent reasoning, benchmarking, and “best practices” transfer all rely on analogy. VERA’s Lexicon designates analogical inference as the weakest of the four inference types, because its validity depends entirely on the strength of the similarity being claimed — a dependency that is almost never assessed rigorously.</p>
+<p>Practitioners who use analogical reasoning typically document it as: “This is similar to [reference case], which achieved [outcome], therefore [conclusion].” What is missing is any assessment of <em>how similar</em> the cases are, on <em>which dimensions</em> the similarity holds, and what the <em>disanalogies</em> imply for the scope of the conclusion.</p>
+<hr>
+<h3 id="problem-3"><a class="header" href="#problem-3">Problem</a></h3>
+<p>Analogical reasoning is accepted in most reasoning chains without examination of the similarity claim that underlies it. The similarity is asserted, not demonstrated. Yet the entire inference rests on it. An analogy where the reference case and the current case are similar on three dimensions but differ on the two dimensions that determine the outcome is not just weak — it is actively misleading.</p>
+<hr>
+<h3 id="forces-3"><a class="header" href="#forces-3">Forces</a></h3>
+<ul>
+<li>Requiring rigorous similarity analysis for all analogical reasoning would burden a widely-used and often valuable inference form.</li>
+<li>The relevant similarity dimensions are domain-specific; no domain-agnostic similarity metric exists.</li>
+<li>Disanalogies are often harder to articulate than similarities, because the analyst is motivated by the analogical connection.</li>
+<li>Analogical conclusions should be scoped to what the similarity actually supports, which may be narrower than what the practitioner wants to conclude.</li>
+<li>High-stakes decisions frequently rely on analogical reasoning from historical cases; this is where the rigor investment is most justified.</li>
+</ul>
+<hr>
+<h3 id="solution-3"><a class="header" href="#solution-3">Solution</a></h3>
+<p>Apply a structured <strong>similarity-disanalogy analysis</strong> that produces a <strong>similarity score</strong> and determines the permissible scope of the analogical conclusion.</p>
+<p><strong>Phase A: Dimension Identification</strong></p>
+<p>Identify the dimensions on which the reference case and current case could be similar or different. Dimensions should be:</p>
+<ul>
+<li>Causally relevant: they plausibly affect the outcome being analogized</li>
+<li>Independently assessable: each dimension can be evaluated without assuming the conclusion</li>
+<li>Specific: not “general context” but the specific contextual factors that might matter</li>
+</ul>
+<p>Generate dimensions by asking: <em>What features of the reference case might explain its outcome? What features of the current case might affect the outcome? Where do these feature sets overlap?</em></p>
+<p><strong>Phase B: Similarity Scoring</strong></p>
+<p>For each identified dimension, assess the degree of similarity between the reference case and the current case on a four-point scale:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Score</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td>3</td><td>Substantially identical on this dimension</td></tr>
+<tr><td>2</td><td>Similar with noted differences</td></tr>
+<tr><td>1</td><td>Related but materially different</td></tr>
+<tr><td>0</td><td>Disanalogous — cases differ significantly on this dimension</td></tr>
+</tbody>
+</table>
+</div>
+<p>Calculate the <strong>Similarity Score</strong>: sum of scores divided by (3 × number of dimensions). A score of 1.0 is perfect similarity; 0.0 is complete disanalogy.</p>
+<p><strong>Phase C: Disanalogy Assessment</strong></p>
+<p>For any dimension scored 0 or 1, conduct a specific assessment: does the disanalogy on this dimension affect the outcome being claimed? If a dimension is disanalogous but outcome-irrelevant, the disanalogy does not weaken the inference. If a dimension is disanalogous and outcome-relevant, the disanalogy directly limits the conclusion’s scope.</p>
+<p><strong>Conclusion Scope Determination:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Similarity Score</th><th>Permissible conclusion scope</th></tr>
+</thead>
+<tbody>
+<tr><td>0.85 – 1.0</td><td>Strong analogical inference; conclusion scope matches reference case</td></tr>
+<tr><td>0.65 – 0.84</td><td>Moderate analogical inference; conclusion must acknowledge material differences</td></tr>
+<tr><td>0.40 – 0.64</td><td>Weak analogical inference; conclusion must be qualified to the dimensions of similarity; outcome-relevant disanalogies limit the conclusion explicitly</td></tr>
+<tr><td>Below 0.40</td><td>Analogy is not sufficient to support the inference; either find a closer reference case or change inference type</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="implementation-3"><a class="header" href="#implementation-3">Implementation</a></h3>
+<ol>
+<li>
+<p><strong>State the reference case.</strong> Document the specific case being used as the analogical basis. Retrieve at least one evidence item (Tier 1 or 2 preferred) that documents the reference case’s relevant features and outcome.</p>
+</li>
+<li>
+<p><strong>Identify causally relevant dimensions.</strong> List the dimensions on which similarity matters for the claimed outcome. If domain expertise is needed to identify these dimensions, obtain it before proceeding.</p>
+</li>
+<li>
+<p><strong>Score each dimension.</strong> For each dimension, assess and document the similarity score with a brief justification.</p>
+</li>
+<li>
+<p><strong>Compute the Similarity Score.</strong> Calculate and record the aggregate score.</p>
+</li>
+<li>
+<p><strong>Conduct disanalogy assessment for low-scored dimensions.</strong> For each dimension scored 0 or 1, assess outcome-relevance. Document the assessment.</p>
+</li>
+<li>
+<p><strong>Determine permissible conclusion scope.</strong> Apply the scope table to the Similarity Score. Revise the claim statement if the permissible scope is narrower than what was originally asserted.</p>
+</li>
+<li>
+<p><strong>Document in the reasoning chain.</strong> The analogy step in the reasoning chain must reference: the reference case, the Similarity Score, the outcome-relevant disanalogies, and the scoped conclusion.</p>
+</li>
+<li>
+<p><strong>Assign confidence.</strong> Analogical inference starts at a lower confidence ceiling than deductive or inductive inference. Map the Similarity Score to a confidence ceiling: Score 0.85+ → ceiling 0.80; Score 0.65–0.84 → ceiling 0.70; Score 0.40–0.64 → ceiling 0.55.</p>
+</li>
+</ol>
+<hr>
+<h3 id="evidence-requirements-3"><a class="header" href="#evidence-requirements-3">Evidence Requirements</a></h3>
+<ul>
+<li>At least one Tier 1 or Tier 2 evidence item documenting the reference case’s features and outcome</li>
+<li>Documented dimension identification process (not just the list; the reasoning for including each dimension)</li>
+<li>Per-dimension similarity scores with justifications</li>
+<li>Disanalogy assessments for all dimensions scored 0 or 1</li>
+</ul>
+<hr>
+<h3 id="verification-criteria-3"><a class="header" href="#verification-criteria-3">Verification Criteria</a></h3>
+<ul>
+<li>A reference case is documented with Tier 1 or Tier 2 evidence (not “the well-known case of…” without citation)</li>
+<li>Similarity dimensions are identified and are genuinely causally relevant — not selected to maximize the score</li>
+<li>The Similarity Score is calculated correctly from individual dimension scores</li>
+<li>The claim’s scope matches the permissible scope for the achieved Similarity Score</li>
+<li>The confidence ceiling for the Similarity Score is applied in the confidence rating</li>
+</ul>
+<hr>
+<h3 id="consequences-3"><a class="header" href="#consequences-3">Consequences</a></h3>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Makes the similarity claim — the actual basis of analogical inference — explicit and challengeable.</li>
+<li>Forces acknowledgment of disanalogies and their implications, producing more honest conclusions.</li>
+<li>The Similarity Score provides a communicable summary of analogical strength.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>The dimension identification step requires domain knowledge; incorrect dimensions produce misleading scores.</li>
+<li>The four-point scoring scale involves judgment; different analysts may score the same dimension differently.</li>
+<li>The conclusion scope constraints may produce claims narrower than practitioners want, creating pressure to inflate dimension scores.</li>
+</ul>
+<hr>
+<h3 id="known-uses-3"><a class="header" href="#known-uses-3">Known Uses</a></h3>
+<ul>
+<li><strong>Strategy team, consumer goods company (2025):</strong> Applied to a market entry strategy that analogized from a successful entry in a different geography. Similarity Score of 0.61 — below the threshold for strong inference — revealed significant disanalogies in regulatory environment and distribution infrastructure. The strategy was modified to address the disanalogous dimensions before proceeding.</li>
+<li><strong>Policy research institute (2024):</strong> Applied to a policy proposal drawing on an international precedent. Identified that three of eight dimensions were outcome-relevant disanalogies; the claim was revised from “Policy X will achieve Outcome Y” to “Policy X may achieve Outcome Y under conditions A, B, and C, which differ from the reference case in the following ways.”</li>
+</ul>
+<hr>
+<h3 id="related-patterns-3"><a class="header" href="#related-patterns-3">Related Patterns</a></h3>
+<ul>
+<li><a href="./reasoning.html#vera-p-0007">VERA-P-0007</a> — Hidden Assumption Excavation: Analogical reasoning is particularly prone to hidden similarity assumptions; the two patterns are complementary and should be applied together.</li>
+<li><a href="./reasoning.html#vera-p-0008">VERA-P-0008</a> — Contrary Evidence Integration: Cases where the analogy has been tested and found wanting (a prior attempt to apply the same analogy that failed) are contrary evidence; integrate them using P-0008.</li>
+</ul>
+<hr>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0009</td></tr>
+<tr><td>Confidence</td><td>0.80</td></tr>
+</tbody>
+</table>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../patterns/evidence.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../patterns/verification.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../patterns/evidence.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../patterns/verification.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Adoption Roadmap - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/implementation/adoption-roadmap.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="adoption-roadmap"><a class="header" href="#adoption-roadmap">Adoption Roadmap</a></h1>
+<p>This roadmap describes how to move from Level 1 (Aware) to Level 3 (Practicing) as an individual, and from Level 1 to Level 3 as a team or organization. It is organized as phases rather than calendar months because adoption speed varies significantly by context, resource availability, and the complexity of the claims being documented. Estimated timelines are provided as reference points, not commitments.</p>
+<p>Read <a href="./getting-started.html">Getting Started</a> before this chapter. This roadmap assumes you have completed at least one full VERA claim.</p>
+<hr>
+<h2 id="how-to-use-this-roadmap"><a class="header" href="#how-to-use-this-roadmap">How to Use This Roadmap</a></h2>
+<p>The roadmap has six phases. Most practitioners pass through all six, though not always in linear sequence. Phase 0 (Assessment) should be completed before any other phase. Phases 1 through 3 address individual practice. Phases 4 through 6 address team and organizational adoption.</p>
+<p><strong>If you are an individual practitioner</strong> who is not currently trying to scale VERA to a team, Phases 1 through 3 are your primary path. Return to Phases 4 through 6 when organizational adoption becomes relevant.</p>
+<p><strong>If you are leading team adoption</strong>, work through Phases 1 through 3 yourself first — you cannot effectively advocate for what you have not practiced — then run a compressed version of Phases 1 through 3 with your team before moving to Phase 4.</p>
+<p><strong>If you are an organizational leader</strong> commissioning VERA adoption, read all six phases, identify which phase your organization is currently in, and focus on the governance and obstacle-handling content in Phases 4 through 6.</p>
+<hr>
+<h2 id="phase-0-assessment"><a class="header" href="#phase-0-assessment">Phase 0: Assessment</a></h2>
+<p><em>Duration: 1–2 days</em></p>
+<p>Before building anything, establish an honest baseline. Phase 0 is a maturity assessment — not of aspirations, but of current state.</p>
+<h3 id="conducting-the-assessment"><a class="header" href="#conducting-the-assessment">Conducting the Assessment</a></h3>
+<p>Work through the <a href="../maturity-model/overview.html">Maturity Model Overview</a> and the six domain definitions. For each domain, answer the observable indicator questions with specific evidence — not general impressions.</p>
+<p>Use the self-assessment checklists in the Level chapters as your primary assessment tool. Be conservative: if you are uncertain whether an indicator is met, score it as not met. The cost of underestimating your current level is low (you do easier work than necessary). The cost of overestimating is high (you skip foundational development and find gaps when they are harder to fix).</p>
+<h3 id="assessment-outputs"><a class="header" href="#assessment-outputs">Assessment Outputs</a></h3>
+<p>Produce a simple profile document with:</p>
+<ul>
+<li>Your current level in each of the six domains (1–2 for most people starting here)</li>
+<li>The specific evidence for each rating (a sentence or two per domain)</li>
+<li>The single domain where you are strongest (your leverage point)</li>
+<li>The single domain where you are weakest relative to your goals</li>
+</ul>
+<p>The assessment document is itself a VERA-adjacent exercise. It is not a full VERA claim — it does not go through the Verification Protocol — but producing it with evidence and explicit reasoning is good practice.</p>
+<h3 id="common-starting-profiles"><a class="header" href="#common-starting-profiles">Common Starting Profiles</a></h3>
+<p><strong>Solo practitioner, no organizational context:</strong> Typically Level 1 across all domains. Begin at Phase 1.</p>
+<p><strong>Small team with a motivated champion:</strong> Evidence and Reasoning typically at Level 1–2 (champion has been applying VERA informally); Governance, Sovereignty, and Integration at Level 1. Begin at Phase 1 individually; plan Phase 4 for Month 3 or 4.</p>
+<p><strong>Organization with a prior quality initiative (ISO, CMMI):</strong> Governance often at Level 2–3 (processes and mandates exist); Evidence, Reasoning, and Verification often at Level 1 (the quality framework doesn’t specifically address epistemic quality). Begin at Phase 2 for the governance-adjacent domains; Phase 1 for the epistemic domains.</p>
+<p><strong>AI-heavy organization:</strong> Evidence often at Level 1 (AI-mediated evidence is not documented systematically); Sovereignty often below Level 1 (sovereignty implications of AI tool use have not been considered). Begin at Phase 1 with a strong emphasis on VERA-P-0003.</p>
+<hr>
+<h2 id="phase-1-first-practice"><a class="header" href="#phase-1-first-practice">Phase 1: First Practice</a></h2>
+<p><em>Estimated duration: 2–4 weeks | Target: Level 2 in Evidence and Reasoning</em></p>
+<h3 id="goal"><a class="header" href="#goal">Goal</a></h3>
+<p>Complete three full VERA claims — all five phases, all the way through to a Verification Record — and understand what the protocol actually requires in your specific work context.</p>
+<h3 id="week-1-the-first-claim"><a class="header" href="#week-1-the-first-claim">Week 1: The First Claim</a></h3>
+<p>Follow the <a href="./getting-started.html">Getting Started</a> walkthrough. Choose a claim that matters. Complete all five phases. Expect this to take longer than you think. Do not shorten Phase 4.</p>
+<p><strong>Milestone:</strong> One complete claim record, one Verification Record, one claim registered (even if “the registry” is a row in a spreadsheet or a file in a folder).</p>
+<h3 id="weeks-23-the-challenging-claims"><a class="header" href="#weeks-23-the-challenging-claims">Weeks 2–3: The Challenging Claims</a></h3>
+<p>The second claim should involve a problem that your first claim didn’t: missing evidence, a conflicted source, contrary evidence that resists easy resolution, or a compound claim that requires decomposition.</p>
+<p>The third claim should be one where you have genuine uncertainty about the conclusion — one where the verification process might change your mind. This is the test of whether you are doing VERA or doing VERA-shaped compliance.</p>
+<p>Before each claim, apply the relevant patterns from the Patterns Library. If the second claim involves missing evidence, use VERA-P-0001. If it involves an AI-assisted evidence search, use VERA-P-0003. The patterns are designed to be applied to real claims as you work; this is their first real use for most practitioners.</p>
+<p><strong>Milestone:</strong> Three complete claim records, three Verification Records. At least one claim where the verification process revealed a problem that required revising the claim statement or evidence set.</p>
+<h3 id="week-4-reflection-and-self-assessment"><a class="header" href="#week-4-reflection-and-self-assessment">Week 4: Reflection and Self-Assessment</a></h3>
+<p>After three claims, conduct a brief retrospective:</p>
+<ol>
+<li>
+<p><strong>What took the most time?</strong> If Phase 1 is consistently long, you are over-decomposing or writing imprecise claim statements. If Phase 3 is consistently long, your evidence search is happening in Phase 3 rather than Phase 2 (you are building reasoning chains before the evidence is complete). If Phase 4 is consistently short, you may not be verifying rigorously.</p>
+</li>
+<li>
+<p><strong>What did you skip or abbreviate?</strong> Be honest. The prospective search plan? The adversarial checklist in self-verification? Independent verification? Identify the step you find hardest to do and treat it as the step most worth doing.</p>
+</li>
+<li>
+<p><strong>What surprised you?</strong> The gap between what you thought you knew and what verification revealed is the measure of VERA’s value so far.</p>
+</li>
+<li>
+<p><strong>Re-assess your maturity profile.</strong> Compare to your Phase 0 assessment. Update the domains where your practice has genuinely developed.</p>
+</li>
+</ol>
+<p><strong>Milestone:</strong> Updated maturity assessment with specific evidence. Evidence domain and Reasoning domain at Level 2 (observable indicators met per Level 2 checklist).</p>
+<hr>
+<h2 id="phase-2-building-the-habit"><a class="header" href="#phase-2-building-the-habit">Phase 2: Building the Habit</a></h2>
+<p><em>Estimated duration: 6–10 weeks | Target: Level 2–3 in Evidence, Reasoning, Verification</em></p>
+<h3 id="goal-1"><a class="header" href="#goal-1">Goal</a></h3>
+<p>VERA becomes a regular part of how you work with significant claims, not a separate exercise you do occasionally. By the end of Phase 2, you produce VERA documentation as naturally as you produce any other professional output.</p>
+<h3 id="the-habit-infrastructure"><a class="header" href="#the-habit-infrastructure">The Habit Infrastructure</a></h3>
+<p>Habit formation requires friction reduction and trigger identification. For VERA:</p>
+<p><strong>Trigger identification:</strong> Identify the specific moments in your workflow where VERA should begin. These are the moments when a significant claim first appears:</p>
+<ul>
+<li>When you are asked to recommend something</li>
+<li>When you are beginning a research document</li>
+<li>When you are preparing a presentation that makes factual assertions</li>
+<li>When a team decision is documented</li>
+</ul>
+<p>At each of these trigger moments, the first action should become: “Open a new claim record and write the claim statement.”</p>
+<p><strong>Template setup:</strong> Create a claim record template in whatever tool you use for writing. The template should have the fields from the Verification Protocol pre-populated with prompts. Remove the friction of remembering the structure so that the cognitive effort goes to the substance.</p>
+<p><strong>Registry setup:</strong> By Phase 2, your registry needs to be more than a mental note. Create a simple shared document — even a plain table — where claims are logged with their ID, statement, verification state, and review date. This registry serves two functions: it prevents you from re-documenting claims you have already documented, and it makes your VERA work visible to others.</p>
+<h3 id="expanding-to-more-claim-types"><a class="header" href="#expanding-to-more-claim-types">Expanding to More Claim Types</a></h3>
+<p>Phase 1 claims were chosen for tractability. Phase 2 expands to harder types:</p>
+<p><strong>Claims with sparse evidence.</strong> Some important claims lack the Primary-tier data that makes Phase 1 claims clean. Apply VERA-P-0001 (absent evidence) and VERA-P-0002 (conflicted sources) as needed. Practice writing reasoning chains that honestly reflect the evidence’s limitations without abandoning the claim if it still has valid support.</p>
+<p><strong>Claims with compound structure.</strong> Apply VERA-P-0006 (Compound Claim Decomposition) to at least one claim. Experience the dependency tracking required when sub-claims must be verified before parent claims can be.</p>
+<p><strong>Claims involving AI-generated content.</strong> If you use AI tools in your work, apply VERA-P-0003 (AI-Generated Evidence Documentation) to at least one claim where AI contributed to the evidence. Experience the difference between Tier A (source retrieved) and Tier B (AI output without verified source) handling.</p>
+<h3 id="expanding-the-verifier-pool"><a class="header" href="#expanding-the-verifier-pool">Expanding the Verifier Pool</a></h3>
+<p>Phase 1 likely relied heavily on self-verification. Phase 2 should involve at least two peer verification events — situations where someone other than you reviews a claim record and evaluates it against Phase 4 criteria.</p>
+<p>The first time you share a claim record for peer verification, prepare your peer by walking them through the criteria checklist. The goal is genuine evaluation, not a rubber stamp. If the peer finds nothing in Phase 4, either the claim is exceptionally clean or the peer needs guidance on what adversarial verification looks like.</p>
+<p><strong>Milestone:</strong> 8–12 claims documented. At least two peer-verified. Claims span at least three different types of evidence situations. Registry is maintained and findable. A review cadence exists for the oldest claims.</p>
+<h3 id="phase-2-obstacles"><a class="header" href="#phase-2-obstacles">Phase 2 Obstacles</a></h3>
+<p><strong>“I don’t have time for this.”</strong> VERA takes more time upfront and less time later — when the claim is challenged, when evidence needs updating, when someone needs to understand where a conclusion came from. Track your total time on claims, including revision and challenge handling, not just documentation time. For most practitioners, VERA time pays back within three to five significant claims.</p>
+<p><strong>“My claims keep changing during Phase 3.”</strong> This is correct behavior — Phase 3 is supposed to reveal whether the claim as stated is actually what the evidence supports. Revising the claim statement after building the reasoning chain is not a failure; it is verification working. Build the expectation into your process: claim statements are provisional until Phase 4 is complete.</p>
+<p><strong>“I can’t find independent verifiers.”</strong> At Phase 2, Peer independence (someone with relevant competency and no stake) is the target. This does not require a VERA expert — it requires someone who will read your claim record carefully and try to find problems. The peer does not need to know the VERA criteria by name; they need to understand that their job is skeptical review, not endorsement. Walk them through the criteria informally.</p>
+<hr>
+<h2 id="phase-3-reaching-level-3"><a class="header" href="#phase-3-reaching-level-3">Phase 3: Reaching Level 3</a></h2>
+<p><em>Estimated duration: 4–8 weeks | Target: Level 3 in Evidence, Reasoning, Verification; Level 2 in Governance and Sovereignty</em></p>
+<h3 id="goal-2"><a class="header" href="#goal-2">Goal</a></h3>
+<p>VERA practice reaches the Level 3 definition: any significant claim you produce can be audited against the Verification Protocol. The practice is reproducible — it does not depend on which phase of your month it is or how pressured you feel.</p>
+<h3 id="what-level-3-actually-requires"><a class="header" href="#what-level-3-actually-requires">What Level 3 Actually Requires</a></h3>
+<p>Level 3 is defined by <strong>all significant claims</strong>, not most. This requires a precise definition of “significant” — one you apply consistently, not case-by-case. Write that definition down. It should be specific enough that you can apply it to any given claim without deliberation.</p>
+<p>Example definition for an individual practitioner: “A claim is significant if it (a) will appear in an external communication, (b) informs a decision with consequences I cannot easily reverse, or (c) is cited to justify resource allocation.”</p>
+<p>The Level 3 test: look at everything you have produced in the last four weeks that meets your significance definition. Are all of it VERA-documented? If yes, you have Level 3 coverage. If no — if there are significant claims that are undocumented — you are still at Level 2 regardless of how good your documented claims are.</p>
+<h3 id="sovereignty-assessment"><a class="header" href="#sovereignty-assessment">Sovereignty Assessment</a></h3>
+<p>Phase 3 includes completing the formal sovereignty assessment described in the <a href="../foundations/sovereignty-principles.html">Sovereignty Principles</a> chapter. Work through the five sovereignty assessment questions for each principle. Be specific: do not answer “generally yes” — answer with a specific, named tool, process, or policy.</p>
+<p>Common Level 3 sovereignty findings:</p>
+<ul>
+<li><strong>S1 (Data):</strong> Evidence stored in proprietary tools with uncertain export capability. Document the gap and its remediation plan.</li>
+<li><strong>S2 (Reasoning):</strong> Reasoning chains are visible to the practitioner but not to other stakeholders who might be affected by the claims.</li>
+<li><strong>S4 (Process):</strong> Verification criteria are documented in this framework but have not been published in a stakeholder-accessible form in your specific organizational context.</li>
+</ul>
+<p>Document each finding with a remediation plan that is specific enough to execute: named owner, specific action, target date.</p>
+<h3 id="establishing-a-review-cadence"><a class="header" href="#establishing-a-review-cadence">Establishing a Review Cadence</a></h3>
+<p>By Phase 3, your oldest claims from Phase 1 are approaching their review dates. Conduct your first scheduled review:</p>
+<ul>
+<li>Check whether the evidence is still current (apply VERA-P-0005 decay classes)</li>
+<li>Check whether any upstream claims have changed state (apply VERA-P-0012 cascade check)</li>
+<li>Re-read the reasoning chain: does it still hold?</li>
+<li>Update the Verification Record if anything has changed</li>
+</ul>
+<p>The first scheduled review is instructive. It reveals how much claims drift from their verification baseline over three to six months and whether your review cadence was calibrated correctly.</p>
+<p><strong>Phase 3 milestone:</strong> Full Level 3 maturity assessment meeting all Level 3 checklist criteria. Sovereignty assessment completed with gaps documented. At least one scheduled review completed. Claim registry is active and current.</p>
+<hr>
+<h2 id="phase-4-team-adoption"><a class="header" href="#phase-4-team-adoption">Phase 4: Team Adoption</a></h2>
+<p><em>Estimated duration: 2–4 months | Target: Level 3 across team; Level 2 Governance</em></p>
+<h3 id="goal-3"><a class="header" href="#goal-3">Goal</a></h3>
+<p>VERA practice is shared across a team. Multiple practitioners produce VERA-compliant claim records consistently. The team has a shared registry, shared evidence quality calibration, and a functioning peer verification process.</p>
+<h3 id="pre-conditions-for-team-adoption"><a class="header" href="#pre-conditions-for-team-adoption">Pre-Conditions for Team Adoption</a></h3>
+<p>Team adoption should not begin until the team leader (or at least one practitioner) has reached personal Level 3. Leading a team through VERA adoption without having personally experienced Phase 1 through 3 produces the worst outcome: governance before substance, compliance surface before epistemic depth.</p>
+<h3 id="the-team-kickoff"><a class="header" href="#the-team-kickoff">The Team Kickoff</a></h3>
+<p>Begin team adoption with a working session, not a training presentation. The format:</p>
+<ol>
+<li>
+<p><strong>30 minutes:</strong> One of the experienced practitioners presents a real claim record from their own work — full evidence set, reasoning chain, Verification Record. Not a simplified example: the actual artifact from Phase 1 or 2, with its imperfections.</p>
+</li>
+<li>
+<p><strong>60 minutes:</strong> The team selects one current claim — something they are actually working on — and works through Phase 1 and 2 together, with the experienced practitioner facilitating. Produce a real claim stub and evidence set, not an exercise.</p>
+</li>
+<li>
+<p><strong>30 minutes:</strong> Debrief on what was harder than expected, what was clarifying, and which claims in current work most need VERA treatment.</p>
+</li>
+</ol>
+<p>Do not spend the kickoff explaining VERA. Demonstrate it. The documentation exists for explanation; the working session is for experiencing.</p>
+<h3 id="team-calibration"><a class="header" href="#team-calibration">Team Calibration</a></h3>
+<p>Different practitioners rating the same evidence will produce different quality tier ratings and different confidence ratings. The first task after the kickoff is calibration.</p>
+<p><strong>Evidence quality calibration:</strong> Produce a set of five evidence items from your domain. Have each team member rate each item independently. Compare ratings. Where there is disagreement greater than one tier, discuss the evidence and agree on the correct rating and why. Document the agreed ratings as your team’s calibration examples — your mini version of the Patterns Library anchor examples.</p>
+<p><strong>Confidence calibration:</strong> Share two or three completed claim records with confidence ratings. Have team members assign their own ratings independently before seeing the assigned rating. Compare and discuss gaps. This is an early version of VERA-P-0013 (Claim Confidence Calibration).</p>
+<h3 id="shared-registry-design"><a class="header" href="#shared-registry-design">Shared Registry Design</a></h3>
+<p>The team registry is more complex than the individual registry. It needs:</p>
+<ul>
+<li>A standard claim ID format that avoids collisions across practitioners</li>
+<li>A clear ownership model (who is responsible for maintaining each claim?)</li>
+<li>A significance threshold definition that all team members apply consistently</li>
+<li>A process for registering upstream dependencies at claim creation time (for VERA-P-0012)</li>
+</ul>
+<p>Choose the simplest registry tool that meets these requirements. See <a href="./tooling.html">Tooling &amp; Integration</a> for specific tool options.</p>
+<h3 id="the-first-team-peer-verification"><a class="header" href="#the-first-team-peer-verification">The First Team Peer Verification</a></h3>
+<p>The first team peer verification event — where one practitioner verifies another’s claim using the full Verification Protocol — is a high-leverage moment. It often reveals:</p>
+<ul>
+<li>Calibration gaps between the claimant and verifier</li>
+<li>Patterns in what the claimant consistently omits</li>
+<li>Evidence quality standards that differ between practitioners</li>
+</ul>
+<p>Make this a learning event, not an evaluation. The verifier’s goal is to produce a Verification Record that helps the claimant improve future claims, not to produce a pass/fail judgment.</p>
+<h3 id="governance-foundations"><a class="header" href="#governance-foundations">Governance Foundations</a></h3>
+<p>At Phase 4, the team needs its first formal governance element: a documented significance threshold. This is a one-page document that defines:</p>
+<ul>
+<li>What claims require VERA treatment (the significance threshold)</li>
+<li>Who has responsibility for the claim registry</li>
+<li>What the standard for peer verification is (who can verify whom)</li>
+<li>What happens when a claim is contested</li>
+</ul>
+<p>This document does not need to be complex. It should be specific enough that any team member can determine, for any given claim, whether VERA treatment is required.</p>
+<p><strong>Phase 4 milestone:</strong> Team Level 3 maturity assessment across all team members. Shared registry live and used. Significance threshold documented. At least three cross-practitioner peer verifications completed.</p>
+<hr>
+<h2 id="phase-5-institutionalization"><a class="header" href="#phase-5-institutionalization">Phase 5: Institutionalization</a></h2>
+<p><em>Estimated duration: 4–8 months | Target: Level 3 Organization; Level 3 Governance</em></p>
+<h3 id="goal-4"><a class="header" href="#goal-4">Goal</a></h3>
+<p>VERA is organizational policy, not team practice. The mandate exists. Ownership is formal. Training is part of onboarding. The claim registry is organizational infrastructure.</p>
+<h3 id="the-governance-mandate"><a class="header" href="#the-governance-mandate">The Governance Mandate</a></h3>
+<p>Institutionalization requires an explicit decision by someone with organizational authority that significant claims will be documented and verified in VERA format. This decision produces a policy document with:</p>
+<ul>
+<li><strong>Scope:</strong> Which claims require VERA treatment (the significance threshold, defined at organizational scale)</li>
+<li><strong>Ownership:</strong> Who is responsible for the VERA framework within the organization (the VERA owner role)</li>
+<li><strong>Standards:</strong> The Verification Protocol version in use and any organizational amendments</li>
+<li><strong>Enforcement:</strong> How non-compliance is handled (at minimum: undocumented significant claims are not treated as verified in organizational decision-making)</li>
+<li><strong>Training:</strong> How practitioners are trained and what the baseline competency requirement is</li>
+</ul>
+<p>Getting this mandate requires making the business case for VERA. The business case is not abstract. It should draw on concrete examples from Phases 1 through 4:</p>
+<ul>
+<li>A specific claim where verification revealed a problem that would have been expensive to discover later</li>
+<li>A specific decision that was better because the claim supporting it was traceable</li>
+<li>A specific instance where VERA’s traceability allowed an error to be corrected cleanly</li>
+</ul>
+<p>Abstract arguments for epistemic quality rarely secure mandates. Evidence of value from real work does.</p>
+<h3 id="training-infrastructure"><a class="header" href="#training-infrastructure">Training Infrastructure</a></h3>
+<p>Organizational Level 3 requires that new practitioners receive VERA training as part of onboarding. This training should:</p>
+<ul>
+<li>Be mandatory, not optional</li>
+<li>Include a hands-on component (completing a practice claim, not just reading documentation)</li>
+<li>Include access to the team’s calibration examples and patterns library</li>
+<li>Establish contact with a VERA mentor (an experienced practitioner available for questions during the first month)</li>
+</ul>
+<p>Training should be owned by the VERA owner role, not by individual champions.</p>
+<h3 id="registry-as-infrastructure"><a class="header" href="#registry-as-infrastructure">Registry as Infrastructure</a></h3>
+<p>At organizational scale, the registry can no longer be a shared spreadsheet. It needs search capability, dependency tracking, ownership attribution, state management, and review cadence alerts. This does not require purpose-built VERA software — many wiki or knowledge management platforms can be configured to meet these requirements. See <a href="./tooling.html">Tooling &amp; Integration</a>.</p>
+<p><strong>Phase 5 milestone:</strong> Documented VERA policy with named ownership. VERA training included in onboarding. Claim registry on organizational infrastructure with search and dependency tracking. First formal VERA quality review conducted by the VERA owner.</p>
+<hr>
+<h2 id="phase-6-governance-maturity"><a class="header" href="#phase-6-governance-maturity">Phase 6: Governance Maturity</a></h2>
+<p><em>Target: Level 4 (beginning of)</em></p>
+<h3 id="goal-5"><a class="header" href="#goal-5">Goal</a></h3>
+<p>VERA quality is measured and improving. The governance function reviews metrics, identifies patterns, and makes evidence-based investments in VERA quality.</p>
+<p>Phase 6 is beyond the scope of this roadmap’s detailed guidance — it requires the organizational infrastructure established in Phase 5 and typically begins in Year 2 of adoption. The <a href="../maturity-model/level-4.html">Level 4</a> chapter describes what Level 4 looks like across all six domains. The <a href="../maturity-model/level-4.html#level-4-self-assessment-checklist">Level 4 self-assessment checklist</a> is the practical starting point.</p>
+<p>The transition from Phase 5 to Phase 6 is marked by one change: the VERA owner stops asking “are we doing VERA?” and starts asking “how well are we doing VERA?”</p>
+<hr>
+<h2 id="handling-common-obstacles"><a class="header" href="#handling-common-obstacles">Handling Common Obstacles</a></h2>
+<h3 id="leadership-isnt-interested"><a class="header" href="#leadership-isnt-interested">“Leadership isn’t interested.”</a></h3>
+<p>Leadership interest in VERA follows from demonstrated value, not from explanations of the framework. The sequence that works:</p>
+<ol>
+<li>Apply VERA personally until you have three to five high-quality documented claims (Phases 1–2).</li>
+<li>Use one of those claims — specifically one where verification revealed a problem — in a leadership conversation. Do not say “VERA found this problem.” Say “When we documented the evidence for this claim carefully, we found that [specific problem].”</li>
+<li>Offer to apply VERA to one claim that leadership cares about. Make the offer specific: “Can I document the evidence and reasoning for the [specific assertion] we’re going to present to the board?”</li>
+<li>The experience of having a claim they care about go through verification — especially if verification reveals something — creates leadership interest more effectively than any explanation.</li>
+</ol>
+<h3 id="vera-is-slowing-us-down"><a class="header" href="#vera-is-slowing-us-down">“VERA is slowing us down.”</a></h3>
+<p>VERA does slow down claim production. It speeds up claim use, claim updating, and error correction. The net time balance depends on how often your claims are challenged, revised, or used downstream.</p>
+<p>If VERA feels purely like overhead, the most likely causes are:</p>
+<ul>
+<li>The significance threshold is set too low (you are applying VERA to claims that don’t warrant it)</li>
+<li>The claim registry is not integrated with your workflow (VERA is parallel work rather than primary work)</li>
+<li>The claims you are documenting are not being used downstream (VERA’s value is in the downstream)</li>
+</ul>
+<p>Address the root cause rather than relaxing the standards.</p>
+<h3 id="we-cant-find-independent-verifiers"><a class="header" href="#we-cant-find-independent-verifiers">“We can’t find independent verifiers.”</a></h3>
+<p>At Phase 2: self-verification with adversarial stance (VERA-P-0010) is the interim solution.
+At Phase 4: cross-practitioner peer verification within the team.
+At Phase 5: the organizational verifier pool. Not everyone needs to verify everything; a small group of practitioners trained to Expert-level can verify high-stakes claims for the whole organization.</p>
+<p>If the domain is genuinely too specialized for internal peer verification, VERA-P-0011 (Expert Verifier Onboarding) provides the path to engaging external domain experts without requiring them to be VERA-trained.</p>
+<h3 id="people-are-filling-out-the-forms-but-not-doing-the-thinking"><a class="header" href="#people-are-filling-out-the-forms-but-not-doing-the-thinking">“People are filling out the forms but not doing the thinking.”</a></h3>
+<p>This is the compliance surface problem described in the <a href="../maturity-model/level-3.html#the-compliance-surface">Level 3 chapter</a>. It means verification is not rigorous enough — claims are being passed that should not be.</p>
+<p>The fix is not more documentation requirements — it is better verification. Specifically: the first-pass verification rate needs to be meaningful. If 95% of submitted claims are verified on the first pass, the criteria are not being genuinely applied. A first-pass rate of 60–80% indicates real scrutiny.</p>
+<p>Examine the Verification Records being produced: do they have per-criterion findings, or just a final state? Do they have confidence ratings with written justifications, or just numbers? Records that are substantively thin are a signal that verification is in compliance mode.</p>
+<h3 id="our-most-important-claims-cant-be-verified-without-revealing-confidential-information"><a class="header" href="#our-most-important-claims-cant-be-verified-without-revealing-confidential-information">“Our most important claims can’t be verified without revealing confidential information.”</a></h3>
+<p>This is a real constraint, particularly in competitive intelligence, legal, and regulatory contexts. The solutions:</p>
+<ul>
+<li><strong>Compartmented verification:</strong> The verifier has the same clearance/access level as the claimant; the independence requirement is met without disclosing beyond the authorization boundary.</li>
+<li><strong>Verification of structure, not content:</strong> A verifier reviews whether the reasoning chain’s structure is valid and whether the evidence quality ratings are appropriate, without necessarily seeing the evidence content directly. This is lower independence (the verifier cannot check E5 chain-of-custody directly) but better than no verification.</li>
+<li><strong>Third-party verification with NDA:</strong> An external verifier with appropriate agreements can satisfy independence requirements in cases where internal verifiers cannot.</li>
+</ul>
+<p>Document whatever constraint applies and its impact on the verification’s independence level. A Verification Record that honestly states “Peer independence achieved within security clearance boundary; verifier did not directly review evidence content” is more honest and epistemically useful than one that conceals the constraint.</p>
+<hr>
+<h2 id="roadmap-summary"><a class="header" href="#roadmap-summary">Roadmap Summary</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Phase</th><th>Duration</th><th>Individual target</th><th>Org target</th><th>Key milestone</th></tr>
+</thead>
+<tbody>
+<tr><td>0. Assessment</td><td>1–2 days</td><td>Baseline profile</td><td>—</td><td>Honest maturity profile documented</td></tr>
+<tr><td>1. First Practice</td><td>2–4 weeks</td><td>L2 Evidence, Reasoning</td><td>—</td><td>3 complete claims, 1 registry</td></tr>
+<tr><td>2. Habit Building</td><td>6–10 weeks</td><td>L2–3 Evidence, Reasoning, Verification</td><td>—</td><td>8–12 claims, peer verification begun</td></tr>
+<tr><td>3. Level 3</td><td>4–8 weeks</td><td>L3 Evidence, Reasoning, Verification; L2 Governance</td><td>—</td><td>Level 3 maturity confirmed; sovereignty assessed</td></tr>
+<tr><td>4. Team Adoption</td><td>2–4 months</td><td>Maintained</td><td>L2–3</td><td>Team calibration, shared registry, significance threshold</td></tr>
+<tr><td>5. Institutionalization</td><td>4–8 months</td><td>Maintained</td><td>L3 all domains</td><td>VERA policy, formal ownership, onboarding training</td></tr>
+<tr><td>6. Governance</td><td>Ongoing</td><td>Maintained</td><td>L4 (beginning)</td><td>Quality metrics reviewed; improvement program active</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><em>Proceed to <a href="./tooling.html">Tooling &amp; Integration</a> for guidance on the tools and workflows that support VERA practice at each phase of this roadmap.</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../implementation/getting-started.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../implementation/tooling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../implementation/getting-started.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../implementation/tooling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

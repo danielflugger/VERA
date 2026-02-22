@@ -1,0 +1,453 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Appendix B: Standards Alignment - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/reference/standards.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="appendix-b-standards-alignment"><a class="header" href="#appendix-b-standards-alignment">Appendix B: Standards Alignment</a></h1>
+<p>This appendix documents how VERA concepts and practices align with five major external frameworks. The mappings serve two purposes: they help practitioners in regulated or standards-oriented environments connect VERA work to existing compliance obligations, and they help organizations that already operate within these frameworks understand how VERA extends and operationalizes what those frameworks require.</p>
+<p>None of the frameworks below require VERA specifically. VERA is designed to satisfy and in many cases exceed their epistemic quality requirements. Where VERA goes further than a framework, this is noted. Where a framework addresses something VERA does not, that gap is also noted.</p>
+<hr>
+<h2 id="nist-ai-risk-management-framework-ai-rmf"><a class="header" href="#nist-ai-risk-management-framework-ai-rmf">NIST AI Risk Management Framework (AI RMF)</a></h2>
+<h3 id="about-the-ai-rmf"><a class="header" href="#about-the-ai-rmf">About the AI RMF</a></h3>
+<p>The NIST AI Risk Management Framework (NIST AI 100-1, released 2023) provides voluntary guidance for managing risks associated with AI systems across their development and deployment lifecycle. It organizes AI risk management around four functions: <strong>GOVERN</strong>, <strong>MAP</strong>, <strong>MEASURE</strong>, and <strong>MANAGE</strong>. Each function contains categories and subcategories addressed by specific actions and outcomes.</p>
+<p>VERA is relevant to organizations implementing the AI RMF because AI-generated claims — conclusions, recommendations, predictions, and analyses produced by AI systems — are the epistemic objects at risk in AI-assisted decision making. VERA’s verification and sovereignty requirements directly address the traceability, transparency, and human oversight gaps that the AI RMF aims to close.</p>
+<h3 id="mapping-table"><a class="header" href="#mapping-table">Mapping Table</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>AI RMF Function &amp; Category</th><th>AI RMF Requirement (summary)</th><th>VERA Mechanism</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>GOVERN 1.1</strong></td><td>Policies, processes, and procedures for AI risk management established</td><td>VERA Governance domain (Level 3+): documented VERA policy, named ownership, significance threshold, training requirement</td></tr>
+<tr><td><strong>GOVERN 1.2</strong></td><td>Accountability for AI risk established</td><td>VERA Governance domain: VERA owner role with formal accountability; Level 4: board-level epistemic quality reporting</td></tr>
+<tr><td><strong>GOVERN 1.4</strong></td><td>Organizational culture supports responsible AI</td><td>VERA’s sovereignty principles institutionalized at Level 3+; challenge process (S3) ensures culture permits disagreement</td></tr>
+<tr><td><strong>GOVERN 2.2</strong></td><td>Risk management processes take scientific findings into account</td><td>VERA’s Evidence Primacy principle; evidence quality tier system; Secondary and Primary evidence requirements</td></tr>
+<tr><td><strong>GOVERN 4.1</strong></td><td>AI RMF integrated into enterprise risk management</td><td>VERA Integration domain (Level 4): VERA metrics in governance reporting; decision gates requiring verified claims</td></tr>
+<tr><td><strong>MAP 1.5</strong></td><td>Organizational risk tolerance established</td><td>Significance threshold (which claims require VERA treatment) operationalizes risk tolerance for epistemic decisions</td></tr>
+<tr><td><strong>MAP 2.1</strong></td><td>Scientific and research knowledge reviewed</td><td>VERA evidence assembly (Phase 2): prospective search plan, quality rating, independence assessment</td></tr>
+<tr><td><strong>MAP 3.5</strong></td><td>AI system risks documented</td><td>VERA Claim records document the evidence and reasoning underlying AI-system risk assessments</td></tr>
+<tr><td><strong>MAP 5.1</strong></td><td>Likelihood and impact of AI risks assessed</td><td>VERA confidence ratings (0.0–1.0) and verification state provide quantified epistemic risk assessment</td></tr>
+<tr><td><strong>MEASURE 1.1</strong></td><td>AI risk measurement approaches identified</td><td>VERA Verification Protocol: explicit, versioned measurement criteria (E1–E5, R1–R5, F1–F3)</td></tr>
+<tr><td><strong>MEASURE 2.2</strong></td><td>AI system trustworthiness characteristics evaluated</td><td>VERA reasoning chain transparency (Reasoning Sovereignty, S2): AI reasoning captured and independently evaluated</td></tr>
+<tr><td><strong>MEASURE 2.5</strong></td><td>AI system performance evaluated</td><td>VERA verification of AI-generated claims (VERA-P-0003): Tier A/B/C handling with documented chain of custody</td></tr>
+<tr><td><strong>MEASURE 2.8</strong></td><td>Risks associated with AI system use monitored</td><td>VERA review cadence, decay class system (VERA-P-0005), and cascading claim update (VERA-P-0012)</td></tr>
+<tr><td><strong>MEASURE 4.1</strong></td><td>Measurement results documented</td><td>VERA Verification Records: immutable, per-criterion documentation of every verification event</td></tr>
+<tr><td><strong>MANAGE 1.3</strong></td><td>Responses to AI risks prioritized</td><td>VERA impact triage (VERA-P-0012): High/Moderate/Low classification determines response urgency</td></tr>
+<tr><td><strong>MANAGE 2.4</strong></td><td>AI risk treatment plans developed</td><td>VERA sovereignty assessment: documented gaps with owner accountability and remediation timelines</td></tr>
+<tr><td><strong>MANAGE 4.2</strong></td><td>Residual AI risks tracked</td><td>VERA claim registry with verification state and confidence tracking; stale claim monitoring</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="where-vera-exceeds-ai-rmf-requirements"><a class="header" href="#where-vera-exceeds-ai-rmf-requirements">Where VERA Exceeds AI RMF Requirements</a></h3>
+<ul>
+<li><strong>Reasoning chain explicitness:</strong> The AI RMF requires transparency; VERA specifies a step-by-step structure for reasoning chains that goes beyond general transparency requirements.</li>
+<li><strong>Evidence independence assessment:</strong> VERA’s source collapse detection (VERA-P-0004) has no direct AI RMF equivalent; it addresses an evidence quality failure mode the AI RMF does not name.</li>
+<li><strong>Sovereignty as a binding constraint:</strong> VERA’s five sovereignty principles are stronger than the AI RMF’s accountability and transparency requirements, which do not explicitly address the ability of affected parties to challenge conclusions.</li>
+</ul>
+<h3 id="where-ai-rmf-addresses-more-than-vera"><a class="header" href="#where-ai-rmf-addresses-more-than-vera">Where AI RMF Addresses More Than VERA</a></h3>
+<ul>
+<li><strong>Technical AI risk categories</strong> (bias, robustness, security, privacy): The AI RMF addresses the full range of AI-specific technical risks. VERA addresses the epistemic quality of claims about those risks, not the risks themselves.</li>
+<li><strong>AI system lifecycle governance:</strong> The AI RMF addresses procurement, deployment, monitoring, and decommissioning of AI systems. VERA addresses the claims made about and by those systems.</li>
+</ul>
+<hr>
+<h2 id="eu-ai-act"><a class="header" href="#eu-ai-act">EU AI Act</a></h2>
+<h3 id="about-the-eu-ai-act"><a class="header" href="#about-the-eu-ai-act">About the EU AI Act</a></h3>
+<p>The EU AI Act (Regulation 2024/1689, fully applicable from August 2026) establishes a tiered regulatory regime for AI systems based on risk level. High-risk AI systems — those with significant impacts on health, safety, fundamental rights, or critical infrastructure — face mandatory requirements including technical documentation, transparency, human oversight, and accuracy standards. General-purpose AI model providers also face specific obligations.</p>
+<p>VERA is particularly relevant to organizations developing or deploying high-risk AI systems, for whom claims about AI system performance, risk, and fitness for purpose must be documented to a standard that supports regulatory review.</p>
+<h3 id="mapping-table-high-risk-ai-system-requirements"><a class="header" href="#mapping-table-high-risk-ai-system-requirements">Mapping Table: High-Risk AI System Requirements</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>EU AI Act Article</th><th>Requirement</th><th>VERA Mechanism</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Art. 9 — Risk Management</strong></td><td>Risk management system identifying, analyzing, estimating, and evaluating risks throughout the lifecycle</td><td>VERA claim registry: documented, verified claims about risk levels; VERA-P-0012 for lifecycle monitoring</td></tr>
+<tr><td><strong>Art. 10 — Data Governance</strong></td><td>Training, validation, and testing data practices; data quality criteria</td><td>VERA evidence quality framework applied to data quality claims: Primary-tier evidence required for data governance assertions</td></tr>
+<tr><td><strong>Art. 11 — Technical Documentation</strong></td><td>Documentation enabling assessment of system compliance before market placement</td><td>VERA claim records serve as the epistemic component of technical documentation; each claim traceable to evidence and reasoning</td></tr>
+<tr><td><strong>Art. 12 — Record-Keeping</strong></td><td>Automatic logging of system operation; records retained for review</td><td>VERA Verification Records: immutable documentation of verification events; claim registry audit trail</td></tr>
+<tr><td><strong>Art. 13 — Transparency</strong></td><td>AI system information disclosed to deployers; operation understandable to users</td><td>VERA Reasoning Sovereignty (S2): reasoning chains made visible to affected parties; VERA-P-0003 for AI-generated claim documentation</td></tr>
+<tr><td><strong>Art. 14 — Human Oversight</strong></td><td>Measures enabling human monitoring, interpretation, and override of AI outputs</td><td>VERA Conclusion Sovereignty (S3): challenge process for verified claims; human verifier requirement in Phase 4</td></tr>
+<tr><td><strong>Art. 15 — Accuracy, Robustness, Cybersecurity</strong></td><td>Performance levels documented; system behavior predictable and resistant to manipulation</td><td>VERA confidence ratings document performance epistemic uncertainty; VERA-P-0013 calibration ensures confidence ratings are meaningful</td></tr>
+<tr><td><strong>Art. 50 — Transparency for Certain AI</strong></td><td>AI-generated content disclosed; interaction with AI disclosed</td><td>VERA-P-0003: mandatory AI provenance documentation for all AI-contributed evidence</td></tr>
+<tr><td><strong>Art. 53 — General-Purpose AI Model Providers</strong></td><td>Technical documentation, training data summary, copyright policy</td><td>VERA evidence documentation practices applicable to training data claims and capability claims</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="where-vera-exceeds-eu-ai-act-requirements"><a class="header" href="#where-vera-exceeds-eu-ai-act-requirements">Where VERA Exceeds EU AI Act Requirements</a></h3>
+<ul>
+<li><strong>Evidence chain-of-custody:</strong> VERA requires documented chain of custody for every evidence item. The EU AI Act requires technical documentation but does not specify evidence provenance standards at the item level.</li>
+<li><strong>Independent verification:</strong> VERA requires that verification be conducted by someone other than the claimant (at Peer or Expert independence level for significant claims). The EU AI Act does not specify who must conduct conformity assessment for internal quality systems.</li>
+<li><strong>Reasoning chain explicitness:</strong> Art. 13 requires transparency at the system output level; VERA requires step-by-step reasoning chain documentation for any claim about the system.</li>
+</ul>
+<h3 id="where-the-eu-ai-act-addresses-more-than-vera"><a class="header" href="#where-the-eu-ai-act-addresses-more-than-vera">Where the EU AI Act Addresses More Than VERA</a></h3>
+<ul>
+<li><strong>Legal obligations and enforcement:</strong> The EU AI Act is binding law with penalties. VERA is a voluntary framework. VERA evidence and reasoning documentation can support compliance demonstrations but does not itself constitute legal compliance.</li>
+<li><strong>Conformity assessment procedures:</strong> Specific third-party assessment requirements for some high-risk AI categories have no VERA equivalent.</li>
+<li><strong>AI system registration and market surveillance:</strong> Regulatory infrastructure requirements are outside VERA’s scope.</li>
+</ul>
+<hr>
+<h2 id="isoiec-42001--ai-management-systems"><a class="header" href="#isoiec-42001--ai-management-systems">ISO/IEC 42001 — AI Management Systems</a></h2>
+<h3 id="about-isoiec-42001"><a class="header" href="#about-isoiec-42001">About ISO/IEC 42001</a></h3>
+<p>ISO/IEC 42001 (2023) specifies requirements for an Artificial Intelligence Management System (AIMS) — a framework for responsibly developing, providing, or using AI systems. It follows the standard ISO high-level structure used by ISO 9001 (quality management) and ISO 27001 (information security), making it familiar to organizations already certified to those standards.</p>
+<p>VERA is most relevant to ISO 42001’s <strong>operational</strong> (Clause 8) and <strong>performance evaluation</strong> (Clause 9) requirements, where claims about AI system quality, risk, and impact must be documented and assessed.</p>
+<h3 id="mapping-table-1"><a class="header" href="#mapping-table-1">Mapping Table</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>ISO 42001 Clause</th><th>Requirement</th><th>VERA Mechanism</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>4.1 — Context</strong></td><td>Understanding internal and external factors affecting AIMS</td><td>VERA sovereignty assessment (S1–S5): identifies epistemic dependencies on external tools and systems</td></tr>
+<tr><td><strong>4.2 — Interested Parties</strong></td><td>Needs and expectations of interested parties</td><td>VERA Conclusion Sovereignty (S3) and Reasoning Sovereignty (S2): interested parties retain ability to access and challenge claims</td></tr>
+<tr><td><strong>5.2 — AI Policy</strong></td><td>Top management establishes AI policy including objectives</td><td>VERA Governance domain (Level 3): documented VERA policy with named ownership; Level 4: leadership accountability for epistemic quality</td></tr>
+<tr><td><strong>5.3 — Roles and Responsibilities</strong></td><td>Responsibilities for AIMS defined and communicated</td><td>VERA VERA owner role, claim ownership, verifier pool management</td></tr>
+<tr><td><strong>6.1 — Risk Assessment</strong></td><td>AI risks identified, analyzed, and evaluated</td><td>VERA maturity assessment as structured risk identification; verification criteria (E1–E5, R1–R5) as risk evaluation criteria</td></tr>
+<tr><td><strong>6.2 — Objectives</strong></td><td>AI management objectives established and measurable</td><td>Level 4 VERA metrics: first-pass verification rate, confidence distribution, sovereignty assessment scores</td></tr>
+<tr><td><strong>7.2 — Competence</strong></td><td>Competence of persons affecting AI system performance</td><td>VERA training requirements (onboarding), calibration exercises (VERA-P-0013), verifier qualification</td></tr>
+<tr><td><strong>7.5 — Documented Information</strong></td><td>Required documentation maintained</td><td>VERA claim registry, evidence sets, verification records, sovereignty assessment: comprehensive documented information</td></tr>
+<tr><td><strong>8.2 — AI Risk Treatment</strong></td><td>AI risks treated per risk treatment plan</td><td>VERA impact triage (VERA-P-0012), sovereignty remediation plans with owner accountability</td></tr>
+<tr><td><strong>8.3 — Operational Controls</strong></td><td>Controls for AI system operation documented</td><td>VERA Verification Protocol: explicit, versioned operational procedure for claims about AI systems</td></tr>
+<tr><td><strong>9.1 — Monitoring and Measurement</strong></td><td>Performance monitored against objectives</td><td>Level 4: verification quality metrics reviewed on governance cadence; confidence calibration (VERA-P-0013)</td></tr>
+<tr><td><strong>9.2 — Internal Audit</strong></td><td>Internal audits of AIMS</td><td>Level 5: governance function applies VERA methods to its own conclusions; verification records are audit-ready</td></tr>
+<tr><td><strong>9.3 — Management Review</strong></td><td>Top management reviews AIMS performance</td><td>Level 4 governance reporting: VERA quality metrics in leadership reporting</td></tr>
+<tr><td><strong>10.1 — Continual Improvement</strong></td><td>AIMS continually improved</td><td>VERA pattern development: recurring challenges documented as patterns; protocol improvements proposed through community governance</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="where-vera-complements-iso-42001"><a class="header" href="#where-vera-complements-iso-42001">Where VERA Complements ISO 42001</a></h3>
+<p>ISO 42001 specifies <em>what</em> must be documented and governed but leaves significant discretion on <em>how</em>. VERA provides the how: the specific evidence quality standards, reasoning chain structure, verification criteria, and sovereignty requirements that give ISO 42001’s requirements operational content in the epistemic quality domain.</p>
+<p>An organization implementing ISO 42001 that adopts VERA for its claims about AI systems will have more rigorous documentation than ISO 42001 minimally requires, and that documentation will be structured to survive audit.</p>
+<h3 id="where-iso-42001-addresses-more-than-vera"><a class="header" href="#where-iso-42001-addresses-more-than-vera">Where ISO 42001 Addresses More Than VERA</a></h3>
+<ul>
+<li><strong>AI system design and testing:</strong> ISO 42001 addresses technical requirements for AI systems themselves (Annex A). VERA addresses claims about those systems, not system design.</li>
+<li><strong>Supply chain and third-party requirements:</strong> ISO 42001 includes requirements for AI supply chain management. VERA addresses the evidence and reasoning documentation practices that support supply chain assessments.</li>
+</ul>
+<hr>
+<h2 id="cmmi-v20"><a class="header" href="#cmmi-v20">CMMI v2.0</a></h2>
+<h3 id="about-cmmi-v20"><a class="header" href="#about-cmmi-v20">About CMMI v2.0</a></h3>
+<p>The Capability Maturity Model Integration (CMMI) v2.0 is a process improvement framework that describes five levels of capability maturity and a set of practice areas covering the full software and product development lifecycle. CMMI is widely used in defense, government, and commercial software development. Its five-level maturity progression is the direct inspiration for VERA’s own five-level model.</p>
+<h3 id="level-correspondence"><a class="header" href="#level-correspondence">Level Correspondence</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>CMMI Level</th><th>CMMI Name</th><th>Defining characteristic</th><th>VERA Level</th><th>VERA Name</th><th>Correspondence</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Initial</td><td>Unpredictable, reactive, ad hoc</td><td>1</td><td>Aware</td><td>Understanding exists; no systematic practice</td></tr>
+<tr><td>2</td><td>Managed</td><td>Basic project management applied</td><td>2</td><td>Exploring</td><td>VERA applied to selected claims; not yet institutionalized</td></tr>
+<tr><td>3</td><td>Defined</td><td>Organization-wide standard processes</td><td>3</td><td>Practicing</td><td>VERA is organizational policy; all significant claims covered</td></tr>
+<tr><td>4</td><td>Quantitatively Managed</td><td>Measurement and statistical control</td><td>4</td><td>Governing</td><td>VERA quality measured; improvement program active</td></tr>
+<tr><td>5</td><td>Optimizing</td><td>Continuous improvement and innovation</td><td>5</td><td>Sovereign</td><td>Self-referential VERA application; community contribution</td></tr>
+</tbody>
+</table>
+</div>
+<p>The correspondence is strong enough that organizations already at CMMI Level 3 will find the governance concepts in VERA Level 3 familiar, and organizations targeting CMMI Level 4 will find VERA Level 4 metrics directly analogous to CMMI’s quantitative management requirements.</p>
+<h3 id="practice-area-mapping"><a class="header" href="#practice-area-mapping">Practice Area Mapping</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>CMMI Practice Area</th><th>CMMI Requirement (summary)</th><th>VERA Mechanism</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>DAR — Decision Analysis and Resolution</strong></td><td>Alternatives analyzed against criteria before significant decisions</td><td>VERA Verification Protocol: explicit criteria (Phase 4) applied before claims are accepted as verified</td></tr>
+<tr><td><strong>REQM — Requirements Management</strong></td><td>Requirements managed; changes tracked and communicated</td><td>VERA claim formulation (Phase 1): precise scoped statements; claim versioning; dependency notification (VERA-P-0012)</td></tr>
+<tr><td><strong>PPQA — Process and Product Quality Assurance</strong></td><td>Processes and work products objectively evaluated</td><td>VERA verification independence requirement: evaluator distinct from creator; per-criterion findings documented</td></tr>
+<tr><td><strong>CAR — Causal Analysis and Resolution</strong></td><td>Causes of defects analyzed; corrective actions taken</td><td>VERA contested claim process: challenges trigger structured re-evaluation; refuted claims traced to error source</td></tr>
+<tr><td><strong>MA — Measurement and Analysis</strong></td><td>Measurement needs identified; measurement data analyzed</td><td>VERA Level 4 metrics: first-pass rate, rework rate, confidence distribution, contested claim rate; reviewed on governance cadence</td></tr>
+<tr><td><strong>OPF — Organizational Process Focus</strong></td><td>Process strengths and weaknesses identified; improvement plans</td><td>VERA reasoning error taxonomy (Level 4): common failures tracked; training updated based on taxonomy</td></tr>
+<tr><td><strong>OT — Organizational Training</strong></td><td>Training needs identified and met</td><td>VERA competency in onboarding; calibration exercises; VERA mentor assignment for new practitioners</td></tr>
+<tr><td><strong>RDM — Requirements Development and Management</strong></td><td>Requirements elicited, developed, and verified</td><td>VERA claim decomposition (VERA-P-0006): compound assertions broken into independently verifiable components</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="where-vera-differs-from-cmmi"><a class="header" href="#where-vera-differs-from-cmmi">Where VERA Differs from CMMI</a></h3>
+<p>CMMI addresses the full software and product development lifecycle across practice areas including technical solution, supplier management, and service delivery. VERA addresses only the epistemic quality of claims — a narrower but more precise scope. An organization implementing both applies VERA as the epistemic quality layer within CMMI’s broader process framework.</p>
+<p>CMMI’s maturity levels apply to the organization’s capability across all practice areas. VERA’s maturity levels apply to epistemic practice specifically. An organization can be at CMMI Level 3 overall while being at VERA Level 1 in the Evidence domain — the two assessments measure different things.</p>
+<hr>
+<h2 id="toulmin-argumentation-model"><a class="header" href="#toulmin-argumentation-model">Toulmin Argumentation Model</a></h2>
+<h3 id="about-the-toulmin-model"><a class="header" href="#about-the-toulmin-model">About the Toulmin Model</a></h3>
+<p>The Toulmin Model of Argumentation, developed by philosopher Stephen Toulmin in <em>The Uses of Argument</em> (1958), describes the structure of practical arguments using six elements: Claim, Data, Warrant, Backing, Qualifier, and Rebuttal. It is widely taught in rhetoric, philosophy, and writing instruction, and has influenced formal argumentation frameworks in AI and law.</p>
+<p>VERA’s reasoning constructs are compatible with the Toulmin Model. The primary relationship is that VERA operationalizes the Toulmin Model for organizational practice — making the elements explicit, versioned, and subject to systematic verification.</p>
+<h3 id="element-mapping"><a class="header" href="#element-mapping">Element Mapping</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Toulmin Element</th><th>Definition</th><th>VERA Equivalent</th><th>VERA Enhancement</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Claim</strong></td><td>The assertion being argued for</td><td>→ Statement (within a VERA Claim)</td><td>VERA adds: identifier, provenance, scope definition, verification state</td></tr>
+<tr><td><strong>Data</strong></td><td>The facts, evidence, or grounds cited in support</td><td>→ Evidence Set</td><td>VERA adds: quality tier rating, independence assessment, chain of custody, absent evidence documentation, decay class</td></tr>
+<tr><td><strong>Warrant</strong></td><td>The principle connecting data to claim — the reasoning bridge</td><td>→ Reasoning Chain</td><td>VERA makes the warrant fully explicit: each step documented with premises, inference type, intermediate conclusion, and confidence</td></tr>
+<tr><td><strong>Backing</strong></td><td>Support for the warrant — evidence that the warrant holds</td><td>→ Evidence quality tier documentation and source credibility assessment</td><td>VERA formalizes backing into the four-tier quality system and chain-of-custody requirements</td></tr>
+<tr><td><strong>Qualifier</strong></td><td>The modal strength of the claim (certainly, presumably, probably)</td><td>→ Epistemic confidence (0.0–1.0) + → Verification State (○/◐/◑/●/◈/✗)</td><td>VERA replaces natural-language qualifiers with a calibrated numerical scale and a formal state machine</td></tr>
+<tr><td><strong>Rebuttal</strong></td><td>Exceptions, counter-arguments, or conditions under which the claim does not hold</td><td>→ Contrary evidence documentation + four response types (outweigh, distinguish, qualify, concede)</td><td>VERA requires documented assessment of every rebuttal and a formal response selection; rebuttal cannot be omitted</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="key-differences"><a class="header" href="#key-differences">Key Differences</a></h3>
+<p><strong>Explicitness of the warrant.</strong> In the Toulmin Model, warrants are often implicit — the connection between data and claim is unstated and assumed to be understood. VERA requires that the reasoning chain be written out step by step. This is the most significant practical difference: VERA’s reasoning chain is the Toulmin warrant made fully explicit and independently evaluable.</p>
+<p><strong>Verification as a separate phase.</strong> The Toulmin Model describes argument structure; it does not specify a process for evaluating arguments. VERA adds Phase 4 (Verification Assessment) as a formal, criteria-driven evaluation by an independent party. This is absent from Toulmin.</p>
+<p><strong>Versioning and state.</strong> The Toulmin Model describes arguments as static structures. VERA adds verification state (which changes over time), confidence ratings (which can be revised), and version management (which allows claims to be updated when evidence changes). VERA claims are living epistemic objects; Toulmin arguments are static descriptions.</p>
+<p><strong>Independence assessment.</strong> VERA’s evidence independence assessment (source collapse detection, VERA-P-0004) has no Toulmin equivalent. Toulmin’s “data” encompasses multiple evidence items without assessing their independence.</p>
+<p><strong>Sovereignty.</strong> The Toulmin Model has no epistemic sovereignty concept. VERA’s five sovereignty principles are VERA-specific commitments about who retains authority over the epistemic process — not present in any classical argumentation theory.</p>
+<h3 id="when-to-use-the-toulmin-model-alongside-vera"><a class="header" href="#when-to-use-the-toulmin-model-alongside-vera">When to Use the Toulmin Model Alongside VERA</a></h3>
+<p>The Toulmin Model is most useful as a <strong>teaching tool</strong> for practitioners who are learning to identify the elements of an argument before they are ready to document them in full VERA format. Walking through “what is the claim? what is the data? what is the warrant?” in Toulmin terms is a good preparation for writing a VERA reasoning chain.</p>
+<p>In organizational contexts where VERA is not yet implemented, Toulmin-style analysis of key arguments (before they are formally documented as VERA claims) can reveal warrant and rebuttal gaps that otherwise remain invisible. This is a useful bridge practice at Level 1 (Aware) as practitioners develop the habit of explicit reasoning before they implement the full protocol.</p>
+<hr>
+<h2 id="cross-framework-summary"><a class="header" href="#cross-framework-summary">Cross-Framework Summary</a></h2>
+<p>The following table shows at a glance which aspects of VERA address which frameworks’ requirements.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>VERA Mechanism</th><th>NIST AI RMF</th><th>EU AI Act</th><th>ISO 42001</th><th>CMMI</th><th>Toulmin</th></tr>
+</thead>
+<tbody>
+<tr><td>Evidence quality tiers</td><td>MAP 2.1</td><td>Art. 10</td><td>7.5</td><td>RDM</td><td>Data</td></tr>
+<tr><td>Reasoning chain documentation</td><td>MEASURE 2.2</td><td>Art. 13</td><td>8.3</td><td>DAR</td><td>Warrant</td></tr>
+<tr><td>Verification Protocol (Phase 4)</td><td>MEASURE 1.1</td><td>Art. 15</td><td>9.1</td><td>PPQA</td><td>—</td></tr>
+<tr><td>Claim registry + records</td><td>MEASURE 4.1</td><td>Art. 12</td><td>7.5</td><td>REQM</td><td>—</td></tr>
+<tr><td>Challenge process</td><td>MANAGE 1.3</td><td>Art. 14</td><td>10.1</td><td>CAR</td><td>Rebuttal</td></tr>
+<tr><td>Sovereignty principles (S1–S5)</td><td>GOVERN 4.1</td><td>Art. 14</td><td>4.2</td><td>—</td><td>—</td></tr>
+<tr><td>Maturity model</td><td>GOVERN 1.1</td><td>—</td><td>9.3</td><td>All levels</td><td>—</td></tr>
+<tr><td>Quality metrics (Level 4)</td><td>MANAGE 4.2</td><td>Art. 9</td><td>9.1</td><td>MA</td><td>—</td></tr>
+<tr><td>AI evidence documentation (P-0003)</td><td>MEASURE 2.5</td><td>Art. 50</td><td>8.2</td><td>—</td><td>—</td></tr>
+<tr><td>Pattern library</td><td>MANAGE 2.4</td><td>—</td><td>10.1</td><td>OPF</td><td>—</td></tr>
+<tr><td>Training and calibration</td><td>GOVERN 1.4</td><td>—</td><td>7.2</td><td>OT</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../reference/glossary.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../reference/changelog.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../reference/glossary.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../reference/changelog.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

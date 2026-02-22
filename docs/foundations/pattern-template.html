@@ -1,0 +1,563 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Pattern Template - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/foundations/pattern-template.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="pattern-template"><a class="header" href="#pattern-template">Pattern Template</a></h1>
+<p>A VERA <strong>pattern</strong> is a reusable, documented solution to a recurring challenge in evidence management, reasoning construction, or verification practice. Patterns are not informal tips or best practices — they are structured knowledge objects that follow the canonical template defined in this chapter, and they are themselves subject to VERA verification.</p>
+<p>This chapter defines the Pattern Template in full, explains each field, provides guidance on when and how to use existing patterns, and describes how new patterns are proposed, documented, and verified.</p>
+<hr>
+<h2 id="why-patterns"><a class="header" href="#why-patterns">Why Patterns</a></h2>
+<p>Every organization that systematically applies VERA will encounter the same recurring challenges: How do you handle evidence from a source that has a conflict of interest? How do you reason about absence of evidence? How do you construct a reasoning chain when the best available evidence is Testimonial-tier? How do you verify a claim when the domain expert and the claimant are the same person?</p>
+<p>These challenges have been encountered before. In most cases, they have been worked through — imperfectly at first, then with increasing clarity — and the solutions are transferable. VERA patterns capture those solutions so that each team doesn’t rediscover them from scratch.</p>
+<p>Patterns also serve a normative function. When a VERA community agrees that a pattern represents the right way to handle a recurring situation, deviations from that pattern become visible and require explicit justification. This is not rigidity — it is accountability. If your context genuinely requires a different approach, document why.</p>
+<hr>
+<h2 id="the-canonical-pattern-template"><a class="header" href="#the-canonical-pattern-template">The Canonical Pattern Template</a></h2>
+<p>The following template is mandatory for all VERA patterns. Optional fields may be omitted if genuinely not applicable, but their absence must be intentional — not accidental.</p>
+<hr>
+<h3 id="field-by-field-reference"><a class="header" href="#field-by-field-reference">Field-by-Field Reference</a></h3>
+<h4 id="pattern-header"><a class="header" href="#pattern-header">Pattern Header</a></h4>
+<pre><code># Pattern: [Name]
+</code></pre>
+<p>The pattern name should be:</p>
+<ul>
+<li>Descriptive of the situation or solution, not abstractly titled</li>
+<li>Consistent with VERA naming conventions (Title Case, no jargon)</li>
+<li>Unique within the Patterns Library</li>
+</ul>
+<p>Good names: “Conflicted Source Disclosure,” “Absence of Evidence Assessment,” “AI-Assisted Claim Documentation”
+Poor names: “Pattern 7,” “The Hard Case,” “Evidence Thing”</p>
+<hr>
+<h4 id="pattern-id"><a class="header" href="#pattern-id">Pattern ID</a></h4>
+<pre><code>Pattern ID: VERA-P-[NNNN]
+</code></pre>
+<p>Assigned by the pattern registry upon submission. Format is <code>VERA-P-</code> followed by a four-digit sequential number. The ID is permanent and does not change if the pattern is revised.</p>
+<hr>
+<h4 id="classification"><a class="header" href="#classification">Classification</a></h4>
+<pre><code>Domain:            [Evidence | Reasoning | Verification | Governance | Sovereignty | Integration]
+Applicability:     [Individual | Team | Organization | All]
+Complexity:        [Simple | Moderate | Complex]
+Maturity Level:    [1 | 2 | 3 | 4 | 5]
+</code></pre>
+<ul>
+<li><strong>Domain</strong>: The primary VERA domain this pattern addresses. A pattern may span domains; list the primary one.</li>
+<li><strong>Applicability</strong>: Whether this pattern is most relevant to individual practitioners, teams, or organizational systems.</li>
+<li><strong>Complexity</strong>: A rough guide to implementation effort. Simple = &lt; 30 minutes to implement correctly. Moderate = requires planning. Complex = requires architectural decisions or significant tooling.</li>
+<li><strong>Maturity Level</strong>: The minimum VERA maturity level at which this pattern is typically applied. A Level 2 pattern can be applied by a Level 2 or higher practitioner; it is unlikely to be useful at Level 1.</li>
+</ul>
+<hr>
+<h4 id="context"><a class="header" href="#context">Context</a></h4>
+<pre><code>## Context
+
+[2–4 paragraphs describing the situation in which this pattern applies. Include:
+- The type of claim or reasoning scenario
+- The organizational or individual circumstances
+- What makes this situation distinctive enough to warrant a documented pattern
+- Any prerequisites (tools, practices, or prior VERA maturity) needed]
+</code></pre>
+<p>The context section is not a problem statement — it is a situation description. It answers: <em>When does someone find themselves needing this pattern?</em></p>
+<hr>
+<h4 id="problem"><a class="header" href="#problem">Problem</a></h4>
+<pre><code>## Problem
+
+[1–2 paragraphs stating the specific challenge the pattern addresses.
+Use precise VERA language. Reference Lexicon terms by name.
+State the problem as it actually appears — the symptom the practitioner notices —
+not as the underlying theoretical issue.]
+</code></pre>
+<p>Example of a well-stated problem: “When a claim’s most relevant evidence comes from a single source that also has a financial interest in the claim’s truth, the verification criterion E3 (Independence Adequacy) cannot be met in the conventional sense. Verifiers are uncertain whether to return the claim as unverifiable or to proceed with an acknowledged limitation.”</p>
+<p>Example of a poorly stated problem: “Evidence quality is hard to assess when sources are biased.”</p>
+<hr>
+<h4 id="forces"><a class="header" href="#forces">Forces</a></h4>
+<pre><code>## Forces
+
+- [Force 1: a competing concern or constraint that the solution must navigate]
+- [Force 2: ...]
+- [Force 3: ...]
+- [Force 4 (optional): ...]
+</code></pre>
+<p>Forces are the tensions that make this a genuine problem rather than a simple question with an obvious answer. They explain why the pattern is needed — if there were no competing concerns, the right answer would be obvious.</p>
+<p>Example forces for the conflicted source problem:</p>
+<ul>
+<li>The evidence from the conflicted source may be the only available evidence of this type</li>
+<li>Discarding it entirely loses real information</li>
+<li>Using it without disclosure violates Evidence Primacy</li>
+<li>Flagging it too prominently may make the claim appear weaker than warranted</li>
+</ul>
+<hr>
+<h4 id="solution"><a class="header" href="#solution">Solution</a></h4>
+<pre><code>## Solution
+
+[3–6 paragraphs describing the solution. The solution must be specific enough
+to implement without judgment calls that are not themselves documented.
+It should address each Force listed above, explaining how the solution
+navigates the tension.]
+</code></pre>
+<p>The solution section is the pattern’s core. It should read as clear, implementable guidance — not general advice. If the solution requires making a judgment call, it must specify what the judgment criteria are.</p>
+<hr>
+<h4 id="implementation-steps"><a class="header" href="#implementation-steps">Implementation Steps</a></h4>
+<pre><code>## Implementation
+
+1. [Step 1 — specific action with clear completion criterion]
+2. [Step 2]
+3. [...]
+</code></pre>
+<p>Implementation steps are numbered and sequential. Each step has a completion criterion — something observable that tells you the step is done. Steps should be atomic enough that they can be delegated and checked.</p>
+<hr>
+<h4 id="evidence-requirements"><a class="header" href="#evidence-requirements">Evidence Requirements</a></h4>
+<pre><code>## Evidence Requirements
+
+[What evidence must be assembled before or during application of this pattern.
+Specify quality tier minimums where applicable.
+Note any evidence types that are specifically required or specifically prohibited.]
+</code></pre>
+<p>This section distinguishes VERA patterns from general methodology: every pattern specifies what evidence standards it requires.</p>
+<hr>
+<h4 id="verification-criteria"><a class="header" href="#verification-criteria">Verification Criteria</a></h4>
+<pre><code>## Verification Criteria
+
+[How to verify that the pattern has been correctly applied.
+List observable outcomes — not activities. "The verifier reviewed the claim"
+is an activity. "The Verification Record contains a documented independence
+assessment for each evidence item" is an observable outcome.]
+</code></pre>
+<hr>
+<h4 id="consequences"><a class="header" href="#consequences">Consequences</a></h4>
+<pre><code>## Consequences
+
+**Benefits:**
+- [Benefit 1]
+- [Benefit 2]
+
+**Liabilities:**
+- [Liability 1]
+- [Liability 2]
+</code></pre>
+<p>Patterns have costs as well as benefits. Documenting liabilities is not a weakness — it is what distinguishes an honest pattern from marketing. A pattern with no liabilities is either trivial or poorly analyzed.</p>
+<hr>
+<h4 id="known-uses"><a class="header" href="#known-uses">Known Uses</a></h4>
+<pre><code>## Known Uses
+
+- [Organization/context 1]: [Brief description of how pattern was applied and what was learned]
+- [Organization/context 2]: [...]
+</code></pre>
+<p>Known uses are the empirical foundation of a pattern. A pattern documented without any known uses is a proposal, not a pattern. During review, the absence of known uses is noted; upon accumulation of two or more documented uses, the pattern is upgraded to Verified status.</p>
+<hr>
+<h4 id="related-patterns"><a class="header" href="#related-patterns">Related Patterns</a></h4>
+<pre><code>## Related Patterns
+
+- [VERA-P-NNNN — Pattern Name]: [How this pattern relates]
+- [...]
+</code></pre>
+<hr>
+<h4 id="verification-status"><a class="header" href="#verification-status">Verification Status</a></h4>
+<pre><code>## Verification Status
+
+State:        [Proposed | Under Review | Verified | Deprecated]
+Verifier:     [Name / Team]
+Verified on:  [Date]
+Record:       [VERA-V-NNNN]
+Confidence:   [0.0–1.0]
+</code></pre>
+<p>Patterns, like claims, carry verification status. A <strong>Proposed</strong> pattern has been submitted but not reviewed. <strong>Under Review</strong> means active evaluation is in progress. <strong>Verified</strong> means the pattern has met VERA verification criteria and has at least two documented Known Uses. <strong>Deprecated</strong> means the pattern has been superseded or found to be ineffective.</p>
+<hr>
+<h2 id="complete-template-copy-ready"><a class="header" href="#complete-template-copy-ready">Complete Template (Copy-Ready)</a></h2>
+<pre><code class="language-markdown"># Pattern: [Name]
+
+**Pattern ID:** VERA-P-[NNNN]
+
+| Field | Value |
+|-------|-------|
+| Domain | [Evidence / Reasoning / Verification / Governance / Sovereignty / Integration] |
+| Applicability | [Individual / Team / Organization / All] |
+| Complexity | [Simple / Moderate / Complex] |
+| Maturity Level | [1–5] |
+
+---
+
+## Context
+
+[Describe the situation in which this pattern applies.]
+
+## Problem
+
+[State the specific challenge.]
+
+## Forces
+
+- [Force 1]
+- [Force 2]
+- [Force 3]
+
+## Solution
+
+[Describe the solution in detail.]
+
+## Implementation
+
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+## Evidence Requirements
+
+[Specify evidence standards required.]
+
+## Verification Criteria
+
+[List observable outcomes that confirm correct application.]
+
+## Consequences
+
+**Benefits:**
+- [Benefit 1]
+
+**Liabilities:**
+- [Liability 1]
+
+## Known Uses
+
+- [Context 1]: [Description]
+
+## Related Patterns
+
+- [VERA-P-NNNN — Name]: [Relationship]
+
+---
+
+## Verification Status
+
+| Field | Value |
+|-------|-------|
+| State | [Proposed / Under Review / Verified / Deprecated] |
+| Verifier | [Name] |
+| Verified on | [Date] |
+| Record | [VERA-V-NNNN] |
+| Confidence | [0.0–1.0] |
+</code></pre>
+<hr>
+<h2 id="a-worked-example-the-absence-of-evidence-pattern"><a class="header" href="#a-worked-example-the-absence-of-evidence-pattern">A Worked Example: The Absence-of-Evidence Pattern</a></h2>
+<p>To illustrate the template in use, the following is a partial example of a real VERA pattern.</p>
+<hr>
+<h3 id="pattern-absence-of-evidence-assessment"><a class="header" href="#pattern-absence-of-evidence-assessment">Pattern: Absence-of-Evidence Assessment</a></h3>
+<p><strong>Pattern ID:</strong> VERA-P-0001</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Evidence</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Moderate</td></tr>
+<tr><td>Maturity Level</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="context-1"><a class="header" href="#context-1">Context</a></h4>
+<p>In the course of assembling an evidence set (Verification Protocol Phase 2), practitioners regularly encounter a situation where evidence of an expected type is absent. This might mean the expected evidence genuinely does not exist, that it exists but was not found, or that it was found and selectively omitted.</p>
+<p>The VERA requirement to document absent evidence (Step 2.5) creates a documentation obligation but does not specify how to reason about the significance of that absence. This pattern addresses the analytical work required at Step 2.5.</p>
+<h4 id="problem-1"><a class="header" href="#problem-1">Problem</a></h4>
+<p>The practitioner has completed an evidence search and finds that a category of evidence listed in the prospective search plan (Step 2.1) yielded no results. The claim’s verification status depends partly on how materially the absent evidence weakens the claim — but there is no standard method for assessing materiality.</p>
+<p>Without guidance, practitioners tend toward one of two errors: dismissing the absence as unimportant (understating the evidential gap) or treating any absence as fatal to the claim (overstating it). Neither produces calibrated epistemic confidence.</p>
+<h4 id="forces-1"><a class="header" href="#forces-1">Forces</a></h4>
+<ul>
+<li>The absence of evidence genuinely varies in significance: absent safety records for a medical device are more significant than absent sales records for the same period.</li>
+<li>The claim’s scope may be adjustable to exclude the area the absent evidence would have addressed.</li>
+<li>Documenting absent evidence as “neutral” when it is actually significant constitutes a form of selective citation.</li>
+<li>Marking every absence as “significantly weakening” would make most claims unverifiable.</li>
+</ul>
+<h4 id="solution-1"><a class="header" href="#solution-1">Solution</a></h4>
+<p>Assess the significance of each absent evidence item on three dimensions:</p>
+<p><strong>1. Expected vs. unexpected.</strong> Evidence that should exist given the claim’s scope, and whose absence is therefore unexplained, is more significant than evidence that might exist but whose absence is explicable.</p>
+<p><strong>2. Substitutability.</strong> Can the absent evidence be replaced by a different evidence type that addresses the same claim component? If yes, the absence is less significant — provided the substitute is assembled. If no, the absence leaves a genuine gap.</p>
+<p><strong>3. Directionality.</strong> If the absent evidence existed, would it more likely support or contradict the claim? When the absent evidence would likely support the claim and it is still absent, the gap is moderate. When the absent evidence would likely contradict the claim (the “file drawer problem”) and is absent, the gap is serious — and warrants explicit notation.</p>
+<p>For each absent evidence item, apply this assessment and assign one of three materiality ratings:</p>
+<ul>
+<li><strong>Non-material</strong>: Absence is explainable and substitutable; confidence impact &lt; 0.05</li>
+<li><strong>Moderate</strong>: Absence represents a genuine gap; note in reasoning chain; confidence impact 0.05–0.15</li>
+<li><strong>Significant</strong>: Absence leaves a material claim component unsupported; must be acknowledged in the claim statement or the claim scope must be revised</li>
+</ul>
+<h4 id="implementation"><a class="header" href="#implementation">Implementation</a></h4>
+<ol>
+<li>List every evidence type on the prospective plan that was not found.</li>
+<li>For each, answer the three assessment questions (Expected? Substitutable? Directionality?).</li>
+<li>Assign a materiality rating (Non-material / Moderate / Significant).</li>
+<li>For Moderate absences: document in the reasoning chain as an acknowledged limitation.</li>
+<li>For Significant absences: either (a) revise the claim’s scope to exclude the unsupported component, or (b) downgrade the confidence rating by at least 0.15 and document the absence prominently in the claim record.</li>
+<li>Record the complete absence assessment in the Evidence Set documentation.</li>
+</ol>
+<h4 id="verification-criteria-1"><a class="header" href="#verification-criteria-1">Verification Criteria</a></h4>
+<ul>
+<li>The Verification Record confirms that the verifier reviewed the evidence search plan, not only the evidence collected.</li>
+<li>Each absent evidence item from the prospective plan appears in the Claim Record with an assigned materiality rating.</li>
+<li>No evidence type rated Significant is absent from the claim record’s limitations section.</li>
+<li>The confidence rating reflects adjustments for Moderate and Significant absences.</li>
+</ul>
+<h4 id="consequences-1"><a class="header" href="#consequences-1">Consequences</a></h4>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Prevents selective citation by making the absence assessment explicit and auditable.</li>
+<li>Provides a calibrated method for adjusting confidence that avoids both dismissal and over-reaction.</li>
+<li>Creates a clear record for downstream verifiers and claim users.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>Adds analytical time to Phase 2.</li>
+<li>Directionality assessment (step 3) requires domain judgment; practitioners without domain expertise may need consultation.</li>
+</ul>
+<h4 id="known-uses-1"><a class="header" href="#known-uses-1">Known Uses</a></h4>
+<ul>
+<li><strong>Internal policy team, financial services firm (2024)</strong>: Applied this pattern to regulatory impact assessments; identified two Significant absences that led to scope revisions, preventing two subsequent claims from being challenged during regulatory review.</li>
+<li><strong>Research team, academic institution (2025)</strong>: Used during systematic review to distinguish non-publication bias (absent studies likely neutral) from selective non-reporting (absent data likely directional).</li>
+</ul>
+<hr>
+<h2 id="how-to-propose-a-new-pattern"><a class="header" href="#how-to-propose-a-new-pattern">How to Propose a New Pattern</a></h2>
+<p>Patterns emerge from practice. If you encounter a recurring challenge that is not addressed by an existing pattern:</p>
+<ol>
+<li><strong>Document the first occurrence</strong> using the evidence and reasoning of the situation itself — the claim record for the challenging situation becomes data for the eventual pattern.</li>
+<li><strong>Look for recurrence</strong>: before proposing a pattern, verify that you’ve encountered the same challenge at least twice in distinct contexts.</li>
+<li><strong>Draft the pattern</strong> using the full template. Mark it as <strong>Proposed</strong> with no verifier.</li>
+<li><strong>Submit to the Patterns Library</strong> with your draft. The submission triggers a review process in which at least two experienced VERA practitioners evaluate the pattern against the template requirements.</li>
+<li><strong>Accumulate Known Uses</strong>: as the proposed pattern is applied (with appropriate documentation) in real situations, those uses are added to the Known Uses section.</li>
+<li><strong>Verification</strong>: once the pattern has two documented Known Uses and passes template review, it is moved to <strong>Verified</strong> status.</li>
+</ol>
+<p>Patterns are living documents. A Verified pattern that proves ineffective in practice is flagged, documented, and eventually <strong>Deprecated</strong> — with documentation of why it failed, which is itself valuable knowledge.</p>
+<hr>
+<p><em>Proceed to <a href="./sovereignty-principles.html">Sovereignty Principles</a> to understand the commitments that constrain how VERA is implemented and governed.</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../foundations/verification-protocol.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../foundations/sovereignty-principles.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../foundations/verification-protocol.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../foundations/sovereignty-principles.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

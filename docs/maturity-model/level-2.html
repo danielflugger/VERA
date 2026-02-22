@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Level 2 — Exploring - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/maturity-model/level-2.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="level-2--exploring"><a class="header" href="#level-2--exploring">Level 2 — Exploring</a></h1>
+<blockquote>
+<p><em>At Level 2, VERA is real work — not uniform work. Some claims are documented. Some evidence is rated. Some reasoning is explicit. The practice is alive but not yet reliable.</em></p>
+</blockquote>
+<hr>
+<h2 id="what-level-2-feels-like"><a class="header" href="#what-level-2-feels-like">What Level 2 Feels Like</a></h2>
+<p>Level 2 is the most variable level. The gap between the highest and lowest VERA quality within a Level 2 organization can be wider than the gap between Level 1 and Level 4. This is because Level 2 practice is driven by individual initiative rather than institutional process — and individual practitioners vary enormously in how deeply they’ve internalized the framework.</p>
+<p>A practitioner in the early stages of Level 2 is applying VERA somewhat awkwardly, frequently referring back to the Lexicon and Protocol, uncertain about edge cases (Is this Primary or Secondary? Is this reasoning deductive or abductive?), and producing claims that are formally structured but not yet sharp. This is healthy. The awkwardness is the learning.</p>
+<p>A practitioner in the late stages of Level 2 — ready to push the organization toward Level 3 — has developed genuine VERA fluency. They apply the framework confidently to significant claims, produce clean evidence sets and reasoning chains, and have identified the recurring challenges in their specific domain that eventually become the patterns their team will rely on.</p>
+<p>Between these two ends of the Level 2 spectrum, the primary experience is <strong>discovery</strong>: discovering what “prospective search plan” actually means when you’re trying to research a competitive claim you’ve never analyzed before; discovering how hard it is to document the reasoning chain of a complex strategic judgment; discovering that what you thought was a single claim is actually three; discovering that the evidence you’ve relied on for years is Tertiary at best.</p>
+<p>For organizations, Level 2 looks like VERA being practiced by a motivated few while the rest of the organization continues as before. Typically there is a champion or small cohort — sometimes a single person who encountered VERA and committed to applying it — producing real VERA artifacts: claim records, evidence sets, verification records. These artifacts exist alongside the organization’s normal knowledge outputs, often invisible to people who are not already VERA-aware.</p>
+<p>The defining fragility of Level 2 is <strong>person-dependence</strong>: if the champion leaves or shifts focus, VERA practice typically stops. This is not a failure of the framework — it is the expected characteristic of a practice that has not yet been institutionalized. Managing this fragility is a key part of the Level 2-to-3 transition.</p>
+<hr>
+<h2 id="the-six-domains-at-level-2"><a class="header" href="#the-six-domains-at-level-2">The Six Domains at Level 2</a></h2>
+<h3 id="evidence"><a class="header" href="#evidence">Evidence</a></h3>
+<p>At Level 2, evidence is being rated and documented for selected claims. The selection is typically made by the practitioner based on which claims feel most important, which decisions are most consequential, or simply which claims they have time to document properly. There is no systematic coverage criterion — significance is judged intuitively.</p>
+<p>Prospective search plans exist informally at Level 2. The practitioner thinks ahead about what evidence they’re looking for before they look, but this plan may not be written down. As a result, it cannot be reviewed, cannot be audited, and cannot be used to detect absent evidence reliably. The gap between “thought about it” and “documented it” is small in effort but large in auditability.</p>
+<p>Evidence independence assessment happens variably. Some practitioners apply it carefully; others conflate citation count with evidence independence. Source collapse remains a common error at Level 2 — especially in domains where a small number of authoritative sources dominate, making true independence hard to achieve.</p>
+<p>Absent evidence notation is the most commonly skipped step at Level 2. Practitioners reliably document what they found; they less reliably document what they expected to find and didn’t. This asymmetry means that Level 2 evidence sets tend to look more complete than they are.</p>
+<p><strong>Level 2 Evidence indicators:</strong></p>
+<ul>
+<li>Claim records exist that include rated evidence sets</li>
+<li>At least one practitioner consistently produces prospective search plans before evidence collection</li>
+<li>Evidence quality ratings use the four-tier scale consistently in documented claims</li>
+<li>Some but not all absent evidence is noted; notation is inconsistent</li>
+</ul>
+<h3 id="reasoning"><a class="header" href="#reasoning">Reasoning</a></h3>
+<p>At Level 2, reasoning chains are written for some claims. The quality varies substantially: early-stage Level 2 reasoning chains often have the form of reasoning chains (numbered steps) without the substance (each step’s premises, inference type, and conclusion are vague or implicit). Late-stage Level 2 reasoning chains are genuinely explicit, with labeled inference types and documented assumptions.</p>
+<p>The most common Level 2 reasoning failure is <strong>hidden deductive steps</strong>: the practitioner writes several observations and then a conclusion, without documenting the inferential steps connecting them. The conclusion follows — the reasoning is sound — but the chain, as written, has a gap where the key inferential move should be.</p>
+<p>Assumptions are inconsistently documented. At Level 2, practitioners typically document the assumptions they are aware of making. They do not systematically identify assumptions they are making without realizing it — which is, of course, the harder category. The assumption-identification skill develops with practice; it is rarely strong at Level 2.</p>
+<p><strong>Level 2 Reasoning indicators:</strong></p>
+<ul>
+<li>Some claims in the organizational knowledge base include step-by-step reasoning chains</li>
+<li>Inference types are labeled in at least some reasoning chains</li>
+<li>Practitioners can identify reasoning gaps in others’ work (peer critique is emerging)</li>
+<li>Most reasoning chains have at least one undocumented hidden assumption when reviewed carefully</li>
+</ul>
+<h3 id="verification"><a class="header" href="#verification">Verification</a></h3>
+<p>At Level 2, verification is happening, but its independence and rigor vary. The most common Level 2 verification pattern is <strong>self-verification with skeptical intent</strong>: the claimant deliberately adopts an adversarial stance toward their own claim, evaluates it against the Verification Protocol criteria, and produces a verification record. This is better than no verification, but it is not the same as independent verification.</p>
+<p>Formal verifier independence — having someone other than the claimant evaluate the claim — is aspired to at Level 2 but achieved inconsistently. It requires that a second person be available, willing, and sufficiently VERA-fluent to conduct a meaningful verification. At Level 2, these conditions are met sporadically.</p>
+<p>Verification records exist at Level 2, but they may not be complete. The most commonly omitted elements are: the confidence rating with justification (practitioners record a number but not the reasoning behind it), the independence level assessment (the verifier’s relationship to the claim is not documented), and the specific criteria findings (the verification record says “Verified” without noting which criteria were assessed and how).</p>
+<p>The contested claim process is understood at Level 2 but has rarely or never been invoked. The organization has not yet faced a situation where a verified VERA claim needed to be formally challenged — or has faced it and handled it informally rather than through the defined process.</p>
+<p><strong>Level 2 Verification indicators:</strong></p>
+<ul>
+<li>Verification records exist for some claims</li>
+<li>At least one verification event involved a person other than the claimant</li>
+<li>Practitioners apply the Phase 4 criteria checklist, though not all criteria are consistently addressed</li>
+<li>No contested claim process has been formally invoked (the first contested claim is often the trigger for formalizing the process)</li>
+</ul>
+<h3 id="governance"><a class="header" href="#governance">Governance</a></h3>
+<p>At Level 2, governance is informal and champion-driven. The champion(s) have both the understanding and the motivation to apply VERA, but they are operating without formal support. This has several practical consequences:</p>
+<ul>
+<li>Time for VERA practice must be carved out of a schedule that does not formally allocate it</li>
+<li>VERA artifacts (claim records, evidence sets) may be stored in personal tools rather than shared organizational systems</li>
+<li>VERA adoption conversations with leadership are advocacy rather than reporting — the champion is making the case, not reporting on a managed program</li>
+</ul>
+<p>Despite its informality, Level 2 governance does useful work. The champion accumulates experience that will be essential for designing Level 3 governance. They identify which workflows most benefit from VERA, which practitioners are natural adopters, which organizational language maps to VERA terms, and where the existing culture’s assumptions conflict with VERA principles. This intelligence cannot be gathered any other way.</p>
+<p><strong>Level 2 Governance indicators:</strong></p>
+<ul>
+<li>At least one person is explicitly identified (if only informally) as the VERA advocate or champion</li>
+<li>VERA has been discussed in at least one organized forum with participation from two or more people</li>
+<li>No formal VERA policy, mandate, or documented ownership exists</li>
+<li>VERA practice is voluntary; non-participation has no consequences</li>
+</ul>
+<h3 id="sovereignty"><a class="header" href="#sovereignty">Sovereignty</a></h3>
+<p>At Level 2, the sovereignty picture is beginning to take shape but has not yet been formally assessed. Practitioners have an informal sense of which sovereignty principles they meet and which they don’t — evidence is accessible for the claims they’ve documented, reasoning chains are visible to the people who documented them, but it’s not clear whether other affected stakeholders can access them.</p>
+<p>The most common Level 2 Sovereignty work is in Data Sovereignty (S1): because Level 2 practitioners are actively documenting evidence, they tend to record source references and access dates as a matter of good practice. This partial implementation of S1 is a natural byproduct of Level 2 Evidence work.</p>
+<p>Reasoning Sovereignty (S2) and Conclusion Sovereignty (S3) are rarely assessed at Level 2. The claims being documented are typically the practitioner’s own, which means they naturally have reasoning transparency and conclusion authority. The sovereignty question becomes more pressing when the claims in question are produced by others — AI systems, consultants, external authorities — and those claims are then used without verifying their transparency and challengeability.</p>
+<p><strong>Level 2 Sovereignty indicators:</strong></p>
+<ul>
+<li>Evidence source references and access dates are documented for Level 2 claims</li>
+<li>At least one practitioner is aware of sovereignty gaps in tools or processes they use</li>
+<li>No formal sovereignty assessment has been conducted</li>
+<li>At least one sovereignty gap has been identified informally and is being tracked</li>
+</ul>
+<h3 id="integration"><a class="header" href="#integration">Integration</a></h3>
+<p>At Level 2, VERA is practice alongside work, not yet embedded in work. The practitioner who is doing VERA work is doing it in addition to their normal outputs — writing a VERA claim record about a topic they’ve also written a normal memo or report about. The two artifacts coexist without one informing the form of the other.</p>
+<p>This parallel-track situation is appropriate at Level 2. Integration before practice maturity creates premature lock-in: if you build VERA templates into your wiki before you know what good VERA practice looks like in your context, you may end up with templates that shape practice in the wrong direction.</p>
+<p>Some natural integration points emerge at Level 2 without deliberate design: a practitioner starts including evidence ratings in their normal research notes, or flags reasoning chains in meeting summaries, or links to a claim record from a project planning document. These informal integrations are precursors to the systematic integration of Level 3.</p>
+<p><strong>Level 2 Integration indicators:</strong></p>
+<ul>
+<li>At least one VERA-native artifact (claim record with evidence set and reasoning chain) exists in the organizational knowledge base</li>
+<li>Some practitioners voluntarily apply VERA notation in their normal work outputs</li>
+<li>No VERA templates or formats are embedded in standard organizational tools</li>
+<li>The question of where a claim registry should live has been raised but not settled</li>
+</ul>
+<hr>
+<h2 id="common-level-2-traps"><a class="header" href="#common-level-2-traps">Common Level 2 Traps</a></h2>
+<h3 id="the-showcase-trap"><a class="header" href="#the-showcase-trap">The Showcase Trap</a></h3>
+<p>Level 2 practitioners often have a small number of beautifully documented claims and a large number of undocumented ones. The documented claims are used to demonstrate VERA’s value; the undocumented ones are not discussed. This creates a misleading picture of maturity.</p>
+<p>The showcase trap is addressed by shifting the question from “Can we produce VERA artifacts?” (Level 2 can) to “Do we produce VERA artifacts consistently for all significant claims?” (Level 3 requires this). Champions who fall into the showcase trap often discover it when they try to scale VERA adoption and find that new practitioners produce much lower quality than the showcases suggested was standard.</p>
+<h3 id="the-form-without-substance-trap"><a class="header" href="#the-form-without-substance-trap">The Form-Without-Substance Trap</a></h3>
+<p>It is possible to produce claim records that have all the required fields and none of the required rigor. Evidence items are listed without quality ratings. Reasoning chains consist of bullets that restate the evidence items rather than logical steps connecting them. Verification records say “Verified” with minimal criteria documentation.</p>
+<p>This trap is particularly dangerous because it is hard to detect from the outside. A claim record that looks like a VERA artifact but lacks epistemic substance is, in practice, an assertion with decorative formatting. The tell-tale signs: reasoning chains that could be read as conclusions rather than arguments, evidence sets where every item supports the claim (no absent evidence, no contrary evidence addressed), verification records completed by the claimant.</p>
+<h3 id="the-perfectionism-trap"><a class="header" href="#the-perfectionism-trap">The Perfectionism Trap</a></h3>
+<p>The inverse of the form-without-substance trap: practitioners who understand VERA well refuse to document claims until they can do so perfectly, which means they never document them at all. VERA practice requires iteration. An imperfect claim record that captures real evidence and real reasoning is more valuable than a perfect claim record that is never written.</p>
+<p>At Level 2, the target is genuine engagement with the protocol, not perfect execution. The verification process exists precisely to catch the gaps that the claimant missed.</p>
+<h3 id="the-champion-fatigue-trap"><a class="header" href="#the-champion-fatigue-trap">The Champion Fatigue Trap</a></h3>
+<p>VERA adoption at Level 2 costs champions more than it costs anyone else. They are doing extra work — their own practice plus advocacy plus answering questions plus designing how VERA should work in the organizational context — without formal recognition or resource support. Champion fatigue is real, and it is the most common reason Level 2 organizations fail to advance.</p>
+<p>Organizations that rely on a single champion for Level 2 VERA work should recognize this as a structural fragility and prioritize recruiting at least one additional practitioner, distributing the load, and beginning the Level 3 governance conversation before the champion burns out.</p>
+<hr>
+<h2 id="moving-from-level-2-to-level-3"><a class="header" href="#moving-from-level-2-to-level-3">Moving from Level 2 to Level 3</a></h2>
+<p>The Level 2-to-3 transition requires resolving the person-dependence that defines Level 2. The specific transitions required:</p>
+<p><strong>Evidence</strong>: From informal prospective search plans to documented plans as a required step; from some evidence rated to all significant claims having rated evidence sets; from inconsistent absent-evidence notation to systematic recording.</p>
+<p><strong>Reasoning</strong>: From some reasoning chains to all significant claims having reasoning chains; from variable format to consistent format; from undocumented assumptions to systematic assumption documentation.</p>
+<p><strong>Verification</strong>: From ad hoc verification to consistent application of the Verification Protocol; from informal records to complete Verification Records for all significant claims; from tolerance of self-verification to requiring at minimum documented self-verification against criteria, with peer verification for high-stakes claims.</p>
+<p><strong>Governance</strong>: This is the most significant transition. From informal champion to formal mandate: VERA must become policy, not advocacy. This requires a decision — by someone with organizational authority — that significant claims will be documented and verified in VERA format. It requires documented ownership (who is responsible for VERA practice?), documented scope (which claims require VERA treatment?), and documented standards (what does VERA compliance look like in this context?).</p>
+<p><strong>Sovereignty</strong>: From informal awareness to completed formal assessment. The sovereignty assessment must be conducted, all five principles rated, gaps documented, and a remediation plan created with owners and timelines.</p>
+<p><strong>Integration</strong>: From VERA alongside work to VERA visible in work. Claim records must be accessible to people who didn’t create them. A claim registry must exist somewhere — even a simple shared document — where all documented claims can be found. VERA notation must appear in at least some standard organizational outputs.</p>
+<hr>
+<h2 id="level-2-self-assessment-checklist"><a class="header" href="#level-2-self-assessment-checklist">Level 2 Self-Assessment Checklist</a></h2>
+<p><strong>Evidence (Level 2 requires Yes to at least 2 of 4):</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> At least five claims exist in our knowledge base with rated evidence sets</li>
+<li><input disabled="" type="checkbox"> At least one claim has a documented prospective search plan</li>
+<li><input disabled="" type="checkbox"> At least one claim’s evidence set includes a documented absent-evidence item</li>
+<li><input disabled="" type="checkbox"> Evidence quality ratings use the four-tier scale consistently (not improvised ratings)</li>
+</ul>
+<p><strong>Reasoning (Level 2 requires Yes to at least 2 of 3):</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> At least three claims in our knowledge base include step-by-step reasoning chains (not conclusion summaries)</li>
+<li><input disabled="" type="checkbox"> At least one reasoning chain has labeled inference types for each step</li>
+<li><input disabled="" type="checkbox"> At least one reasoning chain has documented assumptions</li>
+</ul>
+<p><strong>Verification (Level 2 requires Yes to at least 2 of 3):</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> At least three claims have formal Verification Records</li>
+<li><input disabled="" type="checkbox"> At least one verification event involved a person other than the claimant</li>
+<li><input disabled="" type="checkbox"> Verification records reference specific criteria from the Verification Protocol</li>
+</ul>
+<p><strong>Governance (Level 2 requires Yes to at least 2 of 3):</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> At least one person is identified as the VERA champion or advocate</li>
+<li><input disabled="" type="checkbox"> VERA has been discussed in a meeting with two or more participants</li>
+<li><input disabled="" type="checkbox"> At least one other person in the organization besides the champion is actively applying VERA</li>
+</ul>
+<p><strong>Sovereignty (Level 2 requires Yes to at least 1 of 2):</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Source references and access dates are documented for all evidence items in Level 2 claims</li>
+<li><input disabled="" type="checkbox"> At least one specific sovereignty gap has been identified and is being tracked</li>
+</ul>
+<p><strong>Integration (Level 2 requires Yes to at least 1 of 2):</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> At least one VERA artifact (complete claim record) is accessible to colleagues who did not create it</li>
+<li><input disabled="" type="checkbox"> VERA notation (claim IDs, evidence quality ratings, or verification state symbols) appears in at least one normal organizational output</li>
+</ul>
+<hr>
+<p><em>Proceed to <a href="./level-3.html">Level 3 — Practicing</a> to understand what systematic, reproducible VERA practice looks like and what the path to institutionalization requires.</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../maturity-model/level-1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../maturity-model/level-3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../maturity-model/level-1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../maturity-model/level-3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

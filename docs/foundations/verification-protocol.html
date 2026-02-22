@@ -1,0 +1,542 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Verification Protocol - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/foundations/verification-protocol.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="verification-protocol"><a class="header" href="#verification-protocol">Verification Protocol</a></h1>
+<p>The Verification Protocol is VERA’s procedural core. It specifies, step by step, how a raw assertion becomes a documented claim, moves through verification, and reaches a final epistemic state. Following the protocol produces reproducible results: two verifiers working independently on the same claim and evidence should reach the same verification state.</p>
+<p>This document describes VERA Verification Protocol version 1.0. The version is significant — claims record the protocol version under which they were verified, so that verification standards can evolve without retroactively changing the status of existing records.</p>
+<hr>
+<h2 id="protocol-overview"><a class="header" href="#protocol-overview">Protocol Overview</a></h2>
+<p>The protocol comprises five phases executed in sequence. Each phase has defined inputs, required activities, and outputs. A phase cannot be marked complete until its outputs satisfy the stated requirements.</p>
+<pre><code>Phase 1: Claim Formulation
+        │
+        ▼
+Phase 2: Evidence Assembly
+        │
+        ▼
+Phase 3: Reasoning Construction
+        │
+        ▼
+Phase 4: Verification Assessment
+        │
+        ▼
+Phase 5: Documentation &amp; Publication
+</code></pre>
+<p>Phases 1–3 are the claimant’s responsibility. Phase 4 is the verifier’s responsibility. Phase 5 is shared. For self-verification, a single person or team executes all five phases, but must treat Phase 4 as a deliberate change of role — actively looking for weaknesses rather than defending the claim.</p>
+<hr>
+<h2 id="phase-1-claim-formulation"><a class="header" href="#phase-1-claim-formulation">Phase 1: Claim Formulation</a></h2>
+<p><strong>Input</strong>: A raw assertion — something believed to be true and worth documenting.</p>
+<p><strong>Objective</strong>: Transform the assertion into a precisely stated, uniquely identified claim ready for evidence assembly.</p>
+<h3 id="step-11--state-the-assertion-precisely"><a class="header" href="#step-11--state-the-assertion-precisely">Step 1.1 — State the Assertion Precisely</a></h3>
+<p>Write the assertion in a single declarative sentence. Vague, compound, or hedged assertions must be decomposed before proceeding.</p>
+<p><em>Test</em>: Could two people read this statement and disagree on what would count as evidence for or against it? If yes, the statement is not yet precise enough.</p>
+<p><strong>Common problems at this step:</strong></p>
+<ul>
+<li><strong>Compound assertions</strong>: “Our process is efficient and our output quality is high” contains two claims. Separate them.</li>
+<li><strong>Weasel words</strong>: “Generally,” “usually,” “often,” and similar hedges embed ambiguity into the claim itself. State the actual scope: “In 87% of cases observed between January and June 2025.”</li>
+<li><strong>Tautologies</strong>: “AI systems that produce inaccurate outputs are unreliable” is not a claim about the world — it is a definitional statement. Remove it from the VERA pipeline.</li>
+</ul>
+<h3 id="step-12--decompose-compound-claims"><a class="header" href="#step-12--decompose-compound-claims">Step 1.2 — Decompose Compound Claims</a></h3>
+<p>If the assertion cannot be stated in a single precise sentence without losing essential meaning, decompose it into multiple claims. Each claim proceeds through the protocol independently. Compound conclusions are reconstructed in Phase 3 by using the verified sub-claims as evidence items.</p>
+<h3 id="step-13--assign-a-claim-identifier"><a class="header" href="#step-13--assign-a-claim-identifier">Step 1.3 — Assign a Claim Identifier</a></h3>
+<p>Every claim receives a unique identifier before proceeding: <code>VERA-C-[YYYY]-[NNNN]</code>, where YYYY is the four-digit year and NNNN is a sequential number within that year. For individual practitioners without an organizational registry, use initials as a prefix: <code>VERA-C-DJF-2025-0001</code>.</p>
+<p>The identifier is permanent. If the claim is revised, the revision is documented as a new version of the same claim (e.g., <code>VERA-C-2025-0001 v2</code>), not as a new claim, so that downstream claims that cite this one can identify the version they used.</p>
+<h3 id="step-14--record-claim-context"><a class="header" href="#step-14--record-claim-context">Step 1.4 — Record Claim Context</a></h3>
+<p>Document:</p>
+<ul>
+<li><strong>Claimant</strong>: Individual or team making the claim</li>
+<li><strong>Date initiated</strong>: When Phase 1 was begun</li>
+<li><strong>Purpose</strong>: Why this claim is being documented (what decision it informs, what argument it supports)</li>
+<li><strong>Scope</strong>: The conditions under which the claim is intended to hold (domain, time period, population, geography, etc.)</li>
+<li><strong>Prior art</strong>: Related prior claims in the VERA registry that this claim extends, contradicts, or supersedes</li>
+</ul>
+<p><strong>Output</strong>: A Claim Record stub containing the claim identifier, precise statement, and context metadata. Verification state is set to <strong>Unverified</strong> (○).</p>
+<hr>
+<h2 id="phase-2-evidence-assembly"><a class="header" href="#phase-2-evidence-assembly">Phase 2: Evidence Assembly</a></h2>
+<p><strong>Input</strong>: The Claim Record stub from Phase 1.</p>
+<p><strong>Objective</strong>: Identify, locate, document, and rate all relevant evidence — including evidence that complicates or contradicts the claim.</p>
+<h3 id="step-21--identify-evidence-sources"><a class="header" href="#step-21--identify-evidence-sources">Step 2.1 — Identify Evidence Sources</a></h3>
+<p>Before retrieving evidence, list the types of evidence that would be relevant to evaluating the claim. This prospective list is the foundation of the evidence search strategy. It must be documented — a search strategy recorded only after evidence has been found is vulnerable to unconscious selectivity.</p>
+<p>For each evidence type on the list, note:</p>
+<ul>
+<li>What form would this evidence take? (dataset, document, experiment, testimony, etc.)</li>
+<li>Where is this evidence likely to exist?</li>
+<li>What would it mean for the claim if this evidence is absent?</li>
+</ul>
+<h3 id="step-22--conduct-the-evidence-search"><a class="header" href="#step-22--conduct-the-evidence-search">Step 2.2 — Conduct the Evidence Search</a></h3>
+<p>Retrieve evidence using the pre-documented search strategy. For each item found:</p>
+<ol>
+<li>Create an <strong>Evidence Item Record</strong> with source reference, access date, and a brief description</li>
+<li>Note whether this item was on the prospective list (anticipated evidence) or discovered during search (unanticipated evidence)</li>
+<li>Note the relevance of the item: does it support, complicate, or contradict the claim?</li>
+</ol>
+<p><strong>Do not filter at this stage.</strong> Contradicting evidence is recorded identically to supporting evidence. Filtering happens in Phase 3.</p>
+<h3 id="step-23--rate-evidence-quality"><a class="header" href="#step-23--rate-evidence-quality">Step 2.3 — Rate Evidence Quality</a></h3>
+<p>Apply the four-tier quality rating to each evidence item:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Tier</th><th>Questions to ask</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Primary (Tier 1)</strong></td><td>Is this the original source? Did the claimant directly observe or measure this? Is this an original document rather than a copy or summary?</td></tr>
+<tr><td><strong>Secondary (Tier 2)</strong></td><td>Has this been interpreted by a domain expert? Is it a synthesis of primary sources? Has it been peer-reviewed or editorially reviewed?</td></tr>
+<tr><td><strong>Tertiary (Tier 3)</strong></td><td>Is this a textbook, encyclopedia, or journalistic account? Does it reference secondary sources?</td></tr>
+<tr><td><strong>Testimonial (Tier 4)</strong></td><td>Is this an expert’s assertion without underlying data? Is this firsthand account where the underlying evidence is inaccessible?</td></tr>
+</tbody>
+</table>
+</div>
+<p>When evidence spans multiple tiers (e.g., a peer-reviewed meta-analysis that includes some original data), rate it at the tier that describes its dominant character.</p>
+<h3 id="step-24--assess-evidence-independence"><a class="header" href="#step-24--assess-evidence-independence">Step 2.4 — Assess Evidence Independence</a></h3>
+<p>Group the evidence items and assess which ones share upstream sources. Mark items as Independent, Correlated, or Dependent (see <a href="./lexicon.html#evidence-independence">Lexicon: Evidence Independence</a>).</p>
+<p>Dependent items are not discarded — they are consolidated into a single item with a note explaining why they are treated as one. The consolidation is documented so that the verifier can evaluate it.</p>
+<h3 id="step-25--document-absent-evidence"><a class="header" href="#step-25--document-absent-evidence">Step 2.5 — Document Absent Evidence</a></h3>
+<p>Return to the prospective list from Step 2.1. For each evidence type that was listed but not found:</p>
+<ul>
+<li>Note that it was not found</li>
+<li>Assess what this absence implies for the claim: neutral, weakening, or significantly weakening</li>
+<li>If significantly weakening: note this explicitly in the Claim Record</li>
+</ul>
+<p><strong>Output</strong>: A complete Evidence Set — all items rated, independence assessed, and absent evidence noted. The evidence set is attached to the Claim Record. Verification state remains <strong>Unverified</strong> (○).</p>
+<hr>
+<h2 id="phase-3-reasoning-construction"><a class="header" href="#phase-3-reasoning-construction">Phase 3: Reasoning Construction</a></h2>
+<p><strong>Input</strong>: The Claim Record with attached Evidence Set.</p>
+<p><strong>Objective</strong>: Build an explicit reasoning chain connecting the evidence set to the claim’s statement.</p>
+<h3 id="step-31--map-evidence-to-claim-components"><a class="header" href="#step-31--map-evidence-to-claim-components">Step 3.1 — Map Evidence to Claim Components</a></h3>
+<p>Decompose the claim’s statement into its constituent logical components. For each component, identify which evidence items are relevant to it. The mapping does not need to be one-to-one: multiple evidence items may support one component, and one evidence item may support multiple components.</p>
+<p>This mapping reveals:</p>
+<ul>
+<li>Components that are well-supported (multiple independent evidence items)</li>
+<li>Components that are weakly supported (single evidence item, or only low-quality items)</li>
+<li>Components that are unsupported (no evidence items address them)</li>
+</ul>
+<p>Unsupported components require one of three responses: gather additional evidence (return to Phase 2), reduce the scope of the claim to exclude the unsupported component, or explicitly flag the unsupported component as an assumption.</p>
+<h3 id="step-32--identify-the-logical-structure"><a class="header" href="#step-32--identify-the-logical-structure">Step 3.2 — Identify the Logical Structure</a></h3>
+<p>Determine how the evidence connects to the conclusion. VERA recognizes four inference types:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Description</th><th>Strength</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Deductive</strong></td><td>Conclusion follows necessarily from premises</td><td>Strongest, but requires premises to be certain</td></tr>
+<tr><td><strong>Inductive</strong></td><td>Conclusion generalizes from observed instances</td><td>Strong when instances are numerous and representative</td></tr>
+<tr><td><strong>Abductive</strong></td><td>Conclusion is the best explanation of the evidence</td><td>Moderate; requires ruling out alternative explanations</td></tr>
+<tr><td><strong>Analogical</strong></td><td>Conclusion infers from similarity to another case</td><td>Weakest; requires strong, well-documented similarity</td></tr>
+</tbody>
+</table>
+</div>
+<p>Most real-world reasoning chains combine inference types. The chain must document which type is used at each step.</p>
+<h3 id="step-33--write-the-reasoning-chain"><a class="header" href="#step-33--write-the-reasoning-chain">Step 3.3 — Write the Reasoning Chain</a></h3>
+<p>Write the chain step by step, using this format for each step:</p>
+<pre><code>Step N:
+  Premises:     [E1, E2] / [Step N-1 conclusion]
+  Inference:    [Deductive / Inductive / Abductive / Analogical]
+  Reasoning:    [The argument in plain language]
+  Conclusion:   [The intermediate conclusion this step produces]
+  Confidence:   [0.0–1.0, with explanation]
+</code></pre>
+<p>The chain is complete when its final conclusion matches the claim’s statement exactly. If the final conclusion is stronger or weaker than the stated claim, revise the claim statement (returning to Phase 1, Step 1.1) or revise the reasoning chain until they match.</p>
+<h3 id="step-34--identify-and-document-assumptions"><a class="header" href="#step-34--identify-and-document-assumptions">Step 3.4 — Identify and Document Assumptions</a></h3>
+<p>Every reasoning chain rests on assumptions — things taken as true without direct evidence. Identify all assumptions explicit in the chain and any hidden assumptions that the chain requires.</p>
+<p>For each assumption:</p>
+<ul>
+<li>State the assumption precisely</li>
+<li>Assess whether it is: <em>widely accepted</em> (minimal documentation needed), <em>domain-specific</em> (cite authority), or <em>contested</em> (must be flagged prominently)</li>
+<li>If contested, consider whether the claim should be scoped to conditions under which the assumption holds</li>
+</ul>
+<h3 id="step-35--address-contradicting-evidence"><a class="header" href="#step-35--address-contradicting-evidence">Step 3.5 — Address Contradicting Evidence</a></h3>
+<p>Return to the evidence items marked as complicating or contradicting. The reasoning chain must address each one. Valid responses include:</p>
+<ul>
+<li><strong>Outweigh</strong>: The contradicting evidence is weaker (lower tier, less independent) than the supporting evidence; explain why</li>
+<li><strong>Distinguish</strong>: The contradicting evidence applies to a different scope than the claim; explain the distinction</li>
+<li><strong>Qualify</strong>: The claim is revised to acknowledge the contradiction as a genuine limitation</li>
+<li><strong>Concede</strong>: The contradicting evidence is decisive; the claim cannot be maintained</li>
+</ul>
+<p>Any response other than “Concede” must be argued, not asserted.</p>
+<p><strong>Output</strong>: A complete Reasoning Chain attached to the Claim Record. Verification state is updated to <strong>Pending</strong> (◐).</p>
+<hr>
+<h2 id="phase-4-verification-assessment"><a class="header" href="#phase-4-verification-assessment">Phase 4: Verification Assessment</a></h2>
+<p><strong>Input</strong>: The complete Claim Record (statement, evidence set, reasoning chain) in Pending state.</p>
+<p><strong>Objective</strong>: Evaluate whether the evidence set and reasoning chain meet VERA verification criteria. Produce a Verification Record.</p>
+<p>This phase is executed by the <strong>verifier</strong> — an individual or team distinct from the Phase 1–3 claimant. For self-verification, the practitioner must adopt a genuinely adversarial stance toward the claim, actively seeking to refute it.</p>
+<h3 id="step-41--independence-check"><a class="header" href="#step-41--independence-check">Step 4.1 — Independence Check</a></h3>
+<p>Verify that the verifier meets the independence requirements for this claim:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Verification level</th><th>Independence requirement</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Foundational</strong></td><td>Verifier is different from claimant</td></tr>
+<tr><td><strong>Peer</strong></td><td>Verifier has relevant domain competency but no stake in the claim’s outcome</td></tr>
+<tr><td><strong>Expert</strong></td><td>Verifier has recognized expertise in the claim’s domain and is institutionally independent</td></tr>
+</tbody>
+</table>
+</div>
+<p>The independence level achieved is recorded in the Verification Record. It affects the claim’s epistemic weight.</p>
+<h3 id="step-42--apply-verification-criteria"><a class="header" href="#step-42--apply-verification-criteria">Step 4.2 — Apply Verification Criteria</a></h3>
+<p>Evaluate the claim against each criterion. For each criterion, record: <strong>Met</strong>, <strong>Not Met</strong>, or <strong>Not Applicable</strong> with supporting notes.</p>
+<p><strong>Evidence Criteria:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>#</th><th>Criterion</th><th>Met if…</th></tr>
+</thead>
+<tbody>
+<tr><td>E1</td><td>Evidence Set Completeness</td><td>No significant evidence types from the prospective list are absent without explanation</td></tr>
+<tr><td>E2</td><td>Evidence Quality Adequacy</td><td>The claim’s conclusion is supported by evidence at the appropriate quality tier for the stakes involved</td></tr>
+<tr><td>E3</td><td>Independence Adequacy</td><td>Supporting evidence is not all dependent on the same underlying source</td></tr>
+<tr><td>E4</td><td>Contrary Evidence Addressed</td><td>All identified contrary evidence is explicitly addressed in the reasoning chain</td></tr>
+<tr><td>E5</td><td>Chain of Custody</td><td>Source references are sufficient to locate the original evidence</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Reasoning Criteria:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>#</th><th>Criterion</th><th>Met if…</th></tr>
+</thead>
+<tbody>
+<tr><td>R1</td><td>Logical Validity</td><td>Each reasoning step’s conclusion follows from its premises under the stated inference type</td></tr>
+<tr><td>R2</td><td>Relevance</td><td>Evidence items cited in each step actually address the component they are claimed to support</td></tr>
+<tr><td>R3</td><td>Completeness</td><td>No material premise is hidden or assumed without documentation</td></tr>
+<tr><td>R4</td><td>Proportionality</td><td>The strength of the conclusion does not exceed what the evidence supports</td></tr>
+<tr><td>R5</td><td>Assumption Disclosure</td><td>All significant assumptions are identified and their status assessed</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Formal Criteria:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>#</th><th>Criterion</th><th>Met if…</th></tr>
+</thead>
+<tbody>
+<tr><td>F1</td><td>Claim Precision</td><td>The claim statement is free of vague language that makes it untestable</td></tr>
+<tr><td>F2</td><td>Identifier Present</td><td>A valid VERA claim identifier is assigned</td></tr>
+<tr><td>F3</td><td>Scope Defined</td><td>The conditions under which the claim holds are documented</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="step-43--assess-overall-verification-state"><a class="header" href="#step-43--assess-overall-verification-state">Step 4.3 — Assess Overall Verification State</a></h3>
+<p>Based on the criteria assessment:</p>
+<ul>
+<li>All criteria Met → <strong>Verified</strong> (●) [or Partial if some N/A items]</li>
+<li>Any Evidence or Reasoning criterion Not Met → <strong>Partial</strong> (◑) if the deficiency is minor, or document specific findings for re-submission</li>
+<li>Multiple significant criteria Not Met → claim returns to claimant with findings; state remains <strong>Pending</strong> (◐) pending revision</li>
+<li>Evidence or reasoning is actively contradicted → <strong>Refuted</strong> (✗) with full documentation</li>
+</ul>
+<h3 id="step-44--assign-epistemic-confidence"><a class="header" href="#step-44--assign-epistemic-confidence">Step 4.4 — Assign Epistemic Confidence</a></h3>
+<p>Assign a confidence rating (0.0–1.0) with a written justification. The confidence rating reflects:</p>
+<ul>
+<li>Quality distribution of the evidence set</li>
+<li>Independence of evidence items</li>
+<li>Strength of the reasoning chain’s inference types</li>
+<li>Presence and significance of unresolved assumptions</li>
+<li>Independence level of the verification</li>
+</ul>
+<h3 id="step-45--complete-the-verification-record"><a class="header" href="#step-45--complete-the-verification-record">Step 4.5 — Complete the Verification Record</a></h3>
+<p>Create a Verification Record (<code>VERA-V-[NNNN]</code>) containing all findings from Steps 4.1–4.4. The record is signed (digitally or physically) by the verifier and dated. It is immutable once completed.</p>
+<p><strong>Output</strong>: A completed Verification Record. The Claim Record is updated with the resulting Verification State and confidence rating. The Verification Record is linked to the Claim Record.</p>
+<hr>
+<h2 id="phase-5-documentation--publication"><a class="header" href="#phase-5-documentation--publication">Phase 5: Documentation &amp; Publication</a></h2>
+<p><strong>Input</strong>: Verified (or otherwise resolved) Claim Record and Verification Record.</p>
+<p><strong>Objective</strong>: Ensure the claim is recorded in a durable, accessible, and auditable form.</p>
+<h3 id="step-51--format-the-claim-record"><a class="header" href="#step-51--format-the-claim-record">Step 5.1 — Format the Claim Record</a></h3>
+<p>Complete the Claim Record in the canonical VERA format (see <a href="./pattern-template.html">Pattern Template</a> for the full template). Ensure all mandatory fields are populated and all linked documents (evidence items, verification record) are accessible via their references.</p>
+<h3 id="step-52--register-the-claim"><a class="header" href="#step-52--register-the-claim">Step 5.2 — Register the Claim</a></h3>
+<p>Enter the claim in the applicable claim registry — organizational, team, or personal. The registry provides:</p>
+<ul>
+<li>A searchable catalog of existing claims (prevents duplicate effort)</li>
+<li>A mechanism for downstream claims to reference upstream claims</li>
+<li>An audit trail of the claim’s version history</li>
+</ul>
+<h3 id="step-53--notify-downstream-claims"><a class="header" href="#step-53--notify-downstream-claims">Step 5.3 — Notify Downstream Claims</a></h3>
+<p>If this claim has already been cited as evidence in other claims, notify the maintainers of those downstream claims. A change in verification state, confidence rating, or claim scope may require re-evaluation of downstream claims.</p>
+<h3 id="step-54--establish-review-cadence"><a class="header" href="#step-54--establish-review-cadence">Step 5.4 — Establish Review Cadence</a></h3>
+<p>Not all claims remain valid indefinitely. For time-sensitive domains, establish a review schedule:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Domain sensitivity</th><th>Recommended review interval</th></tr>
+</thead>
+<tbody>
+<tr><td>High (regulatory, medical, financial)</td><td>6 months or upon material change</td></tr>
+<tr><td>Moderate (organizational policy, technical standards)</td><td>12–18 months</td></tr>
+<tr><td>Low (historical, conceptual)</td><td>36 months or upon challenge</td></tr>
+</tbody>
+</table>
+</div>
+<p>A claim that has not been reviewed within its cadence is flagged as <strong>Stale</strong> — not Refuted, but requiring attention before use in new reasoning.</p>
+<p><strong>Output</strong>: The claim is registered, formatted, linked to its verification record, and scheduled for review. The claim is now available for use as evidence in other claims.</p>
+<hr>
+<h2 id="special-situations"><a class="header" href="#special-situations">Special Situations</a></h2>
+<h3 id="ai-assisted-claims"><a class="header" href="#ai-assisted-claims">AI-Assisted Claims</a></h3>
+<p>When a large language model or other AI system contributes substantially to claim formulation, evidence identification, or reasoning chain construction, the involvement must be documented:</p>
+<ul>
+<li><strong>Model and version</strong> used</li>
+<li><strong>Prompts issued</strong> (or a representative summary)</li>
+<li><strong>Outputs used</strong> verbatim versus interpreted</li>
+<li><strong>Human review</strong> performed on each AI output before incorporation</li>
+</ul>
+<p>AI-assisted claims are subject to the same verification criteria as human-generated claims. AI involvement does not add to or subtract from evidence quality ratings, but the reasoning chain must document where human judgment verified AI-generated reasoning steps.</p>
+<h3 id="contested-claims"><a class="header" href="#contested-claims">Contested Claims</a></h3>
+<p>When a Verified claim is formally challenged:</p>
+<ol>
+<li>The challenge is logged in the Verification Record, with the challenger’s identity and the basis for the challenge</li>
+<li>The claim transitions to <strong>Contested</strong> (◈) state</li>
+<li>An independent verifier is assigned to re-evaluate the specific points of challenge</li>
+<li>The re-evaluation produces a new Verification Record linked to the original</li>
+<li>Based on re-evaluation: the claim returns to Verified, or is downgraded to Partial or Refuted</li>
+</ol>
+<p>Challenges must be substantive — they must identify specific criteria that the original verification failed to assess correctly. A challenge that merely asserts disagreement without identifying a verification failure is recorded but does not trigger re-evaluation.</p>
+<h3 id="urgent-verification"><a class="header" href="#urgent-verification">Urgent Verification</a></h3>
+<p>In time-sensitive situations, a modified verification path is permitted:</p>
+<ol>
+<li>The claim is marked <strong>Pending-Urgent</strong> (◐!) with a documented rationale for urgency</li>
+<li>Verification criteria E1, R1, R2, and F1 are assessed immediately (the minimum viable set)</li>
+<li>The claim is published with verification state <strong>Partial-Urgent</strong> (◑!) and a confidence rating calculated only from criteria assessed</li>
+<li>Full verification proceeds concurrently</li>
+<li>The claim is updated to its full verification state within 72 hours, or escalated to the team’s governance process if this is not possible</li>
+</ol>
+<p>Urgent verification must not become routine. A registry showing more than 15% of claims in Urgent status indicates a governance problem, not a verification problem.</p>
+<hr>
+<p><em>Proceed to <a href="./pattern-template.html">Pattern Template</a> to learn how verified claims and reasoning are packaged into reusable patterns.</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../foundations/lexicon.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../foundations/pattern-template.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../foundations/lexicon.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../foundations/pattern-template.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

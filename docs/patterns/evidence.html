@@ -1,0 +1,834 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Evidence Patterns - VERA: Verified Evidence &amp; Reasoning Architecture</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A framework for structured verification, traceable reasoning, and epistemic sovereignty.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-db310706.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-8b0ae697.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">VERA: Verified Evidence &amp; Reasoning Architecture</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/danielflugger/VERA/edit/main/src/patterns/evidence.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="evidence-patterns"><a class="header" href="#evidence-patterns">Evidence Patterns</a></h1>
+<p>Evidence Patterns address recurring challenges in the Evidence domain: identifying what evidence to look for, retrieving and rating it, assessing the independence of evidence items, handling evidence from problematic sources, and managing evidence whose reliability changes over time.</p>
+<p>All patterns in this chapter follow the canonical <a href="../foundations/pattern-template.html">Pattern Template</a>. Evidence quality tier ratings (Primary, Secondary, Tertiary, Testimonial) and evidence independence classifications (Independent, Correlated, Dependent) are defined in the <a href="../foundations/lexicon.html">Lexicon</a>.</p>
+<hr>
+<p><a id="vera-p-0001"></a></p>
+<h2 id="vera-p-0001--absence-of-evidence-assessment"><a class="header" href="#vera-p-0001--absence-of-evidence-assessment">VERA-P-0001 — Absence-of-Evidence Assessment</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0001</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Evidence</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Moderate</td></tr>
+<tr><td>Maturity Level</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+<p>The full text of this pattern appears in <a href="../foundations/pattern-template.html#a-worked-example-the-absence-of-evidence-pattern">Pattern Template: A Worked Example</a>, where it serves as the canonical worked example of the pattern format. The summary below is provided for catalog completeness.</p>
+<p><strong>Problem in brief:</strong> When a category of evidence listed in the prospective search plan yields no results, its absence may be non-material, moderately significant, or highly significant to the claim’s confidence — but there is no standard method for assessing which.</p>
+<p><strong>Solution in brief:</strong> Assess each absent evidence item on three dimensions — whether it was expected versus unexpected, whether it is substitutable by a different evidence type, and what direction it would likely point if it existed — and assign a materiality rating (Non-material / Moderate / Significant) with corresponding documentation and confidence adjustment requirements.</p>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0001</td></tr>
+<tr><td>Confidence</td><td>0.88</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><a id="vera-p-0002"></a></p>
+<h2 id="vera-p-0002--conflicted-source-disclosure"><a class="header" href="#vera-p-0002--conflicted-source-disclosure">VERA-P-0002 — Conflicted Source Disclosure</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0002</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Evidence</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Moderate</td></tr>
+<tr><td>Maturity Level</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="context"><a class="header" href="#context">Context</a></h3>
+<p>Practitioners regularly encounter evidence from sources that have a financial, institutional, or personal stake in the claim’s outcome. Industry-funded clinical studies, vendor-produced benchmark reports, advocacy group research, regulatory submissions by regulated entities, and expert testimony from retained consultants are all examples. This situation is not unusual — in many domains, the parties with the most relevant data are also parties with the most interest in how it is interpreted.</p>
+<p>The standard VERA Evidence criteria require that evidence items be quality-rated (E2) and that their independence be assessed (E3). Neither criterion directly addresses conflict of interest as a distinct category. Conflict of interest reduces — but does not eliminate — an evidence item’s epistemic value. An industry-funded study is not automatically wrong; a regulatory submission is not automatically self-serving. But the conflict changes how the evidence should be weighted and documented.</p>
+<hr>
+<h3 id="problem"><a class="header" href="#problem">Problem</a></h3>
+<p>When the most relevant available evidence for a claim component comes from a source with a stake in the claim’s outcome, practitioners face a genuine dilemma: treating the evidence as equivalent to unconflicted evidence understates the epistemic risk; discarding all conflicted evidence may leave a claim without support for an important component. Neither extreme is correct. The framework needs a middle path.</p>
+<hr>
+<h3 id="forces"><a class="header" href="#forces">Forces</a></h3>
+<ul>
+<li>Conflicted sources often produce the most thorough and current evidence in a domain, because they have the most investment in understanding it.</li>
+<li>Discarding all conflicted evidence may constitute selective citation — if the conflicted evidence points against the claim, discarding it is a violation of Evidence Primacy.</li>
+<li>The degree of conflict varies enormously: minor institutional affiliation is not equivalent to direct financial stake in the claim’s outcome.</li>
+<li>Disclosure without corroboration is insufficient for high-conflict sources; corroboration without disclosure obscures a legitimate epistemic concern.</li>
+<li>Requiring corroboration for all conflicted evidence creates a research burden disproportionate to the conflict’s significance in some cases.</li>
+</ul>
+<hr>
+<h3 id="solution"><a class="header" href="#solution">Solution</a></h3>
+<p>Apply a <strong>conflict severity rating</strong> to each evidence item identified as coming from a conflicted source. Then apply the corresponding disclosure and corroboration requirements for that severity level.</p>
+<p><strong>Conflict Severity Scale:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Severity</th><th>Description</th><th>Examples</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Low</strong></td><td>Institutional connection without financial stake in claim outcome</td><td>Author is affiliated with an organization that advocates related positions; publication is associated with a think tank with a general ideological orientation</td></tr>
+<tr><td><strong>Moderate</strong></td><td>Indirect financial or reputational stake</td><td>Organization that funded the study would benefit from the claim being true; author has consulting relationship with an industry the claim concerns</td></tr>
+<tr><td><strong>High</strong></td><td>Direct financial stake in the specific claim’s outcome</td><td>Study funded by company whose product is the subject of the claim; evidence produced by a party in a dispute about the claim’s subject matter</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Requirements by Severity Level:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Severity</th><th>Disclosure</th><th>Corroboration</th><th>Confidence Impact</th></tr>
+</thead>
+<tbody>
+<tr><td>Low</td><td>Note affiliation in evidence item record</td><td>None required</td><td>≤ 0.05 reduction</td></tr>
+<tr><td>Moderate</td><td>Note conflict and nature of interest in evidence item record</td><td>Attempt to identify at least one unconflicted corroborating source; if none found, document the search</td><td>0.05–0.10 reduction</td></tr>
+<tr><td>High</td><td>Note conflict prominently in evidence item record and in reasoning chain</td><td>Corroboration from unconflicted source required for any evidence item at this severity level; if unavailable, claim confidence reduced and limitation disclosed in claim statement</td><td>0.10–0.20 reduction</td></tr>
+</tbody>
+</table>
+</div>
+<p>For High severity evidence with no available unconflicted corroboration: the evidence may still be used, but the reasoning chain must explicitly argue why the conflicted source’s evidence is credible despite the conflict (e.g., the evidence is verifiable through independent means, the conflict is disclosed in the source’s own methodology, the claim is against the source’s interest).</p>
+<hr>
+<h3 id="implementation"><a class="header" href="#implementation">Implementation</a></h3>
+<ol>
+<li>
+<p><strong>Identify the source’s relationship to the claim.</strong> For each evidence item, research whether the source organization or author has a financial, institutional, or reputational stake in whether the claim is true. Document the relationship or its absence.</p>
+</li>
+<li>
+<p><strong>Rate conflict severity.</strong> Apply the three-point scale. When uncertain between two levels, apply the higher level.</p>
+</li>
+<li>
+<p><strong>Document in the evidence item record.</strong> Add a “Conflict” field to the evidence item record with: severity rating, description of the conflict, and the basis for the rating.</p>
+</li>
+<li>
+<p><strong>Apply corroboration requirements.</strong> For Moderate severity: conduct a targeted search for unconflicted corroboration. Document the search and its outcome. For High severity: corroboration is required; if not found, initiate the confidence reduction and limitation documentation requirements.</p>
+</li>
+<li>
+<p><strong>Adjust confidence.</strong> Apply the confidence reduction for the severity level. The reduction applies to the claim component supported by the conflicted evidence, not to the whole claim unless the conflict is pervasive.</p>
+</li>
+<li>
+<p><strong>Document in the reasoning chain.</strong> For Moderate and High conflicts, include a step in the reasoning chain that explicitly acknowledges the conflict and explains why the evidence was used despite it.</p>
+</li>
+</ol>
+<hr>
+<h3 id="evidence-requirements"><a class="header" href="#evidence-requirements">Evidence Requirements</a></h3>
+<ul>
+<li>Documentation of the source’s conflict, including the nature and severity of the relationship</li>
+<li>For Moderate: documentation of corroboration search and its outcome</li>
+<li>For High: corroboration from an unconflicted source, or explicit documentation of why the conflicted evidence is credible despite the conflict</li>
+</ul>
+<hr>
+<h3 id="verification-criteria"><a class="header" href="#verification-criteria">Verification Criteria</a></h3>
+<ul>
+<li>Every evidence item from a source with any conflict has a documented conflict severity rating in the evidence item record</li>
+<li>For Moderate and High severity items, the corroboration requirement has been met or explicitly documented as unmet with explanation</li>
+<li>The confidence rating reflects adjustments for conflict severity as specified</li>
+<li>High-severity conflicts are disclosed in the claim statement, not only in the evidence item record</li>
+</ul>
+<hr>
+<h3 id="consequences"><a class="header" href="#consequences">Consequences</a></h3>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Evidence from conflicted sources is not discarded, preserving information that may be accurate and valuable.</li>
+<li>Conflicts are visible to downstream users and verifiers, enabling informed judgment about their significance.</li>
+<li>The graded approach prevents both dismissal and uncritical acceptance of conflicted evidence.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>Conflict severity rating involves judgment; the same source may be rated differently by different practitioners.</li>
+<li>The corroboration requirement for High-severity evidence can be resource-intensive when unconflicted sources are scarce.</li>
+<li>Disclosing conflicts prominently may make a claim appear weaker than it is when the conflicted evidence is actually accurate.</li>
+</ul>
+<hr>
+<h3 id="known-uses"><a class="header" href="#known-uses">Known Uses</a></h3>
+<ul>
+<li><strong>Policy research team, public health agency (2025):</strong> Applied to a claim about a pharmaceutical intervention where all available clinical trials were industry-funded. Three trials were rated High severity; one was rated Moderate. The team documented the conflict for all four, conducted a systematic search for unconflicted corroboration (none found), applied the confidence reduction, and disclosed the limitation in the claim statement. The disclosure was cited favorably in subsequent regulatory review as evidence of epistemic integrity.</li>
+<li><strong>Competitive intelligence function, technology firm (2025):</strong> Applied to benchmark evidence produced by a competitor. Rated High severity; corroborated with independent testing. The independent test results agreed with the competitor’s benchmark on three of five dimensions, providing partial corroboration with documented scope.</li>
+</ul>
+<hr>
+<h3 id="related-patterns"><a class="header" href="#related-patterns">Related Patterns</a></h3>
+<ul>
+<li><a href="./evidence.html#vera-p-0001">VERA-P-0001</a> — Absence-of-Evidence Assessment: Use when corroboration search (Step 4) finds no unconflicted sources; the absence of corroboration has its own materiality that must be assessed.</li>
+<li><a href="./evidence.html#vera-p-0004">VERA-P-0004</a> — Source Collapse Detection: Use alongside P-0002 when multiple conflicted sources are suspected to derive from the same underlying data.</li>
+</ul>
+<hr>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0002</td></tr>
+<tr><td>Confidence</td><td>0.84</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><a id="vera-p-0003"></a></p>
+<h2 id="vera-p-0003--ai-generated-evidence-documentation"><a class="header" href="#vera-p-0003--ai-generated-evidence-documentation">VERA-P-0003 — AI-Generated Evidence Documentation</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0003</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Evidence</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Moderate</td></tr>
+<tr><td>Maturity Level</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="context-1"><a class="header" href="#context-1">Context</a></h3>
+<p>Practitioners increasingly use AI systems — large language models, AI-powered search tools, document summarization systems, and analysis platforms — at every stage of evidence work: to identify relevant sources, to summarize large bodies of literature, to extract key claims from documents, and to synthesize evidence across multiple sources. AI tools can dramatically accelerate evidence work. They also introduce chain-of-custody and quality-rating challenges that the standard evidence framework does not directly address.</p>
+<p>The core problem is that AI output is a transformation of sources, not a source itself. When an AI system produces a summary of ten studies, that summary is not a Secondary-tier evidence item — it is a machine-generated interpretation of Secondary sources. When an AI retrieves what it describes as a quotation from a document, that quotation may or may not accurately reflect the original. The chain between AI output and primary source is opaque by default.</p>
+<p>This pattern applies whenever an AI system has meaningfully shaped the evidence in a VERA claim — whether by finding it, summarizing it, synthesizing it, or generating it.</p>
+<hr>
+<h3 id="problem-1"><a class="header" href="#problem-1">Problem</a></h3>
+<p>Evidence retrieved, summarized, or synthesized by AI systems cannot be quality-rated using the standard four-tier scale without modification. The AI output is not Primary evidence (it is not firsthand observation or original data), not Secondary (it is not peer-reviewed expert interpretation), not Tertiary (it is not an editorially curated synthesis), and not precisely Testimonial (the AI is not a human expert). Yet practitioners frequently cite AI outputs as if they were one of these types, or — more problematically — cite them without noting the AI provenance at all.</p>
+<hr>
+<h3 id="forces-1"><a class="header" href="#forces-1">Forces</a></h3>
+<ul>
+<li>AI tools genuinely accelerate evidence discovery and synthesis; prohibiting their use would impose disproportionate costs.</li>
+<li>Citing “the AI said” as an evidence item violates chain-of-custody requirements; the AI is not a source.</li>
+<li>The underlying sources an AI references often exist and can be retrieved — but doing so for every AI-mediated evidence item is costly.</li>
+<li>AI systems can hallucinate sources, misattribute quotations, and misrepresent the findings of real studies. Human verification of AI claims is not optional.</li>
+<li>Different AI systems have different reliability characteristics; the system identity and version are relevant to the chain-of-custody assessment.</li>
+<li>The prompter’s framing influences what the AI finds and how it summarizes; the prompt is part of the chain of custody.</li>
+</ul>
+<hr>
+<h3 id="solution-1"><a class="header" href="#solution-1">Solution</a></h3>
+<p>Apply a <strong>three-tier handling protocol</strong> based on whether the underlying primary source can be retrieved and independently verified.</p>
+<p><strong>Tier A: Source Retrieved and Verified</strong></p>
+<p>The AI identified the evidence; the practitioner retrieved and directly examined the original source.</p>
+<ul>
+<li>Create the evidence item record for the <strong>original source</strong>, not the AI output.</li>
+<li>Note in the chain-of-custody field: “Source identified by [AI system, version, date]. Original source retrieved and verified by [practitioner] on [date].”</li>
+<li>Apply the standard quality tier rating to the original source.</li>
+<li>The AI’s role is discovery assistance; it does not affect the quality tier of the original source.</li>
+</ul>
+<p><strong>Tier B: Source Identified but Not Retrievable</strong></p>
+<p>The AI cited a source that the practitioner attempted but failed to retrieve (paywalled, deleted, or possibly hallucinated).</p>
+<ul>
+<li>Create an evidence item record for the AI output with the following fields:
+<ul>
+<li><strong>Type:</strong> AI-Mediated (Unverified) — not a standard quality tier</li>
+<li><strong>AI System:</strong> [Name, version, date]</li>
+<li><strong>Prompt:</strong> [Verbatim or summarized prompt that produced this output]</li>
+<li><strong>Output:</strong> [Verbatim AI output]</li>
+<li><strong>Retrieval attempt:</strong> [What was done to locate the original source, and why it failed]</li>
+</ul>
+</li>
+<li>Apply a <strong>mandatory confidence penalty</strong> of 0.15 to any claim component supported only by Tier B evidence.</li>
+<li>Tier B evidence cannot be used as the sole support for a claim component at Verification criteria E2 (Evidence Quality Adequacy).</li>
+</ul>
+<p><strong>Tier C: AI-Synthesized Analysis (No Specific Source)</strong></p>
+<p>The AI generated analytical content — synthesis, interpretation, pattern identification — that does not correspond to a specific retrievable source.</p>
+<ul>
+<li>Treat as <strong>Testimonial tier</strong> with the AI system as the “expert.”</li>
+<li>Document: AI system, version, date, prompt (verbatim), and the complete output used.</li>
+<li>Note in the evidence item record that the “expert” is an AI system, with its known limitations.</li>
+<li>Apply all Testimonial-tier evidence requirements.</li>
+<li>AI Testimonial evidence carries an inherent independence limitation: the same AI system queried multiple times about the same topic is not independent.</li>
+</ul>
+<hr>
+<h3 id="implementation-1"><a class="header" href="#implementation-1">Implementation</a></h3>
+<ol>
+<li>
+<p><strong>Inventory AI involvement.</strong> Before finalizing the evidence set, identify every evidence item where AI played a role in discovery, retrieval, summarization, or synthesis.</p>
+</li>
+<li>
+<p><strong>Classify each AI-involved item.</strong> For each item, determine whether it is Tier A (source retrieved), Tier B (source identified but not retrievable), or Tier C (AI synthesis without specific source).</p>
+</li>
+<li>
+<p><strong>Document AI provenance.</strong> For all three tiers, record: AI system name, version or model identifier, date of query, and the verbatim prompt (or, if the prompt is long, a summary that would allow reconstruction of the query).</p>
+</li>
+<li>
+<p><strong>Retrieve original sources (Tier A work).</strong> For all Tier B items, make at least one genuine attempt to retrieve the underlying source before accepting Tier B status. Document the attempt.</p>
+</li>
+<li>
+<p><strong>Apply quality ratings.</strong> Tier A: use the original source’s quality tier. Tier B: document as AI-Mediated (Unverified). Tier C: document as Testimonial (AI).</p>
+</li>
+<li>
+<p><strong>Apply confidence adjustments.</strong> Tier B items trigger the 0.15 confidence penalty per claim component. Tier C items are subject to standard Testimonial-tier confidence assessment.</p>
+</li>
+<li>
+<p><strong>Flag in the reasoning chain.</strong> For Tier B and Tier C evidence items, include an explicit note in the reasoning chain step that uses them, identifying the AI provenance and the epistemic limitation it creates.</p>
+</li>
+</ol>
+<hr>
+<h3 id="evidence-requirements-1"><a class="header" href="#evidence-requirements-1">Evidence Requirements</a></h3>
+<ul>
+<li>AI system identity, version, and query date for all AI-involved evidence items</li>
+<li>Verbatim prompts for all Tier B and Tier C items; verbatim prompts or reconstruction-sufficient summaries for Tier A items</li>
+<li>Documentation of retrieval attempts for all Tier B items</li>
+<li>Complete verbatim AI output for all Tier B and Tier C items used as evidence</li>
+</ul>
+<hr>
+<h3 id="verification-criteria-1"><a class="header" href="#verification-criteria-1">Verification Criteria</a></h3>
+<ul>
+<li>No evidence item in the claim’s evidence set is cited as Primary, Secondary, or Tertiary when the practitioner did not directly access the original source — AI-mediated discovery alone does not constitute direct access.</li>
+<li>All Tier B and Tier C evidence items are documented with AI provenance fields.</li>
+<li>The confidence rating reflects the 0.15 penalty for Tier B evidence and the Testimonial-tier calibration for Tier C evidence.</li>
+<li>No Tier B evidence item is the sole support for a claim component (criterion E2 violation).</li>
+</ul>
+<hr>
+<h3 id="consequences-1"><a class="header" href="#consequences-1">Consequences</a></h3>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>AI tools can be used without compromising chain-of-custody requirements.</li>
+<li>The three-tier system preserves the value of AI discovery work while requiring human verification of AI claims.</li>
+<li>Downstream users and verifiers can assess the epistemic weight of AI-mediated evidence.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>Tier A retrieval for all AI-discovered evidence is time-intensive; the acceleration benefit of AI discovery is partly offset by verification costs.</li>
+<li>The prompt-capture requirement adds documentation overhead to AI-assisted research workflows.</li>
+<li>AI system versioning is inconsistent; identifying the model and version used may not be possible in all tools.</li>
+</ul>
+<hr>
+<h3 id="known-uses-1"><a class="header" href="#known-uses-1">Known Uses</a></h3>
+<ul>
+<li><strong>Research team, management consulting firm (2025):</strong> Developed an internal prompt logging tool after applying this pattern; Tier B rates dropped from ~40% to ~12% as practitioners built habits of clicking through to original sources before closing AI sessions.</li>
+<li><strong>Policy analyst, government research office (2025):</strong> Applied Tier C to AI-generated synthesis of legislative history; noted that three queries to the same AI produced partially inconsistent syntheses, confirming the independence limitation; used the inconsistency itself as a Tier B evidence item about the claim’s uncertainty.</li>
+</ul>
+<hr>
+<h3 id="related-patterns-1"><a class="header" href="#related-patterns-1">Related Patterns</a></h3>
+<ul>
+<li><a href="./evidence.html#vera-p-0002">VERA-P-0002</a> — Conflicted Source Disclosure: AI systems trained on biased corpora may exhibit systematic conflicts; applies when AI provenance suggests directional bias.</li>
+<li><a href="./reasoning.html#vera-p-0007">VERA-P-0007</a> — Hidden Assumption Excavation: AI-generated reasoning chains typically contain hidden assumptions; apply P-0007 to any AI-generated reasoning used in a VERA claim.</li>
+</ul>
+<hr>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0003</td></tr>
+<tr><td>Confidence</td><td>0.86</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><a id="vera-p-0004"></a></p>
+<h2 id="vera-p-0004--source-collapse-detection-and-remediation"><a class="header" href="#vera-p-0004--source-collapse-detection-and-remediation">VERA-P-0004 — Source Collapse Detection and Remediation</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0004</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Evidence</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Simple</td></tr>
+<tr><td>Maturity Level</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="context-2"><a class="header" href="#context-2">Context</a></h3>
+<p>Evidence sets assembled from multiple sources frequently contain items that appear independent but ultimately derive from the same underlying source. This is especially common in domains dominated by a small number of authoritative primary sources — a single landmark study that spawned many secondary analyses, a single regulatory document that multiple organizations reference, a single dataset that multiple publications draw from.</p>
+<p>The <a href="../foundations/lexicon.html#evidence-independence">Lexicon</a> defines this error as <strong>source collapse</strong> and defines the Independence assessment as a required part of evidence set assembly (Verification Protocol Step 2.4). This pattern specifies <em>how</em> to conduct that assessment systematically, and how to remediate collapse when it is found.</p>
+<hr>
+<h3 id="problem-2"><a class="header" href="#problem-2">Problem</a></h3>
+<p>When multiple evidence items in a set trace to the same underlying source, the evidence set overstates the degree of independent support for the claim. A practitioner who assembles five evidence items all derived from the same original study believes they have built a robust multi-source case; they have built a single-source case with decorative citations. Verification criterion E3 (Independence Adequacy) will catch this — but only if the verifier knows to look for it and has a method for detecting it.</p>
+<hr>
+<h3 id="forces-2"><a class="header" href="#forces-2">Forces</a></h3>
+<ul>
+<li>Source collapse often occurs innocuously: different publications genuinely cite the same study as the best available evidence, making independent citation count unreliable as an independence signal.</li>
+<li>Detecting source collapse requires backward-tracing each evidence item through its citation chain, which is time-consuming.</li>
+<li>Consolidated evidence sets have fewer items, which may superficially appear weaker even when the consolidation more accurately represents the independent support.</li>
+<li>True independence is sometimes impossible to achieve in domains where a single primary source exists; this must be documented rather than hidden.</li>
+</ul>
+<hr>
+<h3 id="solution-2"><a class="header" href="#solution-2">Solution</a></h3>
+<p>Conduct an <strong>evidence source tree</strong> for any evidence set containing four or more items, or when any subset of items appears to address the same claim component from what may be related sources.</p>
+<p>The source tree maps each evidence item backward to its ultimate origin: the original dataset, study, document, or observation. Items that share an ultimate origin are <strong>source-collapsed</strong> and must be consolidated.</p>
+<hr>
+<h3 id="implementation-2"><a class="header" href="#implementation-2">Implementation</a></h3>
+<ol>
+<li>
+<p><strong>Trigger assessment.</strong> Apply this pattern whenever: (a) the evidence set has four or more items, (b) two or more items reference the same study or dataset, or (c) verification criterion E3 is flagged during review.</p>
+</li>
+<li>
+<p><strong>Build the source tree.</strong> For each evidence item, trace its citations backward:</p>
+<ul>
+<li>What does this item cite as its primary source?</li>
+<li>What does <em>that</em> source cite?</li>
+<li>Continue until you reach an item with no further citations — a direct observation, original dataset, or primary document.</li>
+<li>Record the ultimate source for each evidence item.</li>
+</ul>
+</li>
+<li>
+<p><strong>Identify shared roots.</strong> Group evidence items that share the same ultimate source.</p>
+</li>
+<li>
+<p><strong>Apply the independence classification.</strong> Within each group:</p>
+<ul>
+<li>If items independently transform or interpret the shared source in meaningfully different ways, classify as <strong>Correlated</strong> (keep all items, note the shared root).</li>
+<li>If items are essentially transmissions of the same content from the same source, classify as <strong>Dependent</strong> (consolidate into one item).</li>
+</ul>
+</li>
+<li>
+<p><strong>Consolidate Dependent items.</strong> Replace the group of dependent items with a single evidence item representing the underlying source, with a note: “N items in the original evidence set were consolidated; all derived from [source].”</p>
+</li>
+<li>
+<p><strong>Recount independent sources.</strong> After consolidation, record the true count of independent evidence items and the count of correlated items. This true count is used in the confidence assessment.</p>
+</li>
+<li>
+<p><strong>Document in the evidence set.</strong> Record the source tree as an appendix to the evidence set documentation. Any verifier can then reproduce the independence assessment without repeating the full trace.</p>
+</li>
+</ol>
+<hr>
+<h3 id="evidence-requirements-2"><a class="header" href="#evidence-requirements-2">Evidence Requirements</a></h3>
+<ul>
+<li>The citation chain for each evidence item, traced to its ultimate source</li>
+<li>Documentation of the independence classification for each item</li>
+<li>The consolidation record showing which items were merged and why</li>
+</ul>
+<hr>
+<h3 id="verification-criteria-2"><a class="header" href="#verification-criteria-2">Verification Criteria</a></h3>
+<ul>
+<li>A source tree exists for evidence sets of four or more items</li>
+<li>All evidence items have an ultimate source identified</li>
+<li>No evidence item is classified as Independent when its ultimate source is shared with another item in the set</li>
+<li>The confidence rating is calculated from the consolidated (true) independent source count, not the raw item count</li>
+</ul>
+<hr>
+<h3 id="consequences-2"><a class="header" href="#consequences-2">Consequences</a></h3>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Eliminates a systematic form of confidence inflation.</li>
+<li>Makes the true evidential basis of a claim visible and auditable.</li>
+<li>Reduces evidence sets to their genuine information content, making reasoning chains cleaner.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>Source tracing is time-intensive for evidence items with long citation chains.</li>
+<li>Consolidation visibly reduces evidence set size, which can create internal resistance if practitioners believe “more sources = stronger claim.”</li>
+<li>In some domains, consolidation reveals that a widely-held claim rests on a single primary source — a finding that is uncomfortable but epistemically important.</li>
+</ul>
+<hr>
+<h3 id="known-uses-2"><a class="header" href="#known-uses-2">Known Uses</a></h3>
+<ul>
+<li><strong>Internal audit team, financial institution (2025):</strong> Applied to a claim about regulatory compliance that cited eight secondary sources; source tree revealed all eight derived from two primary regulatory interpretations; consolidated to two items and revised confidence downward, prompting additional primary-source research.</li>
+<li><strong>Academic researcher, social sciences (2024):</strong> Applied during systematic review construction; identified that a meta-analysis included fifteen papers drawing from the same longitudinal dataset, counted as fifteen independent data points in the original review’s analysis.</li>
+</ul>
+<hr>
+<h3 id="related-patterns-2"><a class="header" href="#related-patterns-2">Related Patterns</a></h3>
+<ul>
+<li><a href="./evidence.html#vera-p-0001">VERA-P-0001</a> — Absence-of-Evidence Assessment: Use when source collapse remediation reveals that a claim component has fewer independent sources than expected; the reduced count may reach the threshold for Significant absence.</li>
+<li><a href="./evidence.html#vera-p-0002">VERA-P-0002</a> — Conflicted Source Disclosure: Source collapse and conflict of interest frequently co-occur when an industry produces or funds the dominant primary sources in a domain.</li>
+</ul>
+<hr>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0004</td></tr>
+<tr><td>Confidence</td><td>0.91</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><a id="vera-p-0005"></a></p>
+<h2 id="vera-p-0005--time-sensitive-evidence-management"><a class="header" href="#vera-p-0005--time-sensitive-evidence-management">VERA-P-0005 — Time-Sensitive Evidence Management</a></h2>
+<p><strong>Pattern ID:</strong> VERA-P-0005</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain</td><td>Evidence</td></tr>
+<tr><td>Applicability</td><td>All</td></tr>
+<tr><td>Complexity</td><td>Moderate</td></tr>
+<tr><td>Maturity Level</td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="context-3"><a class="header" href="#context-3">Context</a></h3>
+<p>Claims in many domains are supported by evidence that changes in reliability over time. Regulatory approval status changes. Market data becomes stale. Living clinical guidelines are updated. Organizational policies are superseded. Technology benchmarks are invalidated by new releases. An evidence item that was Primary-tier and current at time of assembly may be Secondary-tier or effectively misleading six months later.</p>
+<p>The Verification Protocol establishes review cadences at the <strong>claim level</strong> (Phase 5, Step 5.4), specifying how frequently the whole claim should be reviewed. This claim-level cadence is insufficient when different evidence items within the same claim decay at different rates: a claim about market conditions might have some evidence (a regulatory ruling) that is stable for years and other evidence (a pricing dataset) that becomes stale in weeks.</p>
+<hr>
+<h3 id="problem-3"><a class="header" href="#problem-3">Problem</a></h3>
+<p>Standard claim-level review cadences do not account for evidence-level decay. A claim reviewed on schedule may still be supporting decisions with stale evidence if some items in its evidence set have become unreliable between reviews. Conversely, practitioners who flag all evidence as time-sensitive create review burdens disproportionate to actual epistemic risk.</p>
+<hr>
+<h3 id="forces-3"><a class="header" href="#forces-3">Forces</a></h3>
+<ul>
+<li>Evidence decay rates vary by source type and domain; one-size-fits-all cadences either over-burden or under-protect.</li>
+<li>Notifying downstream claims when upstream evidence becomes stale requires active monitoring infrastructure not available at all maturity levels.</li>
+<li>The boundary between “stale” and “superseded” is not always clear; stale evidence may still be directionally correct.</li>
+<li>Practitioners in rapidly changing domains face continuous evidence churn; alert fatigue is a real risk if the system triggers too frequently.</li>
+</ul>
+<hr>
+<h3 id="solution-3"><a class="header" href="#solution-3">Solution</a></h3>
+<p>Annotate each evidence item with an <strong>evidence decay class</strong> and associated <strong>expiry date</strong> at the time of evidence set assembly. Link evidence expiry to automatic claim review triggers.</p>
+<p><strong>Evidence Decay Classes:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Class</th><th>Description</th><th>Default expiry window</th><th>Examples</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Stable</strong></td><td>Evidence is not expected to change materially</td><td>36 months</td><td>Historical records, mathematical proofs, long-established scientific consensus, statutory text</td></tr>
+<tr><td><strong>Drifting</strong></td><td>Evidence may change gradually; periodic verification needed</td><td>12 months</td><td>Policy documents, organizational standards, expert consensus guidelines, established market structures</td></tr>
+<tr><td><strong>Volatile</strong></td><td>Evidence changes frequently; continuous monitoring required</td><td>3 months</td><td>Market prices, regulatory approval status, software version specifics, living guidelines, survey data</td></tr>
+</tbody>
+</table>
+</div>
+<p>Practitioners may override the default expiry window with a documented rationale. The override must be conservative (shorter, not longer) unless there is specific justification for extending it.</p>
+<hr>
+<h3 id="implementation-3"><a class="header" href="#implementation-3">Implementation</a></h3>
+<ol>
+<li>
+<p><strong>Assign decay class at assembly.</strong> For each evidence item, assign a decay class (Stable / Drifting / Volatile) and calculate the expiry date (assembly date + default window, or override date with rationale).</p>
+</li>
+<li>
+<p><strong>Record expiry in evidence item documentation.</strong> Add an “Expiry” field to each evidence item record: decay class, expiry date, and monitoring method.</p>
+</li>
+<li>
+<p><strong>Set monitoring for Volatile items.</strong> For each Volatile evidence item, establish an active monitoring method: a saved search, a regulatory alert subscription, a calendar reminder for manual check-in. Document the method.</p>
+</li>
+<li>
+<p><strong>Link expiry to claim review triggers.</strong> The claim’s effective review date is the earliest expiry date across all evidence items with a decay class of Volatile or Drifting. This may be earlier than the claim-level review cadence established in Verification Protocol Phase 5.</p>
+</li>
+<li>
+<p><strong>Handle expiry events.</strong> When an evidence item reaches its expiry date:</p>
+<ul>
+<li>Check whether the source has changed.</li>
+<li>If unchanged: update the expiry date for the next window; note the reconfirmation in the evidence item record.</li>
+<li>If changed: assess the impact on the claim. Update the evidence item or replace it. Reassess verification state. Notify downstream claims via <a href="./verification.html#vera-p-0012">VERA-P-0012</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mark stale items.</strong> An evidence item that has passed its expiry date without a reconfirmation check is marked <strong>Stale</strong>. Claims with Stale evidence items are marked <strong>Stale</strong> and should not be used in reasoning chains without re-verification.</p>
+</li>
+</ol>
+<hr>
+<h3 id="evidence-requirements-3"><a class="header" href="#evidence-requirements-3">Evidence Requirements</a></h3>
+<ul>
+<li>Decay class assignment for each evidence item, with documented rationale for any override of the default window</li>
+<li>Monitoring method documented for all Volatile evidence items</li>
+<li>Reconfirmation records for evidence items that have been refreshed at least once</li>
+</ul>
+<hr>
+<h3 id="verification-criteria-3"><a class="header" href="#verification-criteria-3">Verification Criteria</a></h3>
+<ul>
+<li>Every evidence item in the set has an assigned decay class and expiry date</li>
+<li>No evidence item is Stale (past expiry without reconfirmation) at the time of verification</li>
+<li>The claim’s effective review trigger reflects the earliest expiry date in the evidence set, not only the claim-level cadence</li>
+<li>Monitoring methods for Volatile items are documented and plausibly executable</li>
+</ul>
+<hr>
+<h3 id="consequences-3"><a class="header" href="#consequences-3">Consequences</a></h3>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Evidence-level tracking prevents claims from becoming supported by stale evidence between claim-level reviews.</li>
+<li>The decay class system calibrates monitoring effort to actual risk, reducing alert fatigue.</li>
+<li>Expiry tracking provides an automatic early-warning system for downstream claims.</li>
+</ul>
+<p><strong>Liabilities:</strong></p>
+<ul>
+<li>Adds annotation work at evidence assembly time.</li>
+<li>Volatile evidence monitoring requires active infrastructure (alerts, saved searches) that must be maintained.</li>
+<li>Determining the correct decay class for novel evidence types involves judgment; practitioners may systematically underestimate volatility in unfamiliar domains.</li>
+</ul>
+<hr>
+<h3 id="known-uses-3"><a class="header" href="#known-uses-3">Known Uses</a></h3>
+<ul>
+<li><strong>Research function, global consulting firm (2025):</strong> Implemented evidence expiry as part of their claim registry tooling after discovering three active claims were being cited in client deliverables with market data that was 18 months old. The tooling flagged 23 evidence items as Stale in the first month of implementation.</li>
+<li><strong>Regulatory affairs team, pharmaceutical company (2025):</strong> Applied to a claim about competitor approval status; Volatile classification with 3-month expiry triggered a reconfirmation check that caught a label modification, allowing a filing to be updated before submission.</li>
+</ul>
+<hr>
+<h3 id="related-patterns-3"><a class="header" href="#related-patterns-3">Related Patterns</a></h3>
+<ul>
+<li><a href="./evidence.html#vera-p-0001">VERA-P-0001</a> — Absence-of-Evidence Assessment: When evidence becomes stale and no current replacement is found, treat the absent current evidence using P-0001 materiality assessment.</li>
+<li><a href="./verification.html#vera-p-0012">VERA-P-0012</a> — Cascading Claim Update: Use to notify and re-evaluate downstream claims when Volatile evidence changes force a claim to a new verification state.</li>
+</ul>
+<hr>
+<p><strong>Verification Status:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>State</td><td>Verified</td></tr>
+<tr><td>Verifier</td><td>VERA Founding Review</td></tr>
+<tr><td>Verified on</td><td>2026-02-21</td></tr>
+<tr><td>Record</td><td>VERA-V-0005</td></tr>
+<tr><td>Confidence</td><td>0.82</td></tr>
+</tbody>
+</table>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../patterns/catalog.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../patterns/reasoning.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../patterns/catalog.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../patterns/reasoning.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
