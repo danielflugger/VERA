@@ -81,3 +81,13 @@ VERA is not designed to replace existing frameworks. It is designed to interoper
 ---
 
 *Begin with [Philosophy & Principles](./foundations/philosophy.md) to understand the epistemic commitments that underlie every other VERA construct.*
+
+---
+
+## About the Author
+
+**Daniel Flügger** is an applied AI engineer and founder based in New York. He builds GCP-native AI systems including geospatial intelligence pipelines, RAG architectures, and multi-agent workflows. He is currently in the Google Startups Accelerator and the author of [The Proof Economy](https://danielflugger.com), a thesis on value capture in the intelligence age.
+
+VERA is the practical methodology that grew out of that work.
+
+→ [danielflugger.com](https://danielflugger.com) · [GitHub](https://github.com/danielflugger) · [LinkedIn](https://linkedin.com/in/danielflugger)

@@ -159,3 +159,7 @@ The goal of VERA is not a world without false beliefs. It is a world where false
 ---
 
 *Proceed to [Lexicon: Canonical Definitions](./lexicon.md) to establish the precise vocabulary that makes VERA's protocols unambiguous.*
+
+---
+
+*VERA is authored by Daniel Flügger and licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Free to use, share, and build on — attribution required. [danielflugger.com](https://danielflugger.com)*
