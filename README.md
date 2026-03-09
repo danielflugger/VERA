@@ -4,6 +4,8 @@ A framework for structured claim verification, traceable reasoning, and epistemi
 
 **Read the book:** [danielflugger.github.io/VERA](https://danielflugger.github.io/VERA/)
 
+Patent Pending — U.S. Application No. 64/000,086
+
 ---
 
 ## What is VERA?
